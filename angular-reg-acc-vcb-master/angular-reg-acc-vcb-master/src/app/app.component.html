@@ -15,7 +15,112 @@
   </div>
 </nav>
 
-<div id="step0" style="height: 100%" *ngIf="is0FormGroup">
+<div *ngIf="isSigin">
+  <div class="bg-text-sigin mx-auto" style="width: 40%;height: 50%;margin-top: 100px">
+    <div style="text-align: center;padding-top: 30px">
+      <b>ĐĂNG NHẬP</b>
+    </div>
+    <div class="input-group col-sm-8 mb-4 mx-auto mt-5">
+
+      <div class="input-group-prepend">
+                           <span class="input-group-text bg-white px-4 border-md border-right-0">
+                               <i class="fa fa-user "></i>
+                           </span>
+      </div>
+      <input type="text" placeholder="Tên đăng nhập" class="form-control bg-white  border-left-0  text-body">
+    </div>
+    <div class="input-group col-sm-8 mb-4 mx-auto">
+      <div class="input-group-prepend">
+                           <span class="input-group-text bg-white px-4 border-md border-right-0">
+                               <i class="fa fa-lock "></i>
+                           </span>
+      </div>
+      <input type="text" placeholder="Mật khẩu" class="form-control bg-white border-left-0  text-body">
+    </div>
+    <div class="input-group col-sm-8 mt-3 mx-auto" style="display: flex">
+      <div>
+        <input type="checkbox"/>
+        <label>Lưu thông tin đăng nhập</label>
+      </div>
+      <div style="padding-left: 75px;">
+        Quên mật khẩu?
+      </div>
+    </div>
+    <div class="input-group col-sm-8 mb-4 mx-auto">
+      <input type="button" (click)="Chooes()" value="Đăng nhập" class="form-control   text-white"
+             style="background: #143264;margin-bottom: 30px">
+    </div>
+  </div>
+</div>
+
+<div *ngIf="isChoose">
+
+  <div class="bg-text-sigin mx-auto" style="width: 40%;height: 50%;margin-top: 100px">
+    <div style="margin-top: 20px;padding-top: 30px"></div>
+    <div>
+      <div class="input-group col-sm-8 mb-4 mx-auto">
+        <input type="button" (click)="ChooseGTTT()" value="Mở tài khoản thanh toán" class="form-control   text-white"
+               style="background: #D9D9D9">
+      </div>
+      <div class="input-group col-sm-8 mb-4 mx-auto">
+        <input type="button" value="Mở thẻ tín dụng" class="form-control   text-white" style="background: #D9D9D9">
+      </div>
+      <div class="input-group col-sm-8 mb-4 mx-auto">
+        <input type="button" value="Đăng ký khoản vay" class="form-control   text-white" style="background: #D9D9D9">
+      </div>
+
+      <div class="col-sm-6 mt-8 mx-auto" style="float: none;justify-content:center">
+        <div class="mt-3">
+          <input type="checkbox"/>
+          <label>NFC CCCD gắn chip</label>
+        </div>
+        <div class="mt-3">
+          <input type="checkbox"/>
+          <label>Khách hàng đã tồn tại CIF</label>
+        </div>
+        <div class="mt-3">
+          <input type="checkbox"/>
+          <label>Khách hàng hit PCRT</label>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="isGTTT">
+  <div class="bg-text-sigin mx-auto" style="width: 40%;height: 50%;margin-top: 100px;padding-top: 30px">
+    <div class="input-group col-sm-8 mb-4 mx-auto">
+      Quý khách vui lòng lựa chọn loại Giấy tờ tùy thân. Ưu tiên cung cấp CMND/CCCD.
+    </div>
+    <div class="input-group col-sm-8 mb-4 mx-auto">
+      <input type="button" (click)="startReg()" value="CMND/CCCD" class="form-control   text-white"
+             style="background: #D9D9D9">
+    </div>
+    <div class="input-group col-sm-8 mb-4 mx-auto">
+      Hướng dẫn:<br/>
+
+      1. Sử dụng giấy tờ gốc và còn hiệu lực.<br/>
+
+      2. Chụp đầy đủ, rõ nét, không mất góc, không chói sáng 2 mặt của CMND/CCCD.<br/>
+    </div>
+    <div class="input-group col-sm-8 mb-4 mx-auto">
+      <input type="button" value="Hộ chiếu" class="form-control   text-white" style="background: #D9D9D9">
+    </div>
+
+    <div class="input-group col-sm-8 mb-4 mx-auto">
+      Hướng dẫn:<br/>
+
+      1. Sử dụng giấy tờ gốc và còn hiệu lực.<br/>
+
+      2. Đối với CMND/CCCD, chụp đầy đủ, rõ nét, không mất góc, không chói sáng 2 mặt của CMND/CCCD.<br/>
+
+      3. Đối với Hộ chiếu, chụp đầy đủ, rõ nét, không mất góc, không chói sáng trang thông tin cá nhân (trang bìa) và
+      trang chữ ký Cơ quan cấp hộ chiếu (trang 3).
+    </div>
+  </div>
+</div>
+
+<!--<div id="step0" style="height: 100%" *ngIf="is1FormGroup">
   <div class="LandingPage">
     <div class="container">
       <form id="submitForm" action="" method="post">
@@ -61,7 +166,7 @@
       </form>
     </div>
   </div>
-</div>
+</div>-->
 
 
 <div id="step" style="height: 100%;" *ngIf="!is0FormGroup">
@@ -70,7 +175,7 @@
 
       <div style="margin-bottom: 5px;"></div>
 
-      <div class="row bg-text">
+      <div class="row bg-text-sigin">
         <div class="col">
           <!-- is1FormGroup -->
           <div *ngIf="is1FormGroup && childStep1==0">
@@ -93,6 +198,7 @@
               <div style="clear: both;margin-bottom: 10px;"></div>
             </form>
           </div>
+
 
           <div *ngIf="is1FormGroup && childStep1==1">
             <form [formGroup]="_1FormGroup">
@@ -129,354 +235,276 @@
                       </div>-->
           <!-- </div>-->
 
-         <!-- <div>
-            <div style="text-align: center">
-              <b>ĐĂNG NHẬP</b>
-            </div>
-            <div class="input-group col-sm-6 mb-4 mx-auto mt-5" >
-              <div class="input-group-prepend">
-                            <span class="input-group-text bg-white px-4 border-md border-right-0">
-                                <i class="fa fa-user "></i>
-                            </span>
-              </div>
-              <input type="text" placeholder="Tên đăng nhập" class="form-control bg-white  border-left-0  text-body">
-            </div>
-            <div class="input-group col-sm-6 mb-4 mx-auto">
-              <div class="input-group-prepend">
-                            <span class="input-group-text bg-white px-4 border-md border-right-0">
-                                <i class="fa fa-lock "></i>
-                            </span>
-              </div>
-              <input i type="text" placeholder="Mật khẩu" class="form-control bg-white border-left-0  text-body">
-            </div>
-            <div class="input-group col-sm-5 mt-3 mx-auto" style="display: flex">
-              <div>
-                <input type="checkbox"/>
-                <label>Lưu thông tin đăng nhập</label>
-              </div>
-              <div style="padding-left: 75px;">
-                Quên mật khẩu?
-              </div>
-            </div>
-            <div class="input-group col-sm-6 mb-4 mx-auto">
-              <input  type="button" value="Đăng nhập" class="form-control   text-white" style="background: #143264">
-            </div>
-
-            <div class="input-group col-sm-6 mb-4 mx-auto">
-              <input  type="button" value="Mở tài khoản thanh toán" class="form-control   text-white" style="background: #D9D9D9">
-            </div>
-            <div class="input-group col-sm-6 mb-4 mx-auto">
-              <input  type="button" value="Mở thẻ tín dụng" class="form-control   text-white" style="background: #D9D9D9">
-            </div>
-            <div class="input-group col-sm-6 mb-4 mx-auto">
-              <input  type="button" value="Đăng ký khoản vay" class="form-control   text-white" style="background: #D9D9D9">
-            </div>
-
-            <div class="col-sm-6 mt-3 mx-auto" style="float: none;justify-content:center">
-              <div class="mt-3">
-                <input type="checkbox"/>
-                <label>NFC CCCD gắn chip</label>
-              </div>
-              <div class="mt-3">
-                <input type="checkbox"/>
-                <label>Khách hàng đã tồn tại CIF</label>
-              </div>
-              <div class="mt-3">
-                <input type="checkbox"/>
-                <label>Khách hàng hit PCRT</label>
-              </div>
-            </div>
-          </div>-->
-
-
-          <div>
-           <div style="text-align: center">
-             <b>ĐĂNG NHẬP</b>
-           </div>
-           <div class="input-group col-sm-6 mb-4 mx-auto mt-5" >
-             <div class="input-group-prepend">
-                           <span class="input-group-text bg-white px-4 border-md border-right-0">
-                               <i class="fa fa-user "></i>
-                           </span>
+          <!-- <div>
+             <div style="text-align: center">
+               <b>ĐĂNG NHẬP</b>
              </div>
-             <input type="text" placeholder="Tên đăng nhập" class="form-control bg-white  border-left-0  text-body">
-           </div>
-           <div class="input-group col-sm-6 mb-4 mx-auto">
-             <div class="input-group-prepend">
-                           <span class="input-group-text bg-white px-4 border-md border-right-0">
-                               <i class="fa fa-lock "></i>
-                           </span>
+             <div class="input-group col-sm-6 mb-4 mx-auto mt-5" >
+               <div class="input-group-prepend">
+                             <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                 <i class="fa fa-user "></i>
+                             </span>
+               </div>
+               <input type="text" placeholder="Tên đăng nhập" class="form-control bg-white  border-left-0  text-body">
              </div>
-             <input i type="text" placeholder="Mật khẩu" class="form-control bg-white border-left-0  text-body">
-           </div>
-           <div class="input-group col-sm-5 mt-3 mx-auto" style="display: flex">
-             <div>
-               <input type="checkbox"/>
-               <label>Lưu thông tin đăng nhập</label>
+             <div class="input-group col-sm-6 mb-4 mx-auto">
+               <div class="input-group-prepend">
+                             <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                 <i class="fa fa-lock "></i>
+                             </span>
+               </div>
+               <input i type="text" placeholder="Mật khẩu" class="form-control bg-white border-left-0  text-body">
              </div>
-             <div style="padding-left: 75px;">
-               Quên mật khẩu?
+             <div class="input-group col-sm-5 mt-3 mx-auto" style="display: flex">
+               <div>
+                 <input type="checkbox"/>
+                 <label>Lưu thông tin đăng nhập</label>
+               </div>
+               <div style="padding-left: 75px;">
+                 Quên mật khẩu?
+               </div>
              </div>
-           </div>
-           <div class="input-group col-sm-6 mb-4 mx-auto">
-             <input  type="button" value="Đăng nhập" class="form-control   text-white" style="background: #143264">
-           </div>
-
-           <div class="input-group col-sm-6 mb-4 mx-auto">
-             <input  type="button" value="Mở tài khoản thanh toán" class="form-control   text-white" style="background: #D9D9D9">
-           </div>
-           <div class="input-group col-sm-6 mb-4 mx-auto">
-             <input  type="button" value="Mở thẻ tín dụng" class="form-control   text-white" style="background: #D9D9D9">
-           </div>
-           <div class="input-group col-sm-6 mb-4 mx-auto">
-             <input  type="button" value="Đăng ký khoản vay" class="form-control   text-white" style="background: #D9D9D9">
-           </div>
-
-           <div class="col-sm-6 mt-3 mx-auto" style="float: none;justify-content:center">
-             <div class="mt-3">
-               <input type="checkbox"/>
-               <label>NFC CCCD gắn chip</label>
+             <div class="input-group col-sm-6 mb-4 mx-auto">
+               <input  type="button" value="Đăng nhập" class="form-control   text-white" style="background: #143264">
              </div>
-             <div class="mt-3">
-               <input type="checkbox"/>
-               <label>Khách hàng đã tồn tại CIF</label>
+
+             <div class="input-group col-sm-6 mb-4 mx-auto">
+               <input  type="button" value="Mở tài khoản thanh toán" class="form-control   text-white" style="background: #D9D9D9">
              </div>
-             <div class="mt-3">
-               <input type="checkbox"/>
-               <label>Khách hàng hit PCRT</label>
+             <div class="input-group col-sm-6 mb-4 mx-auto">
+               <input  type="button" value="Mở thẻ tín dụng" class="form-control   text-white" style="background: #D9D9D9">
              </div>
-           </div>
-            <div class="input-group col-sm-6 mb-4 mx-auto">
-              <input  type="button" value="CCCD gắn chip" class="form-control   text-white" style="background: #D9D9D9">
-            </div>
-            <div class="input-group col-sm-6 mb-4 mx-auto">
-              <input  type="button" value="CMND/CCCD không gắn chip" class="form-control   text-white" style="background: #D9D9D9">
-            </div>
-            <div class="input-group col-sm-6 mb-4 mx-auto">
-              <input  type="button" value="Hộ chiếu" class="form-control   text-white" style="background: #D9D9D9">
-            </div>
+             <div class="input-group col-sm-6 mb-4 mx-auto">
+               <input  type="button" value="Đăng ký khoản vay" class="form-control   text-white" style="background: #D9D9D9">
+             </div>
 
-            <div class="input-group col-sm-6 mb-4 mx-auto">
-              Hướng dẫn:<br/>
+             <div class="col-sm-6 mt-3 mx-auto" style="float: none;justify-content:center">
+               <div class="mt-3">
+                 <input type="checkbox"/>
+                 <label>NFC CCCD gắn chip</label>
+               </div>
+               <div class="mt-3">
+                 <input type="checkbox"/>
+                 <label>Khách hàng đã tồn tại CIF</label>
+               </div>
+               <div class="mt-3">
+                 <input type="checkbox"/>
+                 <label>Khách hàng hit PCRT</label>
+               </div>
+             </div>
+           </div>-->
 
-              1. Sử dụng giấy tờ gốc và còn hiệu lực.<br/>
-
-              2. Đối với CMND/CCCD, chụp đầy đủ, rõ nét, không mất góc, không chói sáng 2 mặt của CMND/CCCD.<br/>
-
-              3. Đối với Hộ chiếu, chụp đầy đủ, rõ nét, không mất góc, không chói sáng trang thông tin cá nhân (trang bìa) và trang chữ ký Cơ quan cấp hộ chiếu (trang 3).
-            </div>
-         </div>
 
           <!-- is2FormGroup -->
           <div *ngIf="is2FormGroup">
             <div class="font-size16" style="margin-top: 26px; text-align: center">
               Bạn hãy xác nhận lại thông tin trước khi hoàn tất mở tài khoản.
             </div>
+            <div style="margin-top: 24px;">
+              <ng-container *ngFor="let item of datatGToTThan">
+                <!--  <div class="row" style="margin-top: 20px">
+                    <div class="col-sm-4">
+                      Số CMND/CCCD
+                    </div>
+                    <div class="col-sm-8">
+                      <input [(ngModel)]="this.appService.datdaGTTT.soGTo" id="soGTo" name="soGTo"
+                             type="text" class="form-control" required/>
+                    </div>
+                  </div>
+                  <div class="row" style="margin-top: 20px">
+                    <div class="col-sm-4">
+                      Họ và tên
+                    </div>
+                    <div class="col-sm-8">
+                      <input [(ngModel)]="this.appService.datdaGTTT.hoTen" id="hoTen" name="hoTen"
+                             type="text" class="form-control" required/>
+                    </div>
+                  </div>
+                  <div class="row" style="margin-top: 20px">
+                    <div class="col-sm-4">
+                      Ngày sinh
+                    </div>
+                    <div class="col-sm-8">
+                      <input [(ngModel)]="this.appService.datdaGTTT.ngaySinh" name="ngaySinh"
+                             type="text" class="form-control" required/>
+                    </div>
+                  </div>
+                  <div class="row" style="margin-top: 20px">
+                    <div class="col-sm-2">
+                      Giới tính
+                    </div>
+                    <div class="col-sm-4">
+                      <input [(ngModel)]="this.appService.datdaGTTT.gioiTinh" id="gioiTinh" name="gioiTinh"
+                             type="text" class="form-control" required/>
+                    </div>
+                    <div class="col-sm-2">
+                      Quốc tịch
+                    </div>
+                    <div class="col-sm-4">
+                      <input [(ngModel)]="this.appService.datdaGTTT.quocTich"  name="quocTich"
+                             type="text" class="form-control" required/>
+                    </div>
+                  </div>
+                  <div class="row" style="margin-top: 20px">
+                    <div class="col-sm-4">
+                      Quê quán
+                    </div>
+                    <div class="col-sm-8">
+                      <input [(ngModel)]="this.appService.datdaGTTT.queQuan" name="queQuan"
+                             type="text" class="form-control" required/>
+                    </div>
+                  </div>
+                  <div class="row" style="margin-top: 20px">
+                    <div class="col-sm-4">
+                      Nơi thường trú
+                    </div>
+                    <div class="col-sm-8">
+                      <input [(ngModel)]="this.appService.datdaGTTT.noiTru" name="noiTru"
+                             type="text" class="form-control" required/>
+                    </div>
+                  </div>
+                  <div class="row" style="margin-top: 20px">
+                    <div class="col-sm-4">
+                      Có giá trị đến
+                    </div>
+                    <div class="col-sm-8">
+                      <input [(ngModel)]="this.appService.datdaGTTT.ngayHetHan" name="ngayHetHan"
+                             type="text" class="form-control" required/>
+                    </div>
+                  </div>
+                  <div class="row" style="margin-top: 20px">
+                    <div class="col-sm-4">
+                      Đặc điểm nhân dạng
+                    </div>
+                    <div class="col-sm-8">
+                      <input [(ngModel)]="this.appService.datdaGTTT.dacDiemNhanDang" name="dacDiemNhanDang"
+                             type="text" class="form-control" required/>
+                    </div>
+                  </div>
+                  <div class="row" style="margin-top: 20px">
+                    <div class="col-sm-4">
+                      Ngày cấp
+                    </div>
+                    <div class="col-sm-8">
+                      <input [(ngModel)]="this.appService.datdaGTTT.ngayCap" name="ngayCap"
+                             type="text" class="form-control" required/>
+                    </div>
+                  </div>
+                  <div class="row" style="margin-top: 20px">
+                    <div class="col-sm-4">
+                      Nơi cấp
+                    </div>
+                    <div class="col-sm-8">
+                      <input [(ngModel)]="this.appService.datdaGTTT.noiCap" name="noiCap"
+                             type="text" class="form-control" required/>
+                    </div>
+                  </div>-->
+                <div class="row">
+                  <div class="col-sm-4">
+                    <b>Số CMND/CCCD</b>
+                  </div>
+                  <div class="col-sm-8 xtgttt">
+                    <p> {{ item.soCmt }}</p>
+                  </div>
+                </div>
+                <div class="row" style="margin-top: 20px;">
+                  <div class="col-sm-4">
+                    <b>Họ và tên</b>
+                  </div>
+                  <div class="col-sm-8 xtgttt">
+                    <p> {{ item.hoVaTen }}</p>
+                  </div>
+                </div>
+                <div class="row" style="margin-top: 20px;">
+                  <div class="col-sm-4">
+                    <b>Ngày sinh</b>
+                  </div>
+                  <div class="col-sm-8 xtgttt">
+                    <p> {{ item.namSinh }}</p>
+                  </div>
+                </div>
+                <div class="row" style="margin-top: 20px;">
+                  <div class="col-sm-2">
+                    <b>Giới tính</b>
+                  </div>
+                  <div class="col-sm-4 xtgttt">
+                    <p> {{ item.gioiTinh2 }}</p>
+                  </div>
+                  <div class="col-sm-2">
+                    <b>Quốc tịch</b>
+                  </div>
+                  <div class="col-sm-4 xtgttt">
+                    <p> {{ item.quocTich }}</p>
+                  </div>
+                </div>
+                <div class="row" style="margin-top: 20px;">
+                  <div class="col-sm-4">
+                    <b>Quê quán</b>
+                  </div>
+                  <div class="col-sm-8 xtgttt">
+                    <p> {{ item.queQuan }}</p>
+                  </div>
+                </div>
+                <div class="row" style="margin-top: 20px;">
+                  <div class="col-sm-4">
+                    <b>Nơi thường trú</b>
+                  </div>
+                  <div class="col-sm-8 xtgttt">
+                    <p> {{ item.noiTru }}</p>
+                  </div>
+                </div>
+                <div class="row" style="margin-top: 20px;">
+                  <div class="col-sm-4">
+                    <b>Có giá trị đến</b>
+                  </div>
+                  <div class="col-sm-8 xtgttt">
+                    <p> {{ item.ngayHetHan }}</p>
+                  </div>
+                </div>
+                <div class="row" style="margin-top: 20px;">
+                  <div class="col-sm-4">
+                    <b>Đặc điểm nhân dạng</b>
+                  </div>
+                  <div class="col-sm-8 xtgttt">
+                    <p> {{ item.dacDiemNhanDang }}</p>
+                  </div>
+                </div>
+                <div class="row" style="margin-top: 20px;">
+                  <div class="col-sm-4">
+                    <b>Ngày cấp</b>
+                  </div>
+                  <div class="col-sm-8 xtgttt">
+                    <p> {{ item.ngayCap2 }}</p>
+                  </div>
+                </div>
+                <div class="row" style="margin-top: 20px;">
+                  <div class="col-sm-4">
+                    <b>Nơi cấp</b>
+                  </div>
+                  <div class="col-sm-8 xtgttt">
+                    <p> {{ item.noiCap }}</p>
+                  </div>
+                </div>
 
+                <!--         <p><b>Quốc tịch:</b>&nbsp; {{ item.quocTich }}</p>
+                         <p><b>Năm sinh:</b>&nbsp; {{ item.namSinh }}</p>
+                         <p><b>Giới tính:</b>&nbsp; {{ item.gioiTinh2 }}</p>
+                         <p><b>Quê quán:</b>&nbsp; {{ item.queQuan }}</p>
+                         <p><b>Nơi thường trú:</b>&nbsp; {{ item.noiTru }}</p>
+                         <p><b>Ngày cấp:</b>&nbsp; {{ item.ngayCap2 }}</p>
+                         <p><b>Ngày hết hạn:</b>&nbsp; {{ item.ngayHetHan }}</p>
+                         <p><b>Nơi cấp:</b>&nbsp; {{ item.noiCap }}</p>
+                         <p><b>Đặc điểm nhận dạng:</b>&nbsp; {{ item.dacDiemNhanDang }}</p>-->
+              </ng-container>
+              <p></p>
+            </div>
             <form [formGroup]="_2FormGroup">
-              <div style="margin-top: 24px;">
-                <ng-container *ngFor="let item of datatGToTThan">
-                  <!--  <div class="row" style="margin-top: 20px">
-                      <div class="col-sm-4">
-                        Số CMND/CCCD
-                      </div>
-                      <div class="col-sm-8">
-                        <input [(ngModel)]="this.appService.datdaGTTT.soGTo" id="soGTo" name="soGTo"
-                               type="text" class="form-control" required/>
-                      </div>
-                    </div>
-                    <div class="row" style="margin-top: 20px">
-                      <div class="col-sm-4">
-                        Họ và tên
-                      </div>
-                      <div class="col-sm-8">
-                        <input [(ngModel)]="this.appService.datdaGTTT.hoTen" id="hoTen" name="hoTen"
-                               type="text" class="form-control" required/>
-                      </div>
-                    </div>
-                    <div class="row" style="margin-top: 20px">
-                      <div class="col-sm-4">
-                        Ngày sinh
-                      </div>
-                      <div class="col-sm-8">
-                        <input [(ngModel)]="this.appService.datdaGTTT.ngaySinh" name="ngaySinh"
-                               type="text" class="form-control" required/>
-                      </div>
-                    </div>
-                    <div class="row" style="margin-top: 20px">
-                      <div class="col-sm-2">
-                        Giới tính
-                      </div>
-                      <div class="col-sm-4">
-                        <input [(ngModel)]="this.appService.datdaGTTT.gioiTinh" id="gioiTinh" name="gioiTinh"
-                               type="text" class="form-control" required/>
-                      </div>
-                      <div class="col-sm-2">
-                        Quốc tịch
-                      </div>
-                      <div class="col-sm-4">
-                        <input [(ngModel)]="this.appService.datdaGTTT.quocTich"  name="quocTich"
-                               type="text" class="form-control" required/>
-                      </div>
-                    </div>
-                    <div class="row" style="margin-top: 20px">
-                      <div class="col-sm-4">
-                        Quê quán
-                      </div>
-                      <div class="col-sm-8">
-                        <input [(ngModel)]="this.appService.datdaGTTT.queQuan" name="queQuan"
-                               type="text" class="form-control" required/>
-                      </div>
-                    </div>
-                    <div class="row" style="margin-top: 20px">
-                      <div class="col-sm-4">
-                        Nơi thường trú
-                      </div>
-                      <div class="col-sm-8">
-                        <input [(ngModel)]="this.appService.datdaGTTT.noiTru" name="noiTru"
-                               type="text" class="form-control" required/>
-                      </div>
-                    </div>
-                    <div class="row" style="margin-top: 20px">
-                      <div class="col-sm-4">
-                        Có giá trị đến
-                      </div>
-                      <div class="col-sm-8">
-                        <input [(ngModel)]="this.appService.datdaGTTT.ngayHetHan" name="ngayHetHan"
-                               type="text" class="form-control" required/>
-                      </div>
-                    </div>
-                    <div class="row" style="margin-top: 20px">
-                      <div class="col-sm-4">
-                        Đặc điểm nhân dạng
-                      </div>
-                      <div class="col-sm-8">
-                        <input [(ngModel)]="this.appService.datdaGTTT.dacDiemNhanDang" name="dacDiemNhanDang"
-                               type="text" class="form-control" required/>
-                      </div>
-                    </div>
-                    <div class="row" style="margin-top: 20px">
-                      <div class="col-sm-4">
-                        Ngày cấp
-                      </div>
-                      <div class="col-sm-8">
-                        <input [(ngModel)]="this.appService.datdaGTTT.ngayCap" name="ngayCap"
-                               type="text" class="form-control" required/>
-                      </div>
-                    </div>
-                    <div class="row" style="margin-top: 20px">
-                      <div class="col-sm-4">
-                        Nơi cấp
-                      </div>
-                      <div class="col-sm-8">
-                        <input [(ngModel)]="this.appService.datdaGTTT.noiCap" name="noiCap"
-                               type="text" class="form-control" required/>
-                      </div>
-                    </div>-->
-                  <div class="row">
-                    <div class="col-sm-4">
-                      <b>Số CMND/CCCD</b>
-                    </div>
-                    <div class="col-sm-8 xtgttt">
-                      <p> {{ item.soCmt }}</p>
-                    </div>
-                  </div>
-                  <div class="row" style="margin-top: 20px;">
-                    <div class="col-sm-4">
-                      <b>Họ và tên</b>
-                    </div>
-                    <div class="col-sm-8 xtgttt">
-                      <p> {{ item.hoVaTen }}</p>
-                    </div>
-                  </div>
-                  <div class="row" style="margin-top: 20px;">
-                    <div class="col-sm-4">
-                      <b>Ngày sinh</b>
-                    </div>
-                    <div class="col-sm-8 xtgttt">
-                      <p> {{ item.namSinh }}</p>
-                    </div>
-                  </div>
-                  <div class="row" style="margin-top: 20px;">
-                    <div class="col-sm-2">
-                      <b>Giới tính</b>
-                    </div>
-                    <div class="col-sm-4 xtgttt">
-                      <p> {{ item.gioiTinh2 }}</p>
-                    </div>
-                    <div class="col-sm-2">
-                      <b>Quốc tịch</b>
-                    </div>
-                    <div class="col-sm-4 xtgttt">
-                      <p> {{ item.quocTich }}</p>
-                    </div>
-                  </div>
-                  <div class="row" style="margin-top: 20px;">
-                    <div class="col-sm-4">
-                      <b>Quê quán</b>
-                    </div>
-                    <div class="col-sm-8 xtgttt">
-                      <p> {{ item.queQuan }}</p>
-                    </div>
-                  </div>
-                  <div class="row" style="margin-top: 20px;">
-                    <div class="col-sm-4">
-                      <b>Nơi thường trú</b>
-                    </div>
-                    <div class="col-sm-8 xtgttt">
-                      <p> {{ item.noiTru }}</p>
-                    </div>
-                  </div>
-                  <div class="row" style="margin-top: 20px;">
-                    <div class="col-sm-4">
-                      <b>Có giá trị đến</b>
-                    </div>
-                    <div class="col-sm-8 xtgttt">
-                      <p> {{ item.ngayHetHan }}</p>
-                    </div>
-                  </div>
-                  <div class="row" style="margin-top: 20px;">
-                    <div class="col-sm-4">
-                      <b>Đặc điểm nhân dạng</b>
-                    </div>
-                    <div class="col-sm-8 xtgttt">
-                      <p> {{ item.dacDiemNhanDang }}</p>
-                    </div>
-                  </div>
-                  <div class="row" style="margin-top: 20px;">
-                    <div class="col-sm-4">
-                      <b>Ngày cấp</b>
-                    </div>
-                    <div class="col-sm-8 xtgttt">
-                      <p> {{ item.ngayCap2 }}</p>
-                    </div>
-                  </div>
-                  <div class="row" style="margin-top: 20px;">
-                    <div class="col-sm-4">
-                      <b>Nơi cấp</b>
-                    </div>
-                    <div class="col-sm-8 xtgttt">
-                      <p> {{ item.noiCap }}</p>
-                    </div>
-                  </div>
-
-                  <!--         <p><b>Quốc tịch:</b>&nbsp; {{ item.quocTich }}</p>
-                           <p><b>Năm sinh:</b>&nbsp; {{ item.namSinh }}</p>
-                           <p><b>Giới tính:</b>&nbsp; {{ item.gioiTinh2 }}</p>
-                           <p><b>Quê quán:</b>&nbsp; {{ item.queQuan }}</p>
-                           <p><b>Nơi thường trú:</b>&nbsp; {{ item.noiTru }}</p>
-                           <p><b>Ngày cấp:</b>&nbsp; {{ item.ngayCap2 }}</p>
-                           <p><b>Ngày hết hạn:</b>&nbsp; {{ item.ngayHetHan }}</p>
-                           <p><b>Nơi cấp:</b>&nbsp; {{ item.noiCap }}</p>
-                           <p><b>Đặc điểm nhận dạng:</b>&nbsp; {{ item.dacDiemNhanDang }}</p>-->
-                </ng-container>
-                <p></p>
-              </div>
               <div class="row">
                 <div class="col-sm-4">
                 </div>
                 <div class="col-sm-8">
-                  <input type="button" class="form-check-input btn-step" (click)="checkXnhanGTTT()"  name="xnhanGTTT" formControlName="xnhanGTTT"
+                  <input type="button" class="form-check-input btn-step" (click)="checkXnhanGTTT()" name="xnhanGTTT"
+                         formControlName="xnhanGTTT"
                          [(ngModel)]="checked"
                          checked>
                 </div>
@@ -485,11 +513,11 @@
               <!--<label class="form-check-label font-Roboto-normal color-red">Đồng ý</label>-->
               <!--<p></p>-->
 
-            <!--  <div class="text-note-step0" style="margin-bottom: 20px;">
-                <button type="button" (click)="checkXnhanGTTT()"  class="btn-step" name="xnhanGTTT" formControlName="xnhanGTTT"
-                        style="font-size: 16px;">Đồng ý
-                </button>
-              </div>-->
+              <!--  <div class="text-note-step0" style="margin-bottom: 20px;">
+                  <button type="button" (click)="checkXnhanGTTT()"  class="btn-step" name="xnhanGTTT" formControlName="xnhanGTTT"
+                          style="font-size: 16px;">Đồng ý
+                  </button>
+                </div>-->
             </form>
 
             <div style="margin-top: 16px">
@@ -773,16 +801,7 @@
                   <div class="col-sm-8">
                     <div class="row">
                       <div class="col-sm-8">
-                        <input type="radio" id="nghenghiep1" name="nghenghiep" checked/> Nhân viên văn phòng
-                      </div>
-                      <div class="col-sm-8">
-                        <input type="radio" id="nghenghiep2" name="nghenghiep"/> Bác sĩ, dược sĩ, y tá
-                      </div>
-                      <div class="col-sm-8">
-                        <input type="radio" id="nghenghiep3" name="nghenghiep"/> Công nhân viên chức
-                      </div>
-                      <div class="col-sm-8">
-                        <input type="radio" id="nghenghiep4" name="nghenghiep"/> Kỹ sư, công nhân xây dựng
+                        <input type="radio" id="nghenghiep7" name="nghenghiep"/>Làm việc tự do
                       </div>
                       <div class="col-sm-8">
                         <input type="radio" id="nghenghiep5" name="nghenghiep"/>Lực lượng vũ trang
@@ -790,6 +809,21 @@
                       <div class="col-sm-8">
                         <input type="radio" id="nghenghiep6" name="nghenghiep"/>Học sinh, sinh viên
                       </div>
+                      <div class="col-sm-8">
+                        <input type="radio" id="nghenghiep2" name="nghenghiep"/> Bác sĩ, dược sĩ, y tá
+                      </div>
+                      <div class="col-sm-8">
+                        <input type="radio" id="nghenghiep1" name="nghenghiep" checked/> Nhân viên văn phòng
+                      </div>
+
+                      <div class="col-sm-8">
+                        <input type="radio" id="nghenghiep3" name="nghenghiep"/> Công nhân, viên chức
+                      </div>
+                      <div class="col-sm-8">
+                        <input type="radio" id="nghenghiep4" name="nghenghiep"/> Kỹ sư, công nhân xây dựng, cơ khí
+                      </div>
+
+
                     </div>
 
                     <div class="row">
@@ -797,7 +831,7 @@
                         <input type="radio" id="nghenghiepkhac" name="nghenghiepkhac"/> Khác (ghi rõ)
                       </div>
                       <div class="col-sm-9">
-                        <input id="text_nghenghiepkhac" name="text_nghenghiepkhac" placeholder="VD: giáo viên"
+                        <input id="text_nghenghiepkhac" name="text_nghenghiepkhac" placeholder="Nhập thông tin"
                                type="text" value="" class="form-control form-control-sm"/>
                       </div>
 
@@ -853,7 +887,7 @@
 
                 <div style="clear: both;margin-bottom: 10px;"></div>
                 <div>
-                  <span>Quý khách có phải là người </span>
+                  <b>Quý khách có phải là người </b>
                 </div>
 
                 <div class="row" style="margin-top: 20px">
@@ -906,7 +940,7 @@
 
                 <div style="clear: both;margin-bottom: 10px;"></div>
                 <div>
-                  <span>Quý khách có </span>
+                  <b>Quý khách có </b>
                 </div>
                 <div class="row" style="margin-top: 20px">
                   <div class="col-sm-4">
@@ -918,7 +952,8 @@
                         <input type="checkbox" id="chusohuuhuongloi_co" name="chusohuuhuongloi_co"/> Có
                       </div>
                       <div class="col-sm-4">
-                        <input type="checkbox" id="chusohuuhuongloi_khong" name="chusohuuhuongloi_khong" checked/> Không
+                        <input type="checkbox" id="chusohuuhuongloi_khong" name="chusohuuhuongloi_khong" checked/>
+                        Không
                       </div>
                     </div>
                   </div>
@@ -942,7 +977,7 @@
 
                 <div class="row">
                   <div class="col-sm-12">
-                    Mục đích của Quý khách khi thiết lập mối quan hệ với Ngân hàng
+                    <b>Mục đích của Quý khách khi thiết lập mối quan hệ với Ngân hàng</b>
                   </div>
                 </div>
 
@@ -953,7 +988,7 @@
                     <input type="checkbox" id="thanhtoan" name="thanhtoan" checked/> Thanh toán
                   </div>
                   <div class="col-sm-4">
-                    <input type="checkbox" id="tietkiem" name="tietkiem"/> Tiết kiệm
+                    <input type="checkbox" id="tietkiem" name="tietkiem" checked/> Tiết kiệm
                   </div>
                   <div class="col-sm-4">
                     <input type="checkbox" id="vayvon" name="vayvon"/> Vay vốn
@@ -965,7 +1000,7 @@
 
                 <div class="row">
                   <div class="col-sm-3">
-                    <input type="checkbox" id="ctientrongnuoc" name="ctientrongnuoc"/> Chuyển tiền trong nước
+                    <input type="checkbox" id="ctientrongnuoc" name="ctientrongnuoc" checked/> Chuyển tiền trong nước
                   </div>
 
                 </div>
@@ -976,7 +1011,7 @@
                 </div>
                 <div class="row" style="margin-top: 20px">
                   <div class="col-sm-2">
-                    <input type="checkbox" id="ctienkhac" name="ctienkhac"/> Khác (Ghi rõ)
+                    <input type="checkbox" id="ctienkhac" name="ctienkhac"/> Khác (ghi rõ)
                   </div>
                 </div>
                 <div class="row">
@@ -989,7 +1024,7 @@
                 <div style="clear: both;margin-bottom: 20px;"></div>
 
                 <div style="text-align: center;">
-                  <b>ĐĂNG KÝ DỊCH VỤ TÀI KHOẢN TIỀN GỬI</b>
+                  <b>ĐĂNG KÝ DỊCH VỤ NGÂN HÀNG ĐIỆN TỬ</b>
                 </div>
 
                 <div style="clear: both;margin-bottom: 10px;"></div>
@@ -1037,7 +1072,7 @@
                     </div>
                     <div class="row">
                       <div class="col-sm-4">
-                        <input type="checkbox" id="loaitk_khac" name="loaitk_khac"/> Khác (Ghi rõ)
+                        <input type="checkbox" id="loaitk_khac" name="loaitk_khac"/> Khác (ghi rõ)
                       </div>
 
                     </div>
@@ -1072,7 +1107,7 @@
                     </div>
                     <div class="row">
                       <div class="col-sm-4">
-                        <input type="checkbox" id="loaitien_khac" name="loaitien_khac"/> Khác (Ghi rõ)
+                        <input type="checkbox" id="loaitien_khac" name="loaitien_khac"/> Khác (ghi rõ)
                       </div>
 
                     </div>
@@ -1188,7 +1223,8 @@
                      </div>-->
                 <div class="row" style="margin-top: 20px;">
                   <div class="col-sm-8">
-                    <input type="text" id="text_goitk_khac" name="text_goitk_khac" class="form-control form-control-sm"
+                    <input type="text" id="text_goitk_khac" name="text_goitk_khac"
+                           class="form-control form-control-sm"
                            placeholder="Gói tài khoản khác"/>
                   </div>
                 </div>
@@ -1321,371 +1357,249 @@
                   <b>ĐĂNG KÝ DỊCH VỤ THẺ GHI NỢ</b>
                 </div>
 
-                <div style="clear: both;margin-bottom: 20px;"></div>
+                <div style="clear: both;margin-bottom: 10px;"></div>
 
-                <div style="text-align: center;">
-                  <span>Xin Quý khách vui lòng lựa chọn loại thẻ muốn đăng ký.</span>
-                </div>
-                <div class="row" style="margin-top: 20px;">
-                  <div class="col-sm-4">
-                    Thẻ ghi nợ nội địa
+                <div class="row">
+                  <div class="col-sm-2">
+                    Loại thẻ
                   </div>
-                  <div class="col-sm-8">
-                    <div class="row">
-                      <div class="col-sm-6">
-                        <input type="radio" id="thenoidia_co" name="thenoidia_co" checked/> Có
-                      </div>
-                      <div class="col-sm-6">
-                        <input type="radio" id="thenoidia_khong" name="thenoidia_khong"/> Không
-                      </div>
-                    </div>
+                  <div class="col-sm-1">
+                    Có
                   </div>
-                </div>
-                <div class="row" style="margin-top: 20px;">
-                  <div class="col-sm-4">
-                    Thẻ ghi nợ quốc tế Visa
+                  <div class="col-sm-1">
+                    không
                   </div>
-                  <div class="col-sm-8">
-                    <div class="row">
-                      <div class="col-sm-6">
-                        <input type="radio" id="thevisa_co" name="thevisa_co"/> Có
-                      </div>
-                      <div class="col-sm-6">
-                        <input type="radio" id="thevisa_khong" name="thevisa_khong" checked/> Không
-                      </div>
-                    </div>
+                  <div class="col-sm-4" style="text-align: center;">
+                    Phương thức phát hành
                   </div>
-                </div>
-                <div class="row" style="margin-top: 20px;">
-                  <div class="col-sm-4">
-                    Thẻ ghi nợ quốc tế Platinum
+                  <div class="col-sm-4" style="text-align: center;">
+                    Thanh toán phí phát hành
                   </div>
-                  <div class="col-sm-8">
-                    <div class="row">
-                      <div class="col-sm-6">
-                        <input type="radio" id="theplatinum_co" name="theplatinum_co"/> Có
-                      </div>
-                      <div class="col-sm-6">
-                        <input type="radio" id="theplatinum_khong" name="theplatinum_khong" checked/> Không
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="row" style="margin-top: 20px;">
-                  <div class="col-sm-4">
-                    Thẻ ghi nợ quốc tế Mastercard
-                  </div>
-                  <div class="col-sm-8">
-                    <div class="row">
-                      <div class="col-sm-6">
-                        <input type="radio" id="themastercard_co" name="themastercard_co"/> Có
-                      </div>
-                      <div class="col-sm-6">
-                        <input type="radio" id="themastercard_khong" name="themastercard_khong" checked/> Không
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="row" style="margin-top: 20px;">
-                  <div class="col-sm-4">
-                    Thẻ ghi nợ quốc tế Unionpay
-                  </div>
-                  <div class="col-sm-8">
-                    <div class="row">
-                      <div class="col-sm-6">
-                        <input type="radio" id="theunionpay_co" name="theunionpay_co"/> Có
-                      </div>
-                      <div class="col-sm-6">
-                        <input type="radio" id="theunionpay_khong" name="theunionpay_khong" checked/> Không
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="row" style="margin-top: 20px;">
-                  <div class="col-sm-4">
-                    Thẻ Cashback Plus American Express
-                  </div>
-                  <div class="col-sm-8">
-                    <div class="row">
-                      <div class="col-sm-6">
-                        <input type="radio" id="theexpress_co" name="theexpress_co"/> Có
-                      </div>
-                      <div class="col-sm-6">
-                        <input type="radio" id="theexpress_khong" name="theexpress_khong" checked/> Không
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="row" style="margin-top: 20px;">
-                  <div class="col-sm-4">
-                    Thẻ ghi nợ khác (ghi rõ)
-                  </div>
-                  <div class="col-sm-8">
-                    <div class="row">
-                      <div class="col-sm-6">
-                        <input type="radio" id="thekhac_co" name="thekhac_co"/> Có
-                      </div>
-                      <div class="col-sm-6">
-                        <input type="radio" id="thekhac_khong" name="thekhac_khong" checked/> Không
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div>
-                  <input type="text" id="text_thekhac" name="text_thekhac" class="form-control form-control-sm">
                 </div>
 
-                <div style="clear: both;margin-bottom: 20px;"></div>
+                <div style="clear: both;margin-bottom: 10px;"></div>
 
-              </div>
+                <div class="row">
+                  <div class="col-sm-2">
+                  </div>
+                  <div class="col-sm-1">
+                  </div>
+                  <div class="col-sm-1">
+                  </div>
+                  <div class="col-sm-2">
+                    Thông thường
+                  </div>
+                  <div class="col-sm-2">
+                    Phát hành nhanh
+                  </div>
+                  <div class="col-sm-2">
+                    Tự động ghi nợ tài khoản
+                  </div>
+                  <div class="col-sm-2">
+                    Nộp tiền mặt
+                  </div>
+                </div>
 
-              <div style="clear: both;margin-bottom: 20px;"></div>
+                <div style="clear: both;margin-bottom: 10px;"></div>
 
-              <div style="text-align: center;">
-                <b>ĐĂNG KÝ DỊCH VỤ THẺ GHI NỢ</b>
-              </div>
+                <div class="row">
+                  <div class="col-sm-2">
+                    Vietcombank Connect24
+                  </div>
+                  <div class="col-sm-1">
+                    <input type="checkbox" id="vcb_connect24_yes" name="vcb_connect24_yes"/>
+                  </div>
+                  <div class="col-sm-1">
+                    <input type="checkbox" id="vcb_connect24_no" name="vcb_connect24_no"/>
+                  </div>
+                  <div class="col-sm-2">
+                    <input type="checkbox" id="vcb_connect24_nomal" name="vcb_connect24_nomal"/>
+                  </div>
+                  <div class="col-sm-2">
+                    <input type="checkbox" id="vcb_connect24_fast" name="vcb_connect24_fast"/>
+                  </div>
+                  <div class="col-sm-2">
+                    <input type="checkbox" id="vcb_connect24_auto" name="vcb_connect24_auto"/>
+                  </div>
+                  <div class="col-sm-2">
+                    <input type="checkbox" id="vcb_connect24_money" name="vcb_connect24_money"/>
+                  </div>
+                </div>
 
-              <div style="clear: both;margin-bottom: 20px;"></div>
+                <div style="clear: both;margin-bottom: 10px;"></div>
 
-              <div style="text-align: center;">
-                <span>Xin Quý khách vui lòng chọn phương thức phát hành thẻ.</span>
-              </div>
-              <div class="row" style="margin-top: 20px;">
-                <div class="col-sm-4">
-                  Thẻ ghi nợ nội địa
-                </div>
-                <div class="col-sm-8">
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <input type="radio" id="ppthenoidia_co" name="ppthenoidia_co" checked/> Nhanh
-                    </div>
-                    <div class="col-sm-6">
-                      <input type="radio" id="ppthenoidia_khong" name="ppthenoidia_khong"/> Thường
-                    </div>
+                <div class="row">
+                  <div class="col-sm-2">
+                    Vietcombank connect24 Visa
+                  </div>
+                  <div class="col-sm-1">
+                    <input type="checkbox" id="vcb_connect24_visa_yes" name="vcb_connect24_visa_yes"/>
+                  </div>
+                  <div class="col-sm-1">
+                    <input type="checkbox" id="vcb_connect24_visa_no" name="vcb_connect24_visa_no"/>
+                  </div>
+                  <div class="col-sm-2">
+                    <input type="checkbox" id="vcb_connect24_visa_nomal" name="vcb_connect24_visa_nomal"/>
+                  </div>
+                  <div class="col-sm-2">
+                    <input type="checkbox" id="vcb_connect24_visa_fast" name="vcb_connect24_visa_fast"/>
+                  </div>
+                  <div class="col-sm-2">
+                    <input type="checkbox" id="vcb_connect24_visa_auto" name="vcb_connect24_visa_auto"/>
+                  </div>
+                  <div class="col-sm-2">
+                    <input type="checkbox" id="vcb_connect24_visa_money" name="vcb_connect24_visa_money"/>
                   </div>
                 </div>
-              </div>
-              <div class="row" style="margin-top: 20px;">
-                <div class="col-sm-4">
-                  Thẻ ghi nợ quốc tế Visa
-                </div>
-                <div class="col-sm-8">
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <input type="radio" id="ppthevisa_co" name="ppthevisa_co"/> Nhanh
-                    </div>
-                    <div class="col-sm-6">
-                      <input type="radio" id="ppthevisa_khong" name="ppthevisa_khong" checked/> Thường
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="row" style="margin-top: 20px;">
-                <div class="col-sm-4">
-                  Thẻ ghi nợ quốc tế Platinum
-                </div>
-                <div class="col-sm-8">
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <input type="radio" id="pptheplatinum_co" name="pptheplatinum_co"/> Nhanh
-                    </div>
-                    <div class="col-sm-6">
-                      <input type="radio" id="pptheplatinum_khong" name="pptheplatinum_khong" checked/> Thường
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="row" style="margin-top: 20px;">
-                <div class="col-sm-4">
-                  Thẻ ghi nợ quốc tế Mastercard
-                </div>
-                <div class="col-sm-8">
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <input type="radio" id="ppthemastercard_co" name="ppthemastercard_co"/> Nhanh
-                    </div>
-                    <div class="col-sm-6">
-                      <input type="radio" id="ppthemastercard_khong" name="ppthemastercard_khong" checked/> Thường
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="row" style="margin-top: 20px;">
-                <div class="col-sm-4">
-                  Thẻ ghi nợ quốc tế Unionpay
-                </div>
-                <div class="col-sm-8">
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <input type="radio" id="pptheunionpay_co" name="pptheunionpay_co"/> Nhanh
-                    </div>
-                    <div class="col-sm-6">
-                      <input type="radio" id="pptheunionpay_khong" name="pptheunionpay_khong" checked/> Thường
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="row" style="margin-top: 20px;">
-                <div class="col-sm-4">
-                  Thẻ Cashback Plus American Express
-                </div>
-                <div class="col-sm-8">
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <input type="radio" id="pptheexpress_co" name="pptheexpress_co"/> Nhanh
-                    </div>
-                    <div class="col-sm-6">
-                      <input type="radio" id="pptheexpress_khong" name="pptheexpress_khong" checked/> Thường
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="row" style="margin-top: 20px;">
-                <div class="col-sm-4">
-                  Thẻ ghi nợ khác (ghi rõ)
-                </div>
-                <div class="col-sm-8">
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <input type="radio" id="ppthekhac_co" name="ppthekhac_co"/> Nhanh
-                    </div>
-                    <div class="col-sm-6">
-                      <input type="radio" id="ppthekhac_khong" name="ppthekhac_khong" checked/> Thường
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <input type="text" id="pptext_thekhac" name="pptext_thekhac" class="form-control form-control-sm">
-              </div>
 
-              <div style="clear: both;margin-bottom: 20px;"></div>
+                <div style="clear: both;margin-bottom: 10px;"></div>
 
-              <div style="text-align: center;">
-                <b>ĐĂNG KÝ DỊCH VỤ THẺ GHI NỢ</b>
-              </div>
+                <div class="row">
+                  <div class="col-sm-2">
+                    Vietcombank Visa Debit Platinum
+                  </div>
+                  <div class="col-sm-1">
+                    <input type="checkbox" id="vcb_visa_debit_platinum_yes" name="vcb_visa_debit_platinum_yes"/>
+                  </div>
+                  <div class="col-sm-1">
+                    <input type="checkbox" id="vcb_visa_debit_platinum_no" name="vcb_visa_debit_platinum_no"/>
+                  </div>
+                  <div class="col-sm-2">
+                    <input type="checkbox" id="vcb_visa_debit_platinum_nomal"
+                           name="vcb_visa_debit_platinum_nomal"/>
+                  </div>
+                  <div class="col-sm-2">
+                    <input type="checkbox" id="vcb_visa_debit_platinum_fast" name="vcb_visa_debit_platinum_fast"/>
+                  </div>
+                  <div class="col-sm-2">
+                    <input type="checkbox" id="vcb_visa_debit_platinum_auto" name="vcb_visa_debit_platinum_auto"/>
+                  </div>
+                  <div class="col-sm-2">
+                    <input type="checkbox" id="vcb_visa_debit_platinum_money"
+                           name="vcb_visa_debit_platinum_money"/>
+                  </div>
+                </div>
 
-              <div style="clear: both;margin-bottom: 20px;"></div>
+                <div style="clear: both;margin-bottom: 10px;"></div>
 
-              <div style="text-align: center;">
-                <span>Xin Quý khách vui lòng chọn phương thức thanh toán phí phát hành thẻ.</span>
-              </div>
-              <div class="row" style="margin-top: 20px;">
-                <div class="col-sm-4">
-                  Thẻ ghi nợ nội địa
-                </div>
-                <div class="col-sm-8">
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <input type="radio" id="ppttthenoidia_co" name="ppttthenoidia_co" checked/> Ghi nợ
-                    </div>
-                    <div class="col-sm-6">
-                      <input type="radio" id="ppttthenoidia_khong" name="ppttthenoidia_khong"/> Tiền mặt
-                    </div>
+                <div class="row">
+                  <div class="col-sm-2">
+                    Vietcombank Mastercard
+                  </div>
+                  <div class="col-sm-1">
+                    <input type="checkbox" id="vcb_mastercard_yes" name="vcb_mastercard_yes"/>
+                  </div>
+                  <div class="col-sm-1">
+                    <input type="checkbox" id="vcb_mastercard_no" name="vcb_mastercard_no"/>
+                  </div>
+                  <div class="col-sm-2">
+                    <input type="checkbox" id="vcb_mastercard_nomal" name="vcb_mastercard_nomal"/>
+                  </div>
+                  <div class="col-sm-2">
+                    <input type="checkbox" id="vcb_mastercard_fast" name="vcb_mastercard_fast"/>
+                  </div>
+                  <div class="col-sm-2">
+                    <input type="checkbox" id="vcb_mastercard_auto" name="vcb_mastercard_auto"/>
+                  </div>
+                  <div class="col-sm-2">
+                    <input type="checkbox" id="vcb_mastercard_money" name="vcb_mastercard_money"/>
                   </div>
                 </div>
-              </div>
-              <div class="row" style="margin-top: 20px;">
-                <div class="col-sm-4">
-                  Thẻ ghi nợ quốc tế Visa
-                </div>
-                <div class="col-sm-8">
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <input type="radio" id="ppttthevisa_co" name="ppttthevisa_co"/> Ghi nợ
-                    </div>
-                    <div class="col-sm-6">
-                      <input type="radio" id="ppttthevisa_khong" name="ppttthevisa_khong" checked/> Tiền mặt
-                    </div>
+
+                <div style="clear: both;margin-bottom: 10px;"></div>
+
+                <div class="row">
+                  <div class="col-sm-2">
+                    Vietcombank Unionpay
+                  </div>
+                  <div class="col-sm-1">
+                    <input type="checkbox" id="vcb_unionpay_yes" name="vcb_unionpay_yes"/>
+                  </div>
+                  <div class="col-sm-1">
+                    <input type="checkbox" id="vcb_unionpay_no" name="vcb_unionpay_no"/>
+                  </div>
+                  <div class="col-sm-2">
+                    <input type="checkbox" id="vcb_unionpay_nomal" name="vcb_unionpay_nomal"/>
+                  </div>
+                  <div class="col-sm-2">
+                    <input type="checkbox" id="vcb_unionpay_fast" name="vcb_unionpay_fast"/>
+                  </div>
+                  <div class="col-sm-2">
+                    <input type="checkbox" id="vcb_unionpay_auto" name="vcb_unionpay_auto"/>
+                  </div>
+                  <div class="col-sm-2">
+                    <input type="checkbox" id="vcb_unionpay_money" name="vcb_unionpay_money">
                   </div>
                 </div>
-              </div>
-              <div class="row" style="margin-top: 20px;">
-                <div class="col-sm-4">
-                  Thẻ ghi nợ quốc tế Platinum
-                </div>
-                <div class="col-sm-8">
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <input type="radio" id="pptttheplatinum_co" name="pptttheplatinum_co"/> Ghi nợ
-                    </div>
-                    <div class="col-sm-6">
-                      <input type="radio" id="pptttheplatinum_khong" name="pptttheplatinum_khong" checked/> Tiền mặt
-                    </div>
+
+                <div style="clear: both;margin-bottom: 10px;"></div>
+
+                <div class="row">
+                  <div class="col-sm-2">
+                    Vietcombank Cashback Plus American Express
+                  </div>
+                  <div class="col-sm-1">
+                    <input type="checkbox" id="vcb_cashback_plus_american_express_yes"
+                           name="vcb_cashback_plus_american_express_yes"/>
+                  </div>
+                  <div class="col-sm-1">
+                    <input type="checkbox" id="vcb_cashback_plus_american_express_no"
+                           name="vcb_cashback_plus_american_express_no"/>
+                  </div>
+                  <div class="col-sm-2">
+                    <input type="checkbox" id="vcb_cashback_plus_american_express_nomal"
+                           name="vcb_cashback_plus_american_express_nomal"/>
+                  </div>
+                  <div class="col-sm-2">
+                    <input type="checkbox" id="vcb_cashback_plus_american_express_fast"
+                           name="vcb_cashback_plus_american_express_fast"/>
+                  </div>
+                  <div class="col-sm-2">
+                    <input type="checkbox" id="vcb_cashback_plus_american_express_auto"
+                           name="vcb_cashback_plus_american_express_auto"/>
+                  </div>
+                  <div class="col-sm-2">
+                    <input type="checkbox" id="vcb_cashback_plus_american_express_money"
+                           name="vcb_cashback_plus_american_express_money">
                   </div>
                 </div>
-              </div>
-              <div class="row" style="margin-top: 20px;">
-                <div class="col-sm-4">
-                  Thẻ ghi nợ quốc tế Mastercard
-                </div>
-                <div class="col-sm-8">
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <input type="radio" id="ppttthemastercard_co" name="ppttthemastercard_co"/> Ghi nợ
-                    </div>
-                    <div class="col-sm-6">
-                      <input type="radio" id="ppttthemastercard_khong" name="ppttthemastercard_khong" checked/> Tiền mặt
-                    </div>
+
+                <div style="clear: both;margin-bottom: 10px;"></div>
+
+                <div class="row">
+                  <div class="col-sm-2">
+                    Thẻ ghi nợ khác (ghi rõ)<br>
+                    <input type="text" id="text_vcb_ghinokhac" name="text_vcb_ghinokhac" class="form-control">
+                  </div>
+                  <div class="col-sm-1">
+                    <input type="checkbox" id="vcb_ghinokhac_yes" name="vcb_ghinokhac_yes"/>
+                  </div>
+                  <div class="col-sm-1">
+                    <input type="checkbox" id="vcb_ghinokhac_no" name="vcb_ghinokhac_no"/>
+                  </div>
+                  <div class="col-sm-2">
+                    <input type="checkbox" id="vcb_ghinokhac_nomal" name="vcb_ghinokhac_nomal"/>
+                  </div>
+                  <div class="col-sm-2">
+                    <input type="checkbox" id="vcb_ghinokhac_fast" name="vcb_ghinokhac_fast"/>
+                  </div>
+                  <div class="col-sm-2">
+                    <input type="checkbox" id="vcb_ghinokhac_auto" name="vcb_ghinokhac_auto"/>
+                  </div>
+                  <div class="col-sm-2">
+                    <input type="checkbox" id="vcb_ghinokhac_money" name="vcb_ghinokhac_money"/>
                   </div>
                 </div>
-              </div>
-              <div class="row" style="margin-top: 20px;">
-                <div class="col-sm-4">
-                  Thẻ ghi nợ quốc tế Unionpay
-                </div>
-                <div class="col-sm-8">
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <input type="radio" id="pptttheunionpay_co" name="pptttheunionpay_co"/> Ghi nợ
-                    </div>
-                    <div class="col-sm-6">
-                      <input type="radio" id="pptttheunionpay_khong" name="pptttheunionpay_khong" checked/> Tiền mặt
-                    </div>
+
+                <div style="clear: both;margin-bottom: 10px;"></div>
+
+                <div class="row">
+                  <div class="col-sm-2">
+                    <input type="checkbox" id="phat_hanh_the_phu" name="phat_hanh_the_phu"/> Phát hành thẻ phụ
                   </div>
                 </div>
-              </div>
-              <div class="row" style="margin-top: 20px;">
-                <div class="col-sm-4">
-                  Thẻ Cashback Plus American Express
-                </div>
-                <div class="col-sm-8">
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <input type="radio" id="pptttheexpress_co" name="pptttheexpress_co"/> Ghi nợ
-                    </div>
-                    <div class="col-sm-6">
-                      <input type="radio" id="pptttheexpress_khong" name="pptttheexpress_khong" checked/> Tiền mặt
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="row" style="margin-top: 20px;">
-                <div class="col-sm-4">
-                  Thẻ ghi nợ khác (ghi rõ)
-                </div>
-                <div class="col-sm-8">
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <input type="radio" id="ppttthekhac_co" name="ppttthekhac_co"/> Ghi nợ
-                    </div>
-                    <div class="col-sm-6">
-                      <input type="radio" id="ppttthekhac_khong" name="ppttthekhac_khong" checked/> Tiền mặt
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <input type="text" id="pptttext_thekhac" name="pptttext_thekhac" class="form-control form-control-sm">
               </div>
 
-              <div style="margin-top: 20px;">
-                <span>
-                  Tính năng thanh toán qua Internet sẽ được mặc định cung cấp khi thẻ được kích hoạt. <br/><br/>
-
-                  Các dịch vụ Ngân hàng điện tử (SMS Banking, Digibank) sẽ được mặc định đăng ký cho chủ thẻ.
-                </span>
-              </div>
               <div style="clear: both;margin-bottom: 20px;"></div>
             </form>
           </div>
@@ -1913,92 +1827,94 @@
           </div>
 
           <!-- isFinishedFormGroup -->
-          <div *ngIf="isFinishedFormGroup">
-            <div style="margin-top: 26px; text-align: center;">
-              <p style="font-size: 36px;">Bạn đã mở tài khoản thành công!</p>
-              <p>
-                <span>
-                  Cảm ơn Quý khách đã đăng ký mở tài khoản thanh toán tại Ngân hàng. Ngân hàng sẽ liên hệ với Quý khách trong thời gian sớm nhất.<br/>
-
-                  Mọi thắc mắc xin vui lòng tham khảo website chính thức hoặc liên hệ Hotline của Ngân hàng  để được giải đáp.<br/>
-
-                  Trân trọng!<br/>
-                </span>
-
-              </p>
-              <div style="margin-top: 50px;">
-                <div>
-                  <span>KHẢO SÁT KHÁCH HÀNG</span>
-                </div>
-                <div>
-                  <p>Xin Quý khách vui lòng chia sẻ mức độ hài lòng của việc sử dụng dịch vụ.</p>
-                </div>
-              </div>
-              <div class="rating" style="text-align: center">
-                <div class="row" style="padding-left: 65px;">
-                  <div class="col-sm-3">
-
-                  </div>
-                  <div class="col-sm-1">
-                    <span class="rating1">😞</span>
-                  </div>
-                  <div class="col-sm-1">
-                    <span class="rating2">😣</span>
-                  </div>
-                  <div class="col-sm-1">
-                    <span class="rating3">😐</span>
-                  </div>
-                  <div class="col-sm-1">
-                    <span class="rating4">😎</span>
-                  </div>
-                  <div class="col-sm-1">
-                    <span class="rating5">😍</span>
-                  </div>
-                  <div class="col-sm-3">
-
-                  </div>
-                </div>
-                <div class="row number" style="font-size: 20px;padding-left: 65px;">
-                  <div class="col-sm-3">
-
-                  </div>
-                  <div class="col-sm-1">
-                    <p>1</p>
-                  </div>
-                  <div class="col-sm-1">
-                    <p>2</p>
-                  </div>
-                  <div class="col-sm-1">
-                    <p>3</p>
-                  </div>
-                  <div class="col-sm-1">
-                    <p>4</p>
-                  </div>
-                  <div class="col-sm-1">
-                    <p>5</p>
-                  </div>
-                  <div class="col-sm-3">
-
-                  </div>
-                </div>
-
-              </div>
 
 
-              <div style="margin-top: 50px;">
-                <button type="button" class="btn-step" style="width: 200px;" (click)="reloadPage()">Quay về trang chủ
-                </button>
-              </div>
+        </div>
 
+      </div>
+      <div *ngIf="isFinishedFormGroup" >
+        <div class="bg-text-sigin mx-auto" style=" text-align: center;width: 60%">
+          <!--  <p style="font-size: 36px;">Bạn đã mở tài khoản thành công!</p>
+            <p>
+            <span>
+              Cảm ơn Quý khách đã đăng ký mở tài khoản thanh toán tại Ngân hàng. Ngân hàng sẽ liên hệ với Quý khách trong thời gian sớm nhất.<br/>
+
+              Mọi thắc mắc xin vui lòng tham khảo website chính thức hoặc liên hệ Hotline của Ngân hàng  để được giải đáp.<br/>
+
+              Trân trọng!<br/>
+            </span>
+
+            </p>-->
+         <p style="padding-top: 10px"></p>
+          <div style="margin-top: 50px;">
+            <div>
+              <span>KHẢO SÁT KHÁCH HÀNG</span>
             </div>
-            <p></p>
+            <div>
+              <p>Xin Quý khách vui lòng đánh giá mức độ hài lòng của việc sử dụng dịch vụ.</p>
+            </div>
+          </div>
+          <div class="rating mx-auto" style="text-align: center">
+            <div class="row mx-auto">
+              <div class="col-sm-3">
 
+              </div>
+              <div class="col-sm-1">
+                <span class="rating1">😣</span>
+              </div>
+              <div class="col-sm-1">
+                <span class="rating2">😞</span>
+              </div>
+              <div class="col-sm-1">
+                <span class="rating3">😐</span>
+              </div>
+              <div class="col-sm-1">
+                <span class="rating4">😎</span>
+              </div>
+              <div class="col-sm-1">
+                <span class="rating5">😍</span>
+              </div>
+              <div class="col-sm-3">
+
+              </div>
+            </div>
+            <div class="row number mx-auto" style="font-size: 20px;padding-left: 30px;">
+              <div class="col-sm-3">
+
+              </div>
+              <div class="col-sm-1">
+                <p>1</p>
+              </div>
+              <div class="col-sm-1">
+                <p>2</p>
+              </div>
+              <div class="col-sm-1">
+                <p>3</p>
+              </div>
+              <div class="col-sm-1">
+                <p>4</p>
+              </div>
+              <div class="col-sm-1">
+                <p>5</p>
+              </div>
+              <div class="col-sm-3">
+
+              </div>
+            </div>
 
           </div>
 
-        </div>
-      </div>
 
+          <div style="margin-top: 50px;">
+            <button type="button" class="btn-step" style="width: 200px;margin-bottom: 30px" (click)="reloadPage()">Quay về trang chủ
+            </button>
+          </div>
+
+        </div>
+        <p></p>
+
+
+      </div>
     </div>
   </div>
 </div>

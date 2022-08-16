@@ -36,7 +36,7 @@ export class AppComponent {
     'canvasHeight': this.canvasHeight
   };
 
-  checked = 'Đồng ý';
+  checked = true;
   checkedTT = true;
 
 
@@ -64,6 +64,9 @@ export class AppComponent {
   is9FormGroup = false;
   is10FormGroup = false;
   isFinishedFormGroup = false;
+  isSigin = true;
+  isChoose = false;
+  isGTTT = false;
 
   done1FormGroup = false;
   done2FormGroup = false;
@@ -267,9 +270,9 @@ export class AppComponent {
   CheckCamera() {
     // this.detectWebcam(this.cWebcam);
     let $this = this;
-    navigator.mediaDevices.getUserMedia({ audio: true, video: true})
+    navigator.mediaDevices.getUserMedia({audio: true, video: true})
       .then(function (stream) {
-        if (stream.getVideoTracks().length > 0){
+        if (stream.getVideoTracks().length > 0) {
           // console.log('có webcam');
         } else {
           // console.log('khong webcam');
@@ -417,8 +420,19 @@ export class AppComponent {
   startReg() {
     this.is0FormGroup = false;
     this.is1FormGroup = true;
+    this.isGTTT = false;
     this.currIdxStep = 1;
-   this.checkProcessInstanceValue();
+    //this.checkProcessInstanceValue();
+  }
+
+  Chooes() {
+    this.isChoose = true;
+    this.isSigin = false;
+  }
+
+  ChooseGTTT() {
+    this.isChoose = false;
+    this.isGTTT = true;
   }
 
   stepNext() {
@@ -456,14 +470,14 @@ export class AppComponent {
       this.showBackStep = false;
       this.retsetStep();
     }
-    if(step == 2){
+    if (step == 2) {
       this.showStepNext = false;
-    }else {
+    } else {
       this.showStepNext = true;
     }
   }
 
-  checkXnhanGTTT(){
+  checkXnhanGTTT() {
 
     if (this.currIdxStep >= 0 && this.currIdxStep < this.steps.length) {
       let index = this.currIdxStep += 1;
@@ -759,10 +773,9 @@ export class AppComponent {
     this.appService._completedXemDonDKy(this.processInstanceId, data);
   }
 
-  /*step10Handle() {
+  step10Handle() {
 
   }
-*/
   retsetStep() {
     this.appService.errsStep = false;
     this.appService.errsStepNhanGTTT = false;
