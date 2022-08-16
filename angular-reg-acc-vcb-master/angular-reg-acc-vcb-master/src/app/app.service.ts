@@ -12,10 +12,10 @@ export interface GToTThanElement {
   queQuan: string;
   noiTru: string;
   dacDiemNhanDang: string;
-  ngayCap2: string;
+  ngayCap: string;
   noiCap: string;
   ngayHetHan: string;
-  gioiTinh2: string;
+  gioiTinh: string;
 }
 
 const ELEMENT_GTTT_DATA: GToTThanElement[] = [];
@@ -60,7 +60,8 @@ export class AppService {
       NhanKMat: '',
       QDinhTTuc: '',
       NhapDonDKy: '',
-      TaoDonDKy: ''
+      TaoDonDKy: '',
+      CustomerSurvey: ''
     }
   ];
 
@@ -631,6 +632,32 @@ export class AppService {
         let taskInstanceId = this._getTaskId(res, 'XemDonDKy');
 
         if (taskInstanceId && !this.taskInstanceIds[0].XemDonDKy) {
+          this.completedTask(taskInstanceId, data).subscribe(
+            res => {
+              Swal.close();
+            },
+            error => {
+              this.errsStep = true;
+            }
+          );
+        } else {
+          Swal.close();
+        }
+      },
+      error => {
+        this.errsStep = true;
+      }
+    );
+  }
+
+  _completedSurveyPoint(processInstanceId: any, data: any) {
+    this.swalWarning('Xem Đơn Đăng Ký', 'Hệ thống đang xử lý ...', 60000);
+
+    this._getTaskInstanceId(processInstanceId).subscribe(
+      res => {
+        let taskInstanceId = this._getTaskId(res, 'CustomerSurvey');
+
+        if (taskInstanceId && !this.taskInstanceIds[0].CustomerSurvey) {
           this.completedTask(taskInstanceId, data).subscribe(
             res => {
               Swal.close();

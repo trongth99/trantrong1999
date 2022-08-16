@@ -71,48 +71,79 @@ body {
 
 .rating {
   font-size: 40px;
-  height: 80px;
   line-height: 70px;
   align-items: center;
   justify-content: center;
+
+
+}
+
+@media only screen and (max-width: 600px) {
+  .rating {font-size: 15px;}
+  .number { font-size: 15px !important; }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
 
 }
 
 .rating1:hover:before {
   content: "😣";
-  position: absolute;
-  font-size: 60px;
-  margin-left: -10px;
+  //position: absolute;
+  //font-size: 60px;
+  //margin-left: -10px;
   /*-webkit-transform: scale(1.2);
   -webkit-transform: rotate(30deg);*/
 }
 .rating2:hover:before {
   content: "😞";
-  position: absolute;
-  font-size: 60px;
-  margin-left: -10px;
+  //position: absolute;
+  //font-size: 60px;
+  //margin-left: -10px;
   //-webkit-transform: rotate(15deg);
 }
 .rating3:hover:before {
   content: "😐";
-  position: absolute;
-  font-size: 60px;
-  margin-left: -10px;
+  //position: absolute;
+  //font-size: 60px;
+  //margin-left: -10px;
 }
 .rating4:hover:before {
   content: "😎";
-  position: absolute;
-  font-size: 60px;
-  margin-left: -10px;
+  //position: absolute;
+  //font-size: 60px;
+  //margin-left: -10px;
  // -webkit-transform: rotate(-15deg);
 }
 .rating5:hover:before {
   //content: "🤑";
   content: "😍";
-  position: absolute;
-  font-size: 60px;
-  margin-left: -10px;
+  //position: absolute;
+  //font-size: 60px;
+  //margin-left: -10px;
   //-webkit-transform: rotate(-30deg);
+}
+.rating:hover:before {
+  position: absolute;
+  font-size: 150%;
+  margin-left: -10px;
+  //-webkit-transform: rotate(15deg);
 }
 .login.col,input[type="text"]::placeholder {
   text-align: center;
@@ -126,4 +157,20 @@ body {
   backdrop-filter: blur(200px);
   border-radius: 30px;
   font-family: font-Roboto;
+  text-align: center;
+  margin-top: 50px;
+  padding-bottom: 15px;
+  padding-top: 15px;
+}
+.bg-text-sigin1{
+  color: white;
+  -webkit-backdrop-filter: blur(8px);
+
+  border-radius: 30px;
+  font-family: font-Roboto;
+  text-align: center;
+}
+
+.number{
+  font-size: 1.5rem;
 }

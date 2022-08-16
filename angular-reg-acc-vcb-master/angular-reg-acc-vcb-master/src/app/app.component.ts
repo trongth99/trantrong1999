@@ -36,7 +36,7 @@ export class AppComponent {
     'canvasHeight': this.canvasHeight
   };
 
-  checked = true;
+  checked = "Đồng ý";
   checkedTT = true;
 
 
@@ -147,7 +147,7 @@ export class AppComponent {
     {
       step: 'step9',
       status: 1,
-      title: 'Kết Thúc',
+      title: 'Hoàn thành',
       isFormGroup: this.is10FormGroup,
       doneFormGroup: this.done10FormGroup
     }
@@ -419,10 +419,11 @@ export class AppComponent {
 
   startReg() {
     this.is0FormGroup = false;
-    this.is1FormGroup = true;
+    this.isSigin = false;
     this.isGTTT = false;
+    this.is1FormGroup = true;
     this.currIdxStep = 1;
-    //this.checkProcessInstanceValue();
+    this.checkProcessInstanceValue();
   }
 
   Chooes() {
@@ -773,9 +774,19 @@ export class AppComponent {
     this.appService._completedXemDonDKy(this.processInstanceId, data);
   }
 
+  surveyPoint = 0;
+  checkSurvey(data: any){
+    this.surveyPoint = data;
+    console.log(this.surveyPoint)
+  }
   step10Handle() {
 
+    let data = {
+      surveyPoint: this.surveyPoint
+    }
+    this.appService._completedSurveyPoint(this.processInstanceId, data);
   }
+
   retsetStep() {
     this.appService.errsStep = false;
     this.appService.errsStepNhanGTTT = false;
