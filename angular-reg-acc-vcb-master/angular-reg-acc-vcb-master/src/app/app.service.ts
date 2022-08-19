@@ -86,7 +86,27 @@ export class AppService {
   }
 
   //Table
-  datatGToTThan = ELEMENT_GTTT_DATA;
+  /*datatGToTThan = ELEMENT_GTTT_DATA;*/
+
+  datatGToTThan = {
+    quocTich: '',
+    soCmt: '',
+    hoVaTen: '',
+    namSinh: '',
+    queQuan: '',
+    noiTru: '',
+    dacDiemNhanDang: '',
+    ngayCap:'',
+    noiCap: '',
+    ngayHetHan: '',
+    gioiTinh: ''
+  }
+  datatGToTThanGt = {
+    gioiTinh:''
+  }
+  dataNgayCap = {
+    ngaycap : this.datatGToTThan.ngayCap.slice(8,10) +"/"+ this.datatGToTThan.ngayCap.slice(5,7)+"/"+this.datatGToTThan.ngayCap.slice(0,4)
+  }
   pdfDonDKy = '';
   datdaGTTT = {
     loaiGToTThan: 4,
@@ -335,14 +355,16 @@ export class AppService {
         try {
           if (res['kquaXThucGTTT']['kquaXThuc']['maKQua'] == 200) {
             let gtoTThan = res['kquaXThucGTTT']['gtoTThan'];
+            let gtoTThanGT = res['kquaXThucGTTT']['gtoTThan']['maHoa'];
 
             if (res['kquaXThucGTTT'].hasOwnProperty('fis.onboarding.common.model.ekyc.xthucgttt.KQuaXThucGTTT')) {
               gtoTThan = res['kquaXThucGTTT']['fis.onboarding.common.model.ekyc.xthucgttt.KQuaXThucGTTT']['gtoTThan']['fis.onboarding.common.model.identity.GToTThan'];
 
             }
 
-            this.datatGToTThan.push(gtoTThan);
-
+          /*  this.datatGToTThan.push(gtoTThan);*/
+            this.datatGToTThan = gtoTThan;
+            this.datatGToTThanGt = gtoTThanGT;
             this.taskInstanceIds[0].NhanGTTT = true;
             Swal.close();
           } else {
@@ -651,7 +673,7 @@ export class AppService {
   }
 
   _completedSurveyPoint(processInstanceId: any, data: any) {
-    this.swalWarning('Xem Đơn Đăng Ký', 'Hệ thống đang xử lý ...', 60000);
+    this.swalWarning('', 'Hệ thống đang xử lý ...', 60000);
 
     this._getTaskInstanceId(processInstanceId).subscribe(
       res => {

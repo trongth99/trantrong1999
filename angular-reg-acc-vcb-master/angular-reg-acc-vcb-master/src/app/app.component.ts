@@ -208,6 +208,12 @@ export class AppComponent {
   gtNuChecked = false;
   strLoaiGToTThan = '';
 
+  text_nghenghiepkhac = false;
+  chucvu = false;
+  text_goitk_khac = false;
+  text_loaitk_thanhtoansochon =false;
+  text_loaitk_thanhtoansochon_khac = false;
+  text_loaitien_khac = false;
   constructor(
     private _formBuilder: FormBuilder,
     public appService: AppService,
@@ -253,6 +259,29 @@ export class AppComponent {
     }
   }
 
+  CheckChucvu(){
+    this.chucvu = true;
+
+  }
+  CheckNgheNghiep(){
+    this.text_nghenghiepkhac = true;
+  }
+
+  checkDKGTT(){
+    this.text_goitk_khac = true;
+  }
+  checkDKGTTK(){
+    this.text_goitk_khac = false;
+  }
+  checkTTSC(){
+    this.text_loaitk_thanhtoansochon = true;
+  }
+  checkTTSCK(){
+    this.text_loaitk_thanhtoansochon_khac = true;
+  }
+  checkLT(){
+    this.text_loaitien_khac = true;
+  }
   device() {
     this.deviceInfo = this.deviceService.getDeviceInfo();
     this.isMobile = this.deviceService.isMobile();
@@ -359,12 +388,12 @@ export class AppComponent {
         this.showBackStep = true;
       }*/
 
-    this.datatGToTThan = this.appService.datatGToTThan;
+ /*   this.datatGToTThan = this.appService.datatGToTThan;
     if (this.datatGToTThan.length > 0) {
       this.ngayHetHan = this.datatGToTThan[0].ngayHetHan;
       this.noiTru = this.datatGToTThan[0].noiTru;
     }
-
+*/
     this.pdfDonDKy = this.appService.pdfDonDKy;
 
     if (this.appService.customerUser.gioiTinh == '0') {
@@ -373,10 +402,22 @@ export class AppComponent {
       this.appService.customerUser.gioiTinh = 'Nữ';
     }
 
+    if (this.appService.datatGToTThanGt.gioiTinh == 'M') {
+      this.appService.datatGToTThanGt.gioiTinh = 'Nam';
+    } else if (this.appService.datatGToTThanGt.gioiTinh == 'F') {
+      this.appService.datatGToTThanGt.gioiTinh = 'Nữ';
+    }
+
     if (this.appService.customerUser.loaiGToTThan == 4) {
       this.strLoaiGToTThan = 'CCCD';
     }
 
+   /* this.formartDate(this.datatGToTThan.ngayCap);
+    console.log(this.formartDate(this.datatGToTThan.ngayCap));*/
+
+    if ($('#nghenghiepkhac').is(":checked")) {
+
+    }
   }
 
   loadcurrFinishStep() {
@@ -416,6 +457,14 @@ export class AppComponent {
       }
     );
   }
+
+
+/*  formartDate(){
+   var  y = this.datatGToTThan.ngayCap.split("-",1);
+    var mm = this.datatGToTThan.ngayCap.split("-",2);
+    var d = this.datatGToTThan.ngayCap.split("-",3);
+   this.ngaycap = d +"/"+mm+"/"+y;
+  }*/
 
   startReg() {
     this.is0FormGroup = false;
@@ -486,7 +535,7 @@ export class AppComponent {
       //console.log('idx ' + index);
       //console.log('step ' + step);
       this.statusStep(step, 'next');
-      console.log(step);
+
     }
 
   }
@@ -548,6 +597,7 @@ export class AppComponent {
     if (data !== null) {
       this.appService._completedNhanGTTT(this.processInstanceId, data);
     }
+
   }
 
   step3Handle() {
@@ -785,6 +835,7 @@ export class AppComponent {
       surveyPoint: this.surveyPoint
     }
     this.appService._completedSurveyPoint(this.processInstanceId, data);
+    //this.reloadPage();
   }
 
   retsetStep() {

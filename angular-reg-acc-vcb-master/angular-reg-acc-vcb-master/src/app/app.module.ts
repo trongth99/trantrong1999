@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-  
+
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -12,7 +12,8 @@ import { SignaturePadModule } from 'angular2-signaturepad';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { AppRoutingModule } from './app-routing.module';
 import { PdftempComponent } from './pdftemp/pdftemp.component';
-  
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +22,7 @@ import { PdftempComponent } from './pdftemp/pdftemp.component';
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,   
+    BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
@@ -29,7 +30,7 @@ import { PdftempComponent } from './pdftemp/pdftemp.component';
     SignaturePadModule,
     WebcamModule,
     PdfViewerModule,
-    AppRoutingModule     
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
