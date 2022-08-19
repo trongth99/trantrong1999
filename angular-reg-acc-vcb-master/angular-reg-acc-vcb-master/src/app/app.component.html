@@ -1,4 +1,8 @@
-<nav *ngIf="!is0FormGroup && !isFinishedFormGroup" class="navbar">
+<div style="height: 100%" *ngIf="!isLoggedIn">
+  <app-login></app-login>
+</div>
+
+<nav *ngIf="isLoggedIn && !is0FormGroup && !isFinishedFormGroup" class="navbar">
   <div class="container">
     <div class="row" style="width: 100%; margin-top: 5px;">
       <div class="col text-left">
@@ -15,125 +19,7 @@
   </div>
 </nav>
 
-<!--<div id="step0" style="height: 100%" *ngIf="is1FormGroup">
-  <div class="LandingPage">
-    <div class="container">
-      <form id="submitForm" action="" method="post">
-        <input type="hidden" name="token" value="">
-        <div class="row bg-text" style="margin-top: 4%; width: 100%; margin-left: 0px;" id="openAccountRowStep0">
-          <div class="col-sm-3 d-none d-lg-block" style="display: contents">
-            <div style="margin-right: -15px">
-            </div>
-          </div>
-          <div class="col-sm-9 col-lg-9 col-xl-9" style="width: 100%">
-            <div style="margin-top: 35px">
-              <h4>Mở tài khoản tại quầy</h4>
-            </div>
-            <div class="text-note-step0">Chào mừng Quý khách đăng ký mở tài khoản trực tuyến. Để bắt đầu đăng ký, vui
-              lòng chuẩn bị:
-            </div>
-            <div class="text-note-step0">1. CMND hoặc CCCD còn hiệu lực theo quy định.</div>
-            <div class="text-note-step0">
-
-              2. Máy tính hoặc Điện thoại có Camera.
-              <a href="javascript:void(0)" (click)="CheckCamera()" class="text-primary">Nhấn để kiểm tra.</a>
-              <video id="videoTakePhotoFront" width="100%" style="object-fit: cover; margin-top: -85px;display: none;"
-                     playsinline=""></video>
-            </div>
-            <div class="text-note-step0">3. Điện thoại di động để nhận OTP.</div>
-            <div class="text-note-step0">
-              <i>Trình duyệt khuyến nghị: Chrome (Window/Android/MacOS version 10.0.0 trở lên); Safari (iPhone/iPad
-                version 12.4.1 trở lên) - Vui lòng mở link trực tiếp tại các trình duyệt khuyến nghị nêu trên</i><br>
-            </div>
-            <div class="text-note-step0">
-              CIF <input type="checkbox" [(ngModel)]="ttaiCIF" name="ttaiCIF">
-              &nbsp;&nbsp;&nbsp;&nbsp;
-              PCRT <input type="checkbox" [(ngModel)]="pcrtHit" name="pcrtHit">
-            </div>
-            <div class="text-note-step0" style="margin-bottom: 20px;">
-              <button type="button" (click)="startReg()" class="btn-step"
-                      style="font-size: 16px;">Bắt đầu
-              </button>
-            </div>
-          </div>
-
-        </div>
-      </form>
-    </div>
-  </div>
-</div>-->
-
-<div style="height: 100%" *ngIf="isSigin">
-  <div class="LandingPage">
-    <div style="margin-bottom: 100px;"></div>
-
-    <div class="container">
-
-      <div class="row  mx-auto">
-        <div class="col bg-text-sigin mx-auto" style="max-width: 70%;">
-
-          <div style="margin-bottom: 20px;"></div>
-
-          <div style="width: 80%;" class="mx-auto ">
-            <div style="text-align: center;font-family: Roboto;">
-              <span>ĐĂNG NHẬP</span>
-              <div style="margin-bottom: 20px;"></div>
-              <div class="input-group">
-                <div class="input-group-prepend">
-               <span class="input-group-text bg-white px-4 border-md border-right-0"
-                     style="border-radius: 30px 0px 0px 30px;">
-                   <i class="fa fa-user "></i>
-               </span>
-                </div>
-                <input type="text" placeholder="Tên đăng nhập" class="form-control bg-white  border-left-0 text-body"
-                       style="border-radius: 0px 30px 30px 0px;">
-              </div>
-
-              <div class="input-group" style="margin-top: 30px">
-                <div class="input-group-prepend">
-               <span class="input-group-text bg-white px-4 border-md border-right-0"
-                     style="border-radius: 30px 0px 0px 30px;">
-                   <i class="fa fa-lock "></i>
-               </span>
-                </div>
-                <input type="text" placeholder="Mật khẩu" class="form-control bg-white border-left-0 text-body"
-                       style="border-radius: 0px 30px 30px 0px;">
-              </div>
-              <div style="margin-bottom: 20px;"></div>
-
-              <div style="display: flex">
-                <div class="input-group" style="width: 70%;">
-                  <!--<div >
-                    <input class="checkbox-round" type="checkbox" id="checkbox"/> Lưu thông tin đăng nhập
-                    <label for="checkbox"></label>
-                  </div>-->
-                  <label class="cb">Lưu thông tin đăng nhập
-                    <input type="checkbox" checked="checked">
-                    <span class="checkmark"></span>
-                  </label>
-
-                </div>
-                <div style="text-align: right;width: 100%;">
-                  <p style="float: right;">Quên mật khẩu?</p>
-                </div>
-              </div>
-
-              <div style="margin-bottom: 20px;"></div>
-              <div class="input-group">
-                <input type="button" (click)="Chooes()" value="Đăng nhập" class="form-control"
-                       style="background-color: #143264;border-radius: 30px;border: #143264">
-              </div>
-            </div>
-          </div>
-          <div style="margin-bottom: 20px;"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<div style="height: 100%" *ngIf="isChoose">
+<div style="height: 100%" *ngIf="isLoggedIn && isChoose">
   <div class="LandingPage">
     <div style="margin-bottom: 100px;"></div>
     <div class="container">
@@ -145,59 +31,58 @@
 
           <div style="width: 80%;" class="mx-auto ">
 
-              <div class="input-group ">
-                <input type="button" (click)="ChooseGTTT()" value="Mở tài khoản thanh toán"
-                       class="form-control   text-white"
-                       style="background: #D9D9D9;border-radius: 30px;">
+            <div class="input-group ">
+              <input type="button" (click)="ChooseGTTT()" value="Mở tài khoản thanh toán"
+                     class="form-control   text-white"
+                     style="background: #D9D9D9;border-radius: 30px;">
+            </div>
+            <div style="margin-bottom: 20px;"></div>
+            <div class="input-group">
+              <input type="button" value="Mở thẻ tín dụng" class="form-control   text-white"
+                     style="background: #D9D9D9;border-radius: 30px;">
+            </div>
+            <div style="margin-bottom: 20px;"></div>
+            <div class="input-group">
+              <input type="button" value="Đăng ký khoản vay" class="form-control   text-white"
+                     style="background: #D9D9D9;border-radius: 30px;">
+            </div>
+            <div style="margin-bottom: 20px;"></div>
+
+
+            <!-- <div class="mt-3 col-sm-12">
+               <input type="checkbox"/>
+               <label> Khách hàng đã tồn tại CIF</label>
+             </div>
+
+             <div class="mt-3 col-sm-12">
+               <input type="checkbox"/>
+               <label> Khách hàng hit PCRT</label>
+             </div>-->
+
+            <div style="width: 80%;">
+              <div class="input-group">
+                <div>
+                  <input type="checkbox"/> NFC CCCD gắn chip
+                </div>
+
               </div>
               <div style="margin-bottom: 20px;"></div>
               <div class="input-group">
-                <input type="button" value="Mở thẻ tín dụng" class="form-control   text-white"
-                       style="background: #D9D9D9;border-radius: 30px;">
+                <div>
+                  <input type="checkbox"/> Khách hàng đã tồn tại CIF
+                </div>
+
               </div>
               <div style="margin-bottom: 20px;"></div>
               <div class="input-group">
-                <input type="button" value="Đăng ký khoản vay" class="form-control   text-white"
-                       style="background: #D9D9D9;border-radius: 30px;">
+                <div>
+                  <input type="checkbox"/> Khách hàng hit PCRT
+                </div>
               </div>
-              <div style="margin-bottom: 20px;"></div>
-
-
-              <!-- <div class="mt-3 col-sm-12">
-                 <input type="checkbox"/>
-                 <label> Khách hàng đã tồn tại CIF</label>
-               </div>
-
-               <div class="mt-3 col-sm-12">
-                 <input type="checkbox"/>
-                 <label> Khách hàng hit PCRT</label>
-               </div>-->
-
-               <div style="width: 80%;">
-                 <div class="input-group">
-                   <div>
-                     <input type="checkbox"/>  NFC CCCD gắn chip
-                   </div>
-
-                 </div>
-                 <div style="margin-bottom: 20px;"></div>
-                 <div class="input-group">
-                   <div>
-                     <input type="checkbox" />  Khách hàng đã tồn tại CIF
-                   </div>
-
-                 </div>
-                 <div style="margin-bottom: 20px;"></div>
-                 <div class="input-group">
-                   <div>
-                     <input type="checkbox" />  Khách hàng hit PCRT
-                   </div>
-                 </div>
-               </div>
-
-                <div style="margin-bottom: 20px;"></div>
             </div>
 
+            <div style="margin-bottom: 20px;"></div>
+          </div>
 
 
         </div>
@@ -208,7 +93,7 @@
 </div>
 
 
-<div style="height: 100%" *ngIf="isGTTT">
+<div style="height: 100%" *ngIf="isLoggedIn && isGTTT">
   <div class="LandingPage">
     <div style="margin-bottom: 100px;"></div>
 
@@ -262,7 +147,7 @@
 </div>
 
 
-<div id="step" style="height: 100%;text-align: left" *ngIf="!isSigin && !isChoose && !isGTTT">
+<div id="step" style="height: 100%;text-align: left;" *ngIf="isLoggedIn && !isChoose && !isGTTT">
   <div class="LandingPage" id="OpenAccountPersonalInfor">
     <div class="container">
 
@@ -508,7 +393,7 @@
                   <span>Họ và tên</span>
                 </div>
                 <div class="col-sm-8 ">
-                        <textarea class="form-control" disabled>{{this.appService.datatGToTThan.hoVaTen}}</textarea>
+                  <textarea class="form-control" disabled>{{this.appService.datatGToTThan.hoVaTen}}</textarea>
                 </div>
               </div>
               <div class="row" style="margin-top: 20px;">
@@ -541,7 +426,7 @@
                   <span>Quê quán</span>
                 </div>
                 <div class="col-sm-8 ">
-                        <textarea class="form-control" disabled>{{this.appService.datatGToTThan.queQuan}}</textarea>
+                  <textarea class="form-control" disabled>{{this.appService.datatGToTThan.queQuan}}</textarea>
                 </div>
               </div>
               <div class="row" style="margin-top: 20px;">
@@ -549,7 +434,7 @@
                   <span>Nơi thường trú</span>
                 </div>
                 <div class="col-sm-8 ">
-                        <textarea class="form-control" disabled>{{this.appService.datatGToTThan.noiTru}}</textarea>
+                  <textarea class="form-control" disabled>{{this.appService.datatGToTThan.noiTru}}</textarea>
                 </div>
               </div>
               <div class="row" style="margin-top: 20px;">
@@ -604,7 +489,7 @@
                 <div class="col-sm-4">
                 </div>
                 <div class="col-sm-8" style="text-align: left;margin-bottom: 50px;">
-                  <input  type="button" class="btn-step" (click)="checkXnhanGTTT()" name="xnhanGTTT"
+                  <input type="button" class="btn-step" (click)="checkXnhanGTTT()" name="xnhanGTTT"
                          formControlName="xnhanGTTT"
                          [(ngModel)]="checked"
                          checked>
@@ -803,13 +688,13 @@
                   </div>
                   <div class="col-sm-4">
                     <div class="form-check ">
-                    <!--  <input class="form-check-input" type="radio" id="cutru_khong" name="cutru">
-                      <label class="form-check-label">
-                        Không cư trú
-                      </label>-->
+                      <!--  <input class="form-check-input" type="radio" id="cutru_khong" name="cutru">
+                        <label class="form-check-label">
+                          Không cư trú
+                        </label>-->
 
                       <label class="cb"> Không cư trú
-                        <input type="radio" id="cutru_khong" name="cutru" >
+                        <input type="radio" id="cutru_khong" name="cutru">
                         <span class="checkmark"></span>
                       </label>
                     </div>
@@ -909,7 +794,7 @@
                       <div class="col-sm-8">
 
                         <label class="cb">Làm việc tự do
-                          <input type="radio"id="nghenghiep7" name="nghenghiep">
+                          <input type="radio" id="nghenghiep7" name="nghenghiep">
                           <span class="checkmark"></span>
                         </label>
                       </div>
@@ -962,12 +847,13 @@
                       <div class="col-sm-3">
 
                         <label class="cb">Khác (ghi rõ)
-                          <input (click)="CheckNgheNghiep()" type="radio"  id="nghenghiepkhac" name="nghenghiep">
+                          <input (click)="CheckNgheNghiep()" type="radio" id="nghenghiepkhac" name="nghenghiep">
                           <span class="checkmark"></span>
                         </label>
                       </div>
                       <div class="col-sm-9">
-                        <input [disabled]="!text_nghenghiepkhac" id="text_nghenghiepkhac" name="text_nghenghiepkhac" placeholder="Nhập thông tin"
+                        <input [disabled]="!text_nghenghiepkhac" id="text_nghenghiepkhac" name="text_nghenghiepkhac"
+                               placeholder="Nhập thông tin"
                                type="text" value="" class="form-control form-control-sm" disabled/>
                       </div>
 
@@ -1014,7 +900,7 @@
                       </div>
                       <div class="col-sm-9">
                         <input [disabled]="!chucvu" id="text_cvkhac" name="text_cvkhac" placeholder="Chức vụ khác"
-                               type="text" value="" class="form-control form-control-sm"  disabled/>
+                               type="text" value="" class="form-control form-control-sm" disabled/>
                       </div>
                     </div>
                   </div>
@@ -1124,7 +1010,7 @@
                     <div class="row">
                       <div class="col-sm-4">
                         <label class="cb">Có
-                          <input type="radio" id="chusohuuhuongloi_co" name="chusohuuhuongloi" >
+                          <input type="radio" id="chusohuuhuongloi_co" name="chusohuuhuongloi">
                           <span class="checkmark"></span>
                         </label>
 
@@ -1147,13 +1033,13 @@
                     <div class="row">
                       <div class="col-sm-4">
                         <label class="cb">Có
-                          <input type="radio" id="thamgiathoathuanpl_co" name="thamgiathoathuanpl" >
+                          <input type="radio" id="thamgiathoathuanpl_co" name="thamgiathoathuanpl">
                           <span class="checkmark"></span>
                         </label>
                       </div>
                       <div class="col-sm-4">
                         <label class="cb">Không
-                          <input type="radio" id="thamgiathoathuanpl_khong" name="thamgiathoathuanpl"  checked>
+                          <input type="radio" id="thamgiathoathuanpl_khong" name="thamgiathoathuanpl" checked>
                           <span class="checkmark"></span>
                         </label>
                       </div>
@@ -1247,7 +1133,8 @@
 
                     <div class="row">
                       <div class="col-sm-4">
-                        <input (click)="checkTTSC()" type="checkbox" id="loaitk_thanhtoansochon" name="loaitk_thanhtoansochon"/> Thanh
+                        <input (click)="checkTTSC()" type="checkbox" id="loaitk_thanhtoansochon"
+                               name="loaitk_thanhtoansochon"/> Thanh
                         toán
                         số chọn
                       </div>
@@ -1255,19 +1142,22 @@
                     </div>
                     <div class="row">
                       <div class="col-sm-12">
-                        <input [disabled] ="!text_loaitk_thanhtoansochon" type="text" id="text_loaitk_thanhtoansochon" name="text_loaitk_thanhtoansochon"
+                        <input [disabled]="!text_loaitk_thanhtoansochon" type="text" id="text_loaitk_thanhtoansochon"
+                               name="text_loaitk_thanhtoansochon"
                                class="form-control form-control-sm" disabled/>
                       </div>
                     </div>
                     <div class="row">
                       <div class="col-sm-4">
-                        <input (click)="checkTTSCK()" type="checkbox" id="loaitk_khac" name="loaitk_khac"/> Khác (ghi rõ)
+                        <input (click)="checkTTSCK()" type="checkbox" id="loaitk_khac" name="loaitk_khac"/> Khác (ghi
+                        rõ)
                       </div>
 
                     </div>
                     <div class="row">
                       <div class="col-sm-12">
-                        <input [disabled] ="!text_loaitk_thanhtoansochon_khac" type="text" id="text_loaitk_khac" name="text_loaitk_khac"
+                        <input [disabled]="!text_loaitk_thanhtoansochon_khac" type="text" id="text_loaitk_khac"
+                               name="text_loaitk_khac"
                                class="form-control form-control-sm" disabled/>
                       </div>
                     </div>
@@ -1296,13 +1186,15 @@
                     </div>
                     <div class="row">
                       <div class="col-sm-4">
-                        <input (click)="checkLT()" type="checkbox" id="loaitien_khac" name="loaitien_khac"/> Khác (ghi rõ)
+                        <input (click)="checkLT()" type="checkbox" id="loaitien_khac" name="loaitien_khac"/> Khác (ghi
+                        rõ)
                       </div>
 
                     </div>
                     <div class="row">
                       <div class="col-sm-12">
-                        <input  [disabled]="!text_loaitien_khac" type="text" id="text_loaitien_khac" name="text_loaitien_khac"
+                        <input [disabled]="!text_loaitien_khac" type="text" id="text_loaitien_khac"
+                               name="text_loaitien_khac"
                                class="form-control form-control-sm" disabled/>
                       </div>
                     </div>
@@ -1378,7 +1270,7 @@
                       <div class="col-sm-4">
 
                         <label class="cb">Không
-                          <input type="radio"name="goitaikhoanppro" checked="checked">
+                          <input type="radio" name="goitaikhoanppro" checked="checked">
                           <span class="checkmark"></span>
                         </label>
                       </div>
@@ -1688,7 +1580,7 @@
                   </div>
                   <div class="col-sm-2">
                     <label class="cb">
-                      <input type="checkbox"id="vcb_connect24_money" name="vcb_connect24_money">
+                      <input type="checkbox" id="vcb_connect24_money" name="vcb_connect24_money">
                       <span class="checkmark"></span>
                     </label>
                   </div>
@@ -1820,7 +1712,7 @@
                   </div>
                   <div class="col-sm-2">
                     <label class="cb">
-                      <input type="checkbox"id="vcb_mastercard_auto" name="vcb_mastercard_auto">
+                      <input type="checkbox" id="vcb_mastercard_auto" name="vcb_mastercard_auto">
                       <span class="checkmark"></span>
                     </label>
                   </div>
@@ -2134,7 +2026,7 @@
                   </div>
                   <div class="col-sm-2">
                     <label class="cb">
-                      <input id="cam_ket_cua_kh_2_no" name="cam_ket_cua_kh_2" type="radio" >
+                      <input id="cam_ket_cua_kh_2_no" name="cam_ket_cua_kh_2" type="radio">
                       <span class="checkmark"></span>
                     </label>
                   </div>
@@ -2157,7 +2049,7 @@
                   </div>
                   <div class="col-sm-2">
                     <label class="cb">
-                      <input id="cam_ket_cua_kh_3_no" name="cam_ket_cua_kh_3" type="radio" >
+                      <input id="cam_ket_cua_kh_3_no" name="cam_ket_cua_kh_3" type="radio">
                       <span class="checkmark"></span>
                     </label>
                   </div>
@@ -2179,7 +2071,7 @@
                   </div>
                   <div class="col-sm-2">
                     <label class="cb">
-                      <input id="cam_ket_cua_kh_4_no" name="cam_ket_cua_kh_4" type="radio" >
+                      <input id="cam_ket_cua_kh_4_no" name="cam_ket_cua_kh_4" type="radio">
                       <span class="checkmark"></span>
                     </label>
                   </div>
@@ -2337,7 +2229,6 @@
         </div>
 
       </div>
-
 
 
     </div>

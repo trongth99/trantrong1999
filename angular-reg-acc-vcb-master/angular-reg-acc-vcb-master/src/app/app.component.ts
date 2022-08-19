@@ -6,6 +6,7 @@ import Swal from 'sweetalert2';
 import {DeviceDetectorService} from 'ngx-device-detector';
 import * as $ from 'jquery';
 import {SignaturePad} from 'angular2-signaturepad';
+import {TokenStorageService} from './_services/token-storage.service';
 
 @Component({
   selector: 'app-root',
@@ -15,6 +16,8 @@ import {SignaturePad} from 'angular2-signaturepad';
 
 export class AppComponent {
   title = 'Đăng ký tài khoản tại quầy';
+
+  isLoggedIn = false;
 
   deviceInfo!: any;
   isMobile = false;
@@ -38,7 +41,6 @@ export class AppComponent {
 
   checked = "Đồng ý";
   checkedTT = true;
-
 
   _0FormGroup!: FormGroup;
   _1FormGroup!: FormGroup;
@@ -64,7 +66,6 @@ export class AppComponent {
   is9FormGroup = false;
   is10FormGroup = false;
   isFinishedFormGroup = false;
-  isSigin = true;
   isChoose = false;
   isGTTT = false;
 
@@ -214,15 +215,18 @@ export class AppComponent {
   text_loaitk_thanhtoansochon =false;
   text_loaitk_thanhtoansochon_khac = false;
   text_loaitien_khac = false;
+
   constructor(
     private _formBuilder: FormBuilder,
     public appService: AppService,
     private deviceService: DeviceDetectorService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private tokenStorageService: TokenStorageService
   ) {
   }
 
   ngOnInit() {
+    this.isLoggedIn = this.isChoose = this.tokenStorageService.cLogin();
     this.CheckCamera();
     this.loadForm();
     this.device();
@@ -468,16 +472,10 @@ export class AppComponent {
 
   startReg() {
     this.is0FormGroup = false;
-    this.isSigin = false;
     this.isGTTT = false;
     this.is1FormGroup = true;
     this.currIdxStep = 1;
     this.checkProcessInstanceValue();
-  }
-
-  Chooes() {
-    this.isChoose = true;
-    this.isSigin = false;
   }
 
   ChooseGTTT() {

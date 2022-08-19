@@ -26,6 +26,7 @@ const baseApiURL = 'https://fpt.aeyes.online/kie-server-dev/services/rest';
 
 //const configApiURL = 'http://103.9.0.210/ekyc/config';
 const configApiURL = 'https://fpt.aeyes.online/ekyc/config';
+const baseApiAuthURL = 'http://103.9.0.210/apiOnboarding';
 
 @Injectable({
   providedIn: 'root'
@@ -216,6 +217,8 @@ export class AppService {
       this.base_api_url = baseApiURL;
     } else if (serv == 'config') {
       this.base_api_url = configApiURL;
+    } else if (serv == 'auth') {
+      this.base_api_url = baseApiAuthURL;
     }
 
     let headers = new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'});

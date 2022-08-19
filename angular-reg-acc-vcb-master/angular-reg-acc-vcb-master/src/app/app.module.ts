@@ -12,13 +12,15 @@ import { SignaturePadModule } from 'angular2-signaturepad';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { AppRoutingModule } from './app-routing.module';
 import { PdftempComponent } from './pdftemp/pdftemp.component';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     CameraComponent,
-    PdftempComponent
+    PdftempComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
