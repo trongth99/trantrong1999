@@ -188,6 +188,7 @@ export class AppComponent {
   isImgFace = true;
   showStepNext = true;
   showBackStep = true;
+  showBackStepGttt = true;
   khungHinh: string[] = [];
 
   processInstanceId!: any;
@@ -348,20 +349,19 @@ export class AppComponent {
   }
 
 
-
   checkNomal24() {
     if ($('#vcb_connect24_nomal').is(":checked")) {
-      this.money24 = false;
+      this.fast24 = false;
     } else {
-      this.money24 = true;
+      this.fast24 = true;
     }
   }
 
   checkFast24() {
     if ($('#vcb_connect24_fast').is(":checked")) {
-      this.money24 = false;
+      this.nomal24 = false;
     } else {
-      this.money24 = true;
+      this.nomal24 = true;
     }
   }
 
@@ -421,10 +421,10 @@ export class AppComponent {
   }
 
   checkVisaFast() {
-    if ($('#vcb_connect24_fast').is(":checked")) {
-      this.visanomal = true;
-    } else {
+    if ($('#vcb_connect24_visa_fast').is(":checked")) {
       this.visanomal = false;
+    } else {
+      this.visanomal = true;
     }
   }
 
@@ -437,10 +437,10 @@ export class AppComponent {
   }
 
   checkVisaMoney() {
-    if ($('#vcb_connect24_money').is(":checked")) {
-      this.visaauto = true;
-    } else {
+    if ($('#vcb_connect24_visa_money').is(":checked")) {
       this.visaauto = false;
+    } else {
+      this.visaauto = true;
     }
   }
 
@@ -551,9 +551,9 @@ export class AppComponent {
 
   checkMTFast() {
     if ($('#vcb_mastercard_fast').is(":checked")) {
-      this.mtnomal = true;
-    } else {
       this.mtnomal = false;
+    } else {
+      this.mtnomal = true;
     }
   }
 
@@ -1000,6 +1000,11 @@ export class AppComponent {
       let step = this.steps[index];
       this.statusStep(step, 'back');
     }
+  }
+
+  backStepGttt() {
+    this.isChoose = true;
+    this.isGTTT = false;
   }
 
   statusStep(step: number, type: any) {

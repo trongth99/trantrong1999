@@ -24,6 +24,23 @@
   </div>
 </nav>
 
+<nav *ngIf="isGTTT" class="navbar">
+  <div class="container">
+    <div class="row" style="width: 100%; margin-top: 5px;">
+      <div class="col text-left">
+        <img *ngIf="showBackStepGttt" id="backStepGttt" (click)="backStepGttt()" src="./assets/img/Back.png" class="step-button">
+      </div>
+      <!--<div class="col text-center">
+        <span class="header-content"> {{ titleStep }} </span>
+      </div>-->
+      <!--<div class="col text-right">
+        <img *ngIf="showStepNext && cValid(currIdxStep)" id="stepNext1" (click)="stepNext()" src="./assets/img/Next.png"
+             class="step-button">
+      </div>-->
+    </div>
+  </div>
+</nav>
+
 <div style="height: 100%" *ngIf="isLoggedIn && isChoose">
   <div class="LandingPage">
     <div style="margin-bottom: 100px;"></div>
