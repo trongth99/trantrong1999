@@ -110,6 +110,7 @@ button{
 select[disabled], input[disabled] {
    background-color: rgba(33, 37, 41, 0.3) !important;
 }
+
 /*
 body {
   height: 100vh;
@@ -287,12 +288,53 @@ body {
 .cb .checkmark:after {
   left: 5px;
   top: 2px;
-  width: 5px;
-  height: 11px;
+  width: 4px;
+  height: 8px;
   border: solid white;
   border-width: 0 2px 2px 0;
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
 }
+.btn-logout{
+  position: fixed;
+  right: 15px;
+  top: 30px;
+  background: unset;
+  border: none;
+}
 
+.btn-logout:hover {
+  background: #0C1E60;
+  border-radius: 20px;
+  border: 1px solid #0C1E60;
+}
+
+[type="button"]:focus {
+  outline: unset;
+}
+
+.btn-choose:hover {
+  background-color: #0C1E60 !important;
+ // border-radius: 20px;
+  border: 1px solid #0C1E60;
+}
+.checkError{
+  font-family: 'Roboto';
+  color: #929492;
+  width: 50%;
+  border-radius: 5px;
+  background-color: #FFA39E;
+  justify-content: center;
+}
+.checkSuccess{
+  font-family: 'Roboto';
+  color: #929492;
+  width: 50%;
+  background-color: #b9ec98;
+  border-radius: 5px;
+  justify-content: center;
+}
+b{
+  font-family: 'Roboto';
+}

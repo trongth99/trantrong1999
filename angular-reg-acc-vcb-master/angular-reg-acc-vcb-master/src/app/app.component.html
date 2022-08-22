@@ -1,3 +1,8 @@
+<div *ngIf="isLoggedIn && isChoose">
+  <input type="button" (click)="logout()" style="float: right" class="btn-step btn-logout" value="Đăng xuất">
+</div>
+
+
 <div style="height: 100%" *ngIf="!isLoggedIn">
   <app-login></app-login>
 </div>
@@ -33,17 +38,17 @@
 
             <div class="input-group ">
               <input type="button" (click)="ChooseGTTT()" value="Mở tài khoản thanh toán"
-                     class="form-control   text-white"
+                     class="form-control btn-choose   text-white"
                      style="background: #D9D9D9;border-radius: 30px;">
             </div>
             <div style="margin-bottom: 20px;"></div>
             <div class="input-group">
-              <input type="button" value="Mở thẻ tín dụng" class="form-control   text-white"
+              <input type="button" value="Mở thẻ tín dụng" class="form-control btn-choose  text-white"
                      style="background: #D9D9D9;border-radius: 30px;">
             </div>
             <div style="margin-bottom: 20px;"></div>
             <div class="input-group">
-              <input type="button" value="Đăng ký khoản vay" class="form-control   text-white"
+              <input type="button" value="Đăng ký khoản vay" class="form-control  btn-choose text-white"
                      style="background: #D9D9D9;border-radius: 30px;">
             </div>
             <div style="margin-bottom: 20px;"></div>
@@ -110,8 +115,8 @@
             </div>
             <div style="margin-bottom: 20px;"></div>
             <div class="input-group">
-              <input type="button" (click)="startReg()" value="CMND/CCCD" class="form-control   text-white"
-                     style="background: #D9D9D9">
+              <input type="button" (click)="startReg()" value="CMND/CCCD" class="form-control"
+                     style="background: #D9D9D9;color: purple;border-radius: 30px;">
             </div>
             <div style="margin-bottom: 20px;"></div>
             <div class="input-group " style="text-align: left">
@@ -122,8 +127,9 @@
               2. Chụp đầy đủ, rõ nét, không mất góc, không chói sáng 2 mặt của CMND/CCCD.<br/>
             </div>
             <div style="margin-bottom: 20px;"></div>
-            <div class="input-group ">
-              <input type="button" value="Hộ chiếu" class="form-control   text-white" style="background: #D9D9D9">
+            <div class="input-group">
+              <input type="button" value="Hộ chiếu" class="form-control"
+                     style="background: #D9D9D9;color: purple; border-radius: 30px;">
             </div>
             <div style="margin-bottom: 20px;"></div>
 
@@ -200,20 +206,7 @@
               <div style="clear: both;margin-bottom: 10px;"></div>
             </form>
           </div>
-          <!--
-                    <div class="login">
-                      <div class="col d-flex justify-content-center mb-4" style="display: flex">
 
-                        <div><i class="fa fa-user text-muted"></i></div>
-
-                       <input type="text" placeholder="Tên đăng nhập" style="border-radius: 5px;width: 40% ;
-              height: 40px;"/>
-                      </div>
-                      <div class="col d-flex justify-content-center">
-                        <input type="password" placeholder="Mật khâu" style="border-radius: 5px;width: 40%;
-              height: 40px;"/>
-                      </div>-->
-          <!-- </div>-->
 
           <!-- <div>
              <div style="text-align: center">
@@ -406,17 +399,17 @@
                 </div>
               </div>
               <div class="row" style="margin-top: 20px;">
-                <div class="col-sm-2">
+                <div class="col-sm-4">
                   <span>Giới tính</span>
                 </div>
-                <div class="col-sm-4 ">
-                  <input [(ngModel)]="this.appService.datatGToTThanGt.gioiTinh"
+                <div class="col-sm-3 ">
+                  <input [(ngModel)]="this.appService.datatGToTThan.gioiTinh2"
                          type="text" class="form-control" disabled/>
                 </div>
                 <div class="col-sm-2">
                   <span>Quốc tịch</span>
                 </div>
-                <div class="col-sm-4 ">
+                <div class="col-sm-3">
                   <input [(ngModel)]="this.appService.datatGToTThan.quocTich" type="text"
                          class="form-control" disabled/>
                 </div>
@@ -459,7 +452,7 @@
                   <span>Ngày cấp</span>
                 </div>
                 <div class="col-sm-8 ">
-                  <input [(ngModel)]="this.appService.dataNgayCap.ngaycap" type="text"
+                  <input [(ngModel)]="this.appService.datatGToTThan.ngayCap2" type="text"
                          class="form-control" disabled/>
                 </div>
               </div>
@@ -486,9 +479,7 @@
             </div>
             <form [formGroup]="_2FormGroup">
               <div class="row">
-                <div class="col-sm-4">
-                </div>
-                <div class="col-sm-8" style="text-align: left;margin-bottom: 50px;">
+                <div class="col-sm-12" style="text-align: center;margin-bottom: 50px;">
                   <input type="button" class="btn-step" (click)="checkXnhanGTTT()" name="xnhanGTTT"
                          formControlName="xnhanGTTT"
                          [(ngModel)]="checked"
@@ -559,7 +550,7 @@
                     Ngày sinh
                   </div>
                   <div class="col-sm-8">
-                    <input [(ngModel)]="this.appService.customerUser.ngaySinh" id="ngaySinh" name="ngaySinh"
+                    <input [(ngModel)]="this.appService.customerUser.namSinh" id="ngaySinh" name="ngaySinh"
                            type="text" class="form-control" disabled/>
                   </div>
                   <div style="clear: both;margin-bottom: 10px;"></div>
@@ -570,7 +561,7 @@
                     Giới tính
                   </div>
                   <div class="col-sm-8">
-                    <input [(ngModel)]="this.appService.customerUser.gioiTinh" id="gioiTinh" name="gioiTinh"
+                    <input [(ngModel)]="this.appService.customerUser.gioiTinh2" id="gioiTinh" name="gioiTinh"
                            type="text" class="form-control" disabled/>
                   </div>
                   <div style="clear: both;margin-bottom: 10px;"></div>
@@ -655,7 +646,7 @@
                     Ngày cấp
                   </div>
                   <div class="col-sm-8">
-                    <input [(ngModel)]="this.appService.dataNgayCap.ngaycap" name="ngayCap2" type="text"
+                    <input [(ngModel)]="this.appService.customerUser.ngayCap2" name="ngayCap2" type="text"
                            class="form-control" disabled/>
                   </div>
                 </div>
@@ -794,7 +785,7 @@
                       <div class="col-sm-8">
 
                         <label class="cb">Làm việc tự do
-                          <input type="radio" id="nghenghiep7" name="nghenghiep">
+                          <input type="radio" (click)="CheckNgheNghiep()" id="nghenghiep7" name="nghenghiep">
                           <span class="checkmark"></span>
                         </label>
                       </div>
@@ -807,7 +798,7 @@
                       </div>
                       <div class="col-sm-8">
                         <label class="cb">Học sinh, sinh viên
-                          <input type="radio" id="nghenghiep6" name="nghenghiep">
+                          <input type="radio" (click)="CheckNgheNghiep()" id="nghenghiep6" name="nghenghiep">
                           <span class="checkmark"></span>
                         </label>
                       </div>
@@ -821,7 +812,7 @@
                       <div class="col-sm-8">
 
                         <label class="cb">Nhân viên văn phòng
-                          <input type="radio" id="nghenghiep1" name="nghenghiep" checked>
+                          <input type="radio" (click)="CheckNgheNghiep()" id="nghenghiep1" name="nghenghiep" checked>
                           <span class="checkmark"></span>
                         </label>
                       </div>
@@ -835,11 +826,10 @@
                       <div class="col-sm-8">
 
                         <label class="cb">Kỹ sư, công nhân xây dựng, cơ khí
-                          <input type="radio" id="nghenghiep4" name="nghenghiep">
+                          <input type="radio" (click)="CheckNgheNghiep()" id="nghenghiep4" name="nghenghiep">
                           <span class="checkmark"></span>
                         </label>
                       </div>
-
 
                     </div>
 
@@ -847,7 +837,7 @@
                       <div class="col-sm-3">
 
                         <label class="cb">Khác (ghi rõ)
-                          <input (click)="CheckNgheNghiep()" type="radio" id="nghenghiepkhac" name="nghenghiep">
+                          <input (click)="CheckNgheNghiepKhac()" type="radio" id="nghenghiepkhac" name="nghenghiep">
                           <span class="checkmark"></span>
                         </label>
                       </div>
@@ -870,21 +860,21 @@
                       <div class="col-sm-8">
 
                         <label class="cb">Nhân viên
-                          <input type="radio" id="CVu1" name="CVu" checked>
+                          <input type="radio" (click)="CheckChucvu()" id="CVu1" name="CVu" checked>
                           <span class="checkmark"></span>
                         </label>
                       </div>
                       <div class="col-sm-8">
 
                         <label class="cb">Trưởng phòng, giám sát
-                          <input type="radio" id="CVu2" name="CVu">
+                          <input type="radio" (click)="CheckChucvu()" id="CVu2" name="CVu">
                           <span class="checkmark"></span>
                         </label>
                       </div>
                       <div class="col-sm-8">
 
                         <label class="cb">Giám đốc, quản lý cấp cao
-                          <input type="radio" id="CVu3" name="CVu">
+                          <input type="radio" (click)="CheckChucvu()" id="CVu3" name="CVu">
                           <span class="checkmark"></span>
                         </label>
                       </div>
@@ -894,7 +884,7 @@
                       <div class="col-sm-3">
 
                         <label class="cb"> Khác (ghi rõ)
-                          <input (click)="CheckChucvu()" type="radio" id="cvkhac" name="CVu">
+                          <input (click)="CheckChucvuKhac()" type="radio" id="cvkhac" name="CVu">
                           <span class="checkmark"></span>
                         </label>
                       </div>
@@ -936,7 +926,7 @@
                     <div class="row">
                       <div class="col-sm-4">
                         <label class="cb">Có
-                          <input type="radio" id="khongquoctich_co" name="khongquoctich">
+                          <input type="radio" id="khongquoctich" name="khongquoctich">
                           <span class="checkmark"></span>
                         </label>
                       </div>
@@ -960,7 +950,7 @@
                       <div class="col-sm-4">
 
                         <label class="cb">Có
-                          <input type="radio" id="daquoctich_co" name="daquoctich">
+                          <input type="radio" id="daquoctich" name="daquoctich">
                           <span class="checkmark"></span>
                         </label>
                       </div>
@@ -983,7 +973,7 @@
                       <div class="col-sm-4">
 
                         <label class="cb">Có
-                          <input type="radio" id="congdanhoaky_co" name="congdanhoaky">
+                          <input type="radio" id="congdanhoaky" name="congdanhoaky">
                           <span class="checkmark"></span>
                         </label>
                       </div>
@@ -1097,7 +1087,7 @@
 
                 <div style="clear: both;margin-bottom: 20px;"></div>
 
-                <div style="text-align: center;">
+                <div style="text-align: center;font-weight: bold">
                   <span>ĐĂNG KÝ DỊCH VỤ NGÂN HÀNG ĐIỆN TỬ</span>
                 </div>
 
@@ -1121,12 +1111,14 @@
                   <div class="col-sm-8">
                     <div class="row">
                       <div class="col-sm-12">
-                        <input type="checkbox" id="loaitk_thanhtoan" name="loaitk_thanhtoan" checked/> Thanh toán
+                        <input type="checkbox" (click)="check()" id="loaitk_thanhtoan" name="loaitk_thanhtoan" checked/>
+                        Thanh toán
                       </div>
                     </div>
                     <div class="row">
                       <div class="col-sm-12">
-                        <input type="checkbox" id="loaitk_thanhtoanchung" name="loaitk_thanhtoanchung"/> Thanh toán
+                        <input type="checkbox" (click)="check()" id="loaitk_thanhtoanchung"
+                               name="loaitk_thanhtoanchung"/> Thanh toán
                         chung
                       </div>
                     </div>
@@ -1218,7 +1210,7 @@
                       <div class="col-sm-4">
 
                         <label class="cb">Có
-                          <input type="radio" name="goitaikhoaneco" checked="checked">
+                          <input type="radio" id="goitk_vcb_eco" name="goitaikhoaneco" checked="checked">
                           <span class="checkmark"></span>
                         </label>
                       </div>
@@ -1241,7 +1233,7 @@
                       <div class="col-sm-4">
 
                         <label class="cb">Có
-                          <input type="radio" name="goitaikhoanplus">
+                          <input type="radio" id="goitk_vcb_plus" name="goitaikhoanplus">
                           <span class="checkmark"></span>
                         </label>
                       </div>
@@ -1263,7 +1255,7 @@
                       <div class="col-sm-4">
 
                         <label class="cb">Có
-                          <input type="radio" name="goitaikhoanppro">
+                          <input type="radio" id="goitk_vcb_pro" name="goitaikhoanppro">
                           <span class="checkmark"></span>
                         </label>
                       </div>
@@ -1286,7 +1278,7 @@
                       <div class="col-sm-4">
 
                         <label class="cb">Có
-                          <input type="radio" name="goitaikhoanadvanced">
+                          <input type="radio" id="goitk_vcb_advanced" name="goitaikhoanadvanced">
                           <span class="checkmark"></span>
                         </label>
                       </div>
@@ -1349,7 +1341,7 @@
 
                 <div style="clear: both;margin-bottom: 20px;"></div>
 
-                <div style="text-align: center;">
+                <div style="text-align: center;font-weight: bold">
                   <span>ĐĂNG KÝ DỊCH VỤ TÀI KHOẢN TIỀN GỬI</span>
                 </div>
 
@@ -1363,14 +1355,14 @@
                       <div class="col-sm-4">
 
                         <label class="cb">Có
-                          <input type="radio" name="smsbanking" checked="checked">
+                          <input type="radio" id="dv_vcb_sms_banking" name="smsbanking" checked="checked">
                           <span class="checkmark"></span>
                         </label>
                       </div>
                       <div class="col-sm-4">
 
                         <label class="cb">Không
-                          <input type="radio" name="smsbanking">
+                          <input type="radio" name="smsbanking" disabled>
                           <span class="checkmark"></span>
                         </label>
                       </div>
@@ -1387,14 +1379,14 @@
                       <div class="col-sm-4">
 
                         <label class="cb">Có
-                          <input type="radio" name="digibank" checked="checked">
+                          <input type="radio" id="dv_vcb_digibank" name="digibank" checked="checked">
                           <span class="checkmark"></span>
                         </label>
                       </div>
                       <div class="col-sm-4">
 
                         <label class="cb">Không
-                          <input type="radio" name="digibank">
+                          <input type="radio" name="digibank" disabled>
                           <span class="checkmark"></span>
                         </label>
                       </div>
@@ -1410,14 +1402,14 @@
                       <div class="col-sm-4">
 
                         <label class="cb">Có
-                          <input type="radio" name="phonebanking" checked="checked">
+                          <input type="radio" id="dv_vcb_phone_banking" name="phonebanking" checked="checked">
                           <span class="checkmark"></span>
                         </label>
                       </div>
                       <div class="col-sm-4">
 
                         <label class="cb">Không
-                          <input type="radio" name="phonebanking">
+                          <input type="radio" name="phonebanking" disabled>
                           <span class="checkmark"></span>
                         </label>
                       </div>
@@ -1450,7 +1442,7 @@
 
           <!-- is6FormGroup -->
           <div [style]="is6FormGroup ? '': 'display: none;'">
-            <!-- <div>-->
+            <!--<div>-->
             <form>
               <div style="clear: both;margin-bottom: 20px;"></div>
 
@@ -1470,10 +1462,17 @@
                   <div class="col-sm-8">
                     <div class="row">
                       <div class="col-sm-4">
-                        <input type="radio" id="pthuc_smart_otp_co" name="pthuc_smart_otp_co" checked/> Có
+                        <label class="cb">Có
+                          <input type="checkbox" type="checkbox" id="pthuc_smart_otp_co" name="pthuc_smart_otp">
+                          <span class="checkmark"></span>
+                        </label>
                       </div>
                       <div class="col-sm-4">
-                        <input type="radio" id="pthuc_smart_otp_khong" name="pthuc_smart_otp_khong"/> Không
+                        <label class="cb">Không
+                          <input type="checkbox" type="checkbox" id="pthuc_smart_otp_khong" name="pthuc_smart_otp"
+                                 checked>
+                          <span class="checkmark"></span>
+                        </label>
                       </div>
                     </div>
                   </div>
@@ -1485,10 +1484,16 @@
                   <div class="col-sm-8">
                     <div class="row">
                       <div class="col-sm-6">
-                        <input type="radio" id="faceid_co" name="faceid_co"/> Có
+                        <label class="cb">Có
+                          <input type="checkbox" type="checkbox" id="faceid_co" name="faceid">
+                          <span class="checkmark"></span>
+                        </label>
                       </div>
                       <div class="col-sm-6">
-                        <input type="radio" id="faceid_khong" name="faceid_khong" checked/> Không
+                        <label class="cb">Không
+                          <input type="checkbox" type="checkbox" id="faceid_khong" name="faceid" checked>
+                          <span class="checkmark"></span>
+                        </label>
                       </div>
                     </div>
                   </div>
@@ -1509,7 +1514,7 @@
                     Có
                   </div>
                   <div class="col-sm-1">
-                    không
+                    Không
                   </div>
                   <div class="col-sm-4" style="text-align: center;">
                     Phương thức phát hành
@@ -1550,37 +1555,43 @@
                   </div>
                   <div class="col-sm-1">
                     <label class="cb">
-                      <input type="checkbox" type="checkbox" id="vcb_connect24_yes" name="vcb_connect24_yes">
+                      <input type="checkbox" type="checkbox" (click)="checkYes24()" [disabled]="!yes24"
+                             id="vcb_connect24_yes" name="vcb_connect24_yes">
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-1">
                     <label class="cb">
-                      <input type="checkbox" id="vcb_connect24_no" name="vcb_connect24_no">
+                      <input type="checkbox" (click)="checkNo24()" [disabled]="!no24" id="vcb_connect24_no"
+                             name="vcb_connect24_no">
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-2">
                     <label class="cb">
-                      <input type="checkbox" id="vcb_connect24_nomal" name="vcb_connect24_nomal">
+                      <input type="checkbox" [disabled]="!nomal24" (click)="checkNomal24()" id="vcb_connect24_nomal"
+                             name="vcb_connect24_nomal">
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-2">
                     <label class="cb">
-                      <input type="checkbox" id="vcb_connect24_fast" name="vcb_connect24_fast">
+                      <input type="checkbox" [disabled]="!fast24" (click)="checkFast24()" id="vcb_connect24_fast"
+                             name="vcb_connect24_fast">
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-2">
                     <label class="cb">
-                      <input type="checkbox" id="vcb_connect24_auto" name="vcb_connect24_auto">
+                      <input type="checkbox" [disabled]="!auto24" (click)="checkAuto24()" id="vcb_connect24_auto"
+                             name="vcb_connect24_auto">
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-2">
                     <label class="cb">
-                      <input type="checkbox" id="vcb_connect24_money" name="vcb_connect24_money">
+                      <input type="checkbox" [disabled]="!money24" (click)="checkMoney24()" id="vcb_connect24_money"
+                             name="vcb_connect24_money">
                       <span class="checkmark"></span>
                     </label>
                   </div>
@@ -1594,38 +1605,44 @@
                   </div>
                   <div class="col-sm-1">
                     <label class="cb">
-                      <input type="checkbox" id="vcb_connect24_visa_yes" name="vcb_connect24_visa_yes">
+                      <input type="checkbox" (click)="checkVisaYes()" [disabled]="!visayes" id="vcb_connect24_visa_yes"
+                             name="vcb_connect24_visa_yes">
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-1">
                     <label class="cb">
-                      <input type="checkbox" id="vcb_connect24_visa_no" name="vcb_connect24_visa_no">
+                      <input type="checkbox" (click)="checkVisaNo()" [disabled]="!visano" id="vcb_connect24_visa_no"
+                             name="vcb_connect24_visa_no">
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-2">
                     <label class="cb">
-                      <input type="checkbox" id="vcb_connect24_visa_nomal" name="vcb_connect24_visa_nomal">
+                      <input type="checkbox" (click)="checkVisaNomal()" [disabled]="!visanomal"
+                             id="vcb_connect24_visa_nomal" name="vcb_connect24_visa_nomal">
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-2">
                     <label class="cb">
-                      <input type="checkbox" id="vcb_connect24_visa_fast" name="vcb_connect24_visa_fast">
+                      <input type="checkbox" (click)="checkVisaFast()" [disabled]="!visafast"
+                             id="vcb_connect24_visa_fast" name="vcb_connect24_visa_fast">
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-2">
                     <label class="cb">
-                      <input type="checkbox" id="vcb_connect24_visa_auto" name="vcb_connect24_visa_auto">
+                      <input type="checkbox" (click)="checkVisaAuto()" [disabled]="!visaauto"
+                             id="vcb_connect24_visa_auto" name="vcb_connect24_visa_auto">
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-2">
 
                     <label class="cb">
-                      <input type="checkbox" id="vcb_connect24_visa_money" name="vcb_connect24_visa_money">
+                      <input type="checkbox" (click)="checkVisaMoney()" [disabled]="!visamoney"
+                             id="vcb_connect24_visa_money" name="vcb_connect24_visa_money">
                       <span class="checkmark"></span>
                     </label>
                   </div>
@@ -1639,40 +1656,46 @@
                   </div>
                   <div class="col-sm-1">
                     <label class="cb">
-                      <input type="checkbox" id="vcb_visa_debit_platinum_yes" name="vcb_visa_debit_platinum_yes">
+                      <input type="checkbox" (click)="checkDPYes()" [disabled]="!dpyes" id="vcb_visa_debit_platinum_yes"
+                             name="vcb_visa_debit_platinum_yes">
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-1">
                     <label class="cb">
-                      <input type="checkbox" id="vcb_visa_debit_platinum_no" name="vcb_visa_debit_platinum_no">
+                      <input type="checkbox" (click)="checkVDPNo()" [disabled]="!dpno" id="vcb_visa_debit_platinum_no"
+                             name="vcb_visa_debit_platinum_no">
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-2">
 
                     <label class="cb">
-                      <input type="checkbox" id="vcb_visa_debit_platinum_nomal"
+                      <input type="checkbox" (click)="checkDPNomal()" [disabled]="!dpnomal"
+                             id="vcb_visa_debit_platinum_nomal"
                              name="vcb_visa_debit_platinum_nomal"/>
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-2">
                     <label class="cb">
-                      <input type="checkbox" id="vcb_visa_debit_platinum_fast" name="vcb_visa_debit_platinum_fast"/>
+                      <input type="checkbox" (click)="checkDPFats()" [disabled]="!dpfast"
+                             id="vcb_visa_debit_platinum_fast" name="vcb_visa_debit_platinum_fast"/>
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-2">
                     <label class="cb">
-                      <input type="checkbox" id="vcb_visa_debit_platinum_auto" name="vcb_visa_debit_platinum_auto">
+                      <input type="checkbox" (click)="checkDPAuto()" [disabled]="!dpauto"
+                             id="vcb_visa_debit_platinum_auto" name="vcb_visa_debit_platinum_auto">
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-2">
 
                     <label class="cb">
-                      <input type="checkbox" id="vcb_visa_debit_platinum_money"
+                      <input type="checkbox" (click)="checkDPMoney()" [disabled]="!dpmoney"
+                             id="vcb_visa_debit_platinum_money"
                              name="vcb_visa_debit_platinum_money">
                       <span class="checkmark"></span>
                     </label>
@@ -1687,39 +1710,45 @@
                   </div>
                   <div class="col-sm-1">
                     <label class="cb">
-                      <input type="checkbox" id="vcb_mastercard_yes" name="vcb_mastercard_yes"/>
+                      <input type="checkbox" (click)="checkMTYes()" [disabled]="!mtyes" id="vcb_mastercard_yes"
+                             name="vcb_mastercard_yes"/>
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-1">
                     <label class="cb">
-                      <input type="checkbox" id="vcb_mastercard_no" name="vcb_mastercard_no">
+                      <input type="checkbox" (click)="checkMTNo()" [disabled]="!mtno" id="vcb_mastercard_no"
+                             name="vcb_mastercard_no">
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-2">
 
                     <label class="cb">
-                      <input type="checkbox" id="vcb_mastercard_nomal" name="vcb_mastercard_nomal">
+                      <input type="checkbox" (click)="checkMTNomal()" [disabled]="!mtnomal" id="vcb_mastercard_nomal"
+                             name="vcb_mastercard_nomal">
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-2">
                     <label class="cb">
-                      <input type="checkbox" id="vcb_mastercard_fast" name="vcb_mastercard_fast">
+                      <input type="checkbox" (click)="checkMTFast()" [disabled]="!mtfast" id="vcb_mastercard_fast"
+                             name="vcb_mastercard_fast">
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-2">
                     <label class="cb">
-                      <input type="checkbox" id="vcb_mastercard_auto" name="vcb_mastercard_auto">
+                      <input type="checkbox" (click)="checkMTAuto()" [disabled]="!mtauto" id="vcb_mastercard_auto"
+                             name="vcb_mastercard_auto">
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-2">
 
                     <label class="cb">
-                      <input type="checkbox" id="vcb_mastercard_money" name="vcb_mastercard_money">
+                      <input type="checkbox" (click)="checkMTMoney()" [disabled]="!mtmoney" id="vcb_mastercard_money"
+                             name="vcb_mastercard_money">
                       <span class="checkmark"></span>
                     </label>
                   </div>
@@ -1733,37 +1762,43 @@
                   </div>
                   <div class="col-sm-1">
                     <label class="cb">
-                      <input type="checkbox" id="vcb_unionpay_yes" name="vcb_unionpay_yes">
+                      <input type="checkbox" (click)="checkPayYes()" [disabled]="!payyes" id="vcb_unionpay_yes"
+                             name="vcb_unionpay_yes">
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-1">
                     <label class="cb">
-                      <input type="checkbox" id="vcb_unionpay_no" name="vcb_unionpay_no">
+                      <input type="checkbox" (click)="checkPayNo()" [disabled]="!payno" id="vcb_unionpay_no"
+                             name="vcb_unionpay_no">
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-2">
                     <label class="cb">
-                      <input type="checkbox" id="vcb_unionpay_nomal" name="vcb_unionpay_nomal">
+                      <input type="checkbox" (click)="checkPayNomal()" [disabled]="!paynomal" id="vcb_unionpay_nomal"
+                             name="vcb_unionpay_nomal">
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-2">
                     <label class="cb">
-                      <input type="checkbox" id="vcb_unionpay_fast" name="vcb_unionpay_fast">
+                      <input type="checkbox" (click)="checkPayFast()" [disabled]="!payfast" id="vcb_unionpay_fast"
+                             name="vcb_unionpay_fast">
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-2">
                     <label class="cb">
-                      <input type="checkbox" id="vcb_unionpay_auto" name="vcb_unionpay_auto">
+                      <input type="checkbox" (click)="checkPayAuto()" [disabled]="!payauto" id="vcb_unionpay_auto"
+                             name="vcb_unionpay_auto">
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-2">
                     <label class="cb">
-                      <input type="checkbox" id="vcb_unionpay_money" name="vcb_unionpay_money">
+                      <input type="checkbox" (click)="checkPayMoney()" [disabled]="!paymoney" id="vcb_unionpay_money"
+                             name="vcb_unionpay_money">
                       <span class="checkmark"></span>
                     </label>
                   </div>
@@ -1777,35 +1812,40 @@
                   </div>
                   <div class="col-sm-1">
                     <label class="cb">
-                      <input type="checkbox" id="vcb_cashback_plus_american_express_yes"
+                      <input type="checkbox" (click)="checkExYes()" [disabled]="!exyes"
+                             id="vcb_cashback_plus_american_express_yes"
                              name="vcb_cashback_plus_american_express_yes">
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-1">
                     <label class="cb">
-                      <input type="checkbox" id="vcb_cashback_plus_american_express_no"
+                      <input type="checkbox" (click)="checkExNo()" [disabled]="!exno"
+                             id="vcb_cashback_plus_american_express_no"
                              name="vcb_cashback_plus_american_express_no">
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-2">
                     <label class="cb">
-                      <input type="checkbox" id="vcb_cashback_plus_american_express_nomal"
+                      <input type="checkbox" (click)="checkExNomal()" [disabled]="!exnomal"
+                             id="vcb_cashback_plus_american_express_nomal"
                              name="vcb_cashback_plus_american_express_nomal">
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-2">
                     <label class="cb">
-                      <input type="checkbox" id="vcb_cashback_plus_american_express_fast"
+                      <input type="checkbox" (click)="checkExFast()" [disabled]="!exfast"
+                             id="vcb_cashback_plus_american_express_fast"
                              name="vcb_cashback_plus_american_express_fast">
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-2">
                     <label class="cb">
-                      <input type="checkbox" id="vcb_cashback_plus_american_express_auto"
+                      <input type="checkbox" (click)="checkExAuto()" [disabled]="!exauto"
+                             id="vcb_cashback_plus_american_express_auto"
                              name="vcb_cashback_plus_american_express_auto">
                       <span class="checkmark"></span>
                     </label>
@@ -1813,7 +1853,8 @@
                   <div class="col-sm-2">
 
                     <label class="cb">
-                      <input type="checkbox" id="vcb_cashback_plus_american_express_money"
+                      <input type="checkbox" (click)="checkExMoney()" [disabled]="!exmoney"
+                             id="vcb_cashback_plus_american_express_money"
                              name="vcb_cashback_plus_american_express_money">
                       <span class="checkmark"></span>
                     </label>
@@ -1825,43 +1866,49 @@
                 <div class="row">
                   <div class="col-sm-2">
                     Thẻ ghi nợ khác (ghi rõ)<br>
-                    <input type="text" id="text_vcb_ghinokhac" name="text_vcb_ghinokhac" class="form-control">
+                    <input type="text" [disabled]="!text_vcb_ghinokhac" id="text_vcb_ghinokhac"
+                           name="text_vcb_ghinokhac" class="form-control">
                   </div>
                   <div class="col-sm-1">
                     <label class="cb">
-                      <input type="checkbox" id="vcb_ghinokhac_yes" name="vcb_ghinokhac_yes">
+                      <input type="checkbox" (click)="checkKYes()" [disabled]="!kyes" id="vcb_ghinokhac_yes"
+                             name="vcb_ghinokhac_yes">
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-1">
 
                     <label class="cb">
-                      <input type="checkbox" id="vcb_ghinokhac_no" name="vcb_ghinokhac_no">
+                      <input type="checkbox" (click)="checkKNo()" [disabled]="!kno" id="vcb_ghinokhac_no"
+                             name="vcb_ghinokhac_no">
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-2">
                     <label class="cb">
-                      <input type="checkbox" id="vcb_ghinokhac_nomal" name="vcb_ghinokhac_nomal">
+                      <input type="checkbox" (click)="checkKNomal()" [disabled]="!knomal" id="vcb_ghinokhac_nomal"
+                             name="vcb_ghinokhac_nomal">
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-2">
                     <label class="cb">
-                      <input type="checkbox" id="vcb_ghinokhac_fast" name="vcb_ghinokhac_fast">
+                      <input type="checkbox" (click)="checkKFast()" [disabled]="!kfast" id="vcb_ghinokhac_fast"
+                             name="vcb_ghinokhac_fast">
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-2">
                     <label class="cb">
-                      <input type="checkbox" id="vcb_ghinokhac_auto" name="vcb_ghinokhac_auto">
+                      <input type="checkbox" (click)="checkKAuto()" [disabled]="!kauto" id="vcb_ghinokhac_auto"
+                             name="vcb_ghinokhac_auto">
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-2">
-
                     <label class="cb">
-                      <input type="checkbox" id="vcb_ghinokhac_money" name="vcb_ghinokhac_money">
+                      <input type="checkbox" (click)="checkKMoney()" [disabled]="!kmoney" id="vcb_ghinokhac_money"
+                             name="vcb_ghinokhac_money">
                       <span class="checkmark"></span>
                     </label>
                   </div>
@@ -1888,7 +1935,7 @@
               <div id="page4" style="text-align: left">
                 <div style="clear: both;margin-bottom: 10px;"></div>
 
-                <div style="text-align: center;">
+                <div style="text-align: center;font-weight: bold">
                   <span>ĐĂNG KÝ CHỮ KÝ MẪU</span>
                 </div>
 
@@ -1898,8 +1945,8 @@
                   <div class="col-sm-3">
                   </div>
                   <div class="col-sm-6">
-                    <div style="background-color: #D9D9D9;">
-                      Chữ ký mẫu lần thứ nhất<br>
+                    <div style="background-color: #D9D9D9;text-align: center">
+                      <p>Chữ ký mẫu lần thứ nhất</p> <br>
                       <signature-pad #sign1 [options]="signaturePadOptions" (onBeginEvent)="drawStart()"
                                      (onEndEvent)="drawComplete(sign1)">
                       </signature-pad>
@@ -1916,7 +1963,7 @@
                   <div class="col-sm-3">
                   </div>
                   <div class="col-sm-6">
-                    <div style="background-color: #D9D9D9;">
+                    <div style="background-color: #D9D9D9;text-align: center">
                       Chữ ký mẫu lần thứ hai<br>
                       <signature-pad #sign2 [options]="signaturePadOptions" (onBeginEvent)="drawStart()"
                                      (onEndEvent)="drawComplete(sign2)">
@@ -1947,28 +1994,19 @@
 
                 <div class="row">
                   <div class="col-sm-12">
-                    1.Tôi cam đaon mọi thông tin đưa ra tại đề nghị này để đầy đủ và trung thực. Tôi hiểu và đồng
-                    ý rằng Vietcombank
-                    có thể
-                    yêu cầu thêm thông tin để xác thức các thông tin mà tôi xác nhận ở trên, thay mặt tôi cung cấp
-                    thông tin cho các
-                    cơ quan
-                    nhà nước có thẩm quyền theo quy định của pháp luật. Đề nghị Vietcombank mở tài khoản và cung
-                    cấp các dịch vụ mà
-                    tôi đã
-                    đăng ký ở trên.<br>
-                    2.Bằng việc đồng ý sử dụng các dịch vụ Ngân hàng nêu trên, Tôi xác nhận đã được Vietcombank
-                    cung cấp đầy đủ thông
-                    tin về
-                    thỏa thuận/hợp đồng/giấy đề nghị theo mẫu, điều kiện giao dịch chung và các dịchj vụ tại giấy
-                    đề nghị này; đã đọc,
-                    hiểu
-                    rõ, đồng ý và cam kết thực hiện các Điều khoản, điều kiện chung dưới đây và đồng ý rằng khi
-                    đại diện hợp pháp của
-                    Vietcombank ký vào Phần dành cho Ngân hàng tại văn bản này thì văn bản này và các Điều khoản,
-                    điều kiện chung dưới
-                    đây
-                    được coi là Hợp đồng và có giá trị ràng buộc các bên:<br>
+                    Tôi cam đoan mọi thông tin tôi cung cấp cho Ngân hàng tại đề nghị này đều đầy đủ và trung thực.
+                    Tôi hiểu và đồng ý rằng Ngân hàng có thể yêu cầu thêm thông tin để xác thực các thông tin mà Tôi
+                    xác nhận ở trên, thay mặt Tôi cung cấp thông tin cho các cơ quan nhà nước có thẩm quyền theo quy
+                    định của pháp luật. Đề nghị Ngân hàng mở tài khoản và cung cấp các dịch vụ mà Tôi đã đăng ký ở trên.
+
+                    <br><br>
+                    Bằng việc đồng ý sử dụng các dịch vụ Ngân hàng nêu trên, Tôi xác nhận đã được Ngân hàng cung cấp đầy
+                    đủ thông tin về thỏa thuận/ hợp đồng/ giấy đề nghị theo mẫu, điều kiện giao dịch chung và các dịch
+                    vụ tại giấy đề nghị này; đã đọc, hiểu rõ, đồng ý và cam kết thực hiện các Điều khoản, điều kiện
+                    chung dưới đây và đồng ý rằng khi đại diện hợp pháp của Ngân hàng ký vào “Phần dành cho Ngân hàng”
+                    tại văn bản này thì văn bản này
+                    và các Điều khoản, điều kiện chung dưới đây được coi là Hợp đồng và có giá trị ràng buộc các bên
+                    <br>
                   </div>
                 </div>
 
@@ -2082,7 +2120,7 @@
                 <span>
                   Tôi chịu trách nhiệm cập nhật và chấp thuận các Điều khoản và Điều kiện nói trên được sửa đổi theo từng thời kỳ trên website và/hoặc các kênh cung cấp dịch vụ của Ngân hàng. <br/>
 
-                  - Tôi cam kết chịu trách nhiệm quản lý, sử dụng tài khoản, dịch vụ Ngân hàng điện tử và Thẻ ghi nợ theo quy định của pháp luật và của Ngân hàng.
+                  Tôi cam kết chịu trách nhiệm quản lý, sử dụng tài khoản, dịch vụ Ngân hàng điện tử và Thẻ ghi nợ theo quy định của pháp luật và của Ngân hàng.
                 </span>
               </div>
 
@@ -2124,6 +2162,25 @@
                           [style]="pdfStyle">
               </pdf-viewer>
             </div>
+            <div style="margin-top: 15px;">
+              <div class="mx-auto">
+                <div *ngIf="checkSuccess">
+                  <div class="checkSuccess alert-success">
+                    <i class="fa fa-check-circle" aria-hidden="true"></i>
+                    Đơn đăng ký đã được phê duyệt.
+                  </div>
+                </div>
+                <div *ngIf="checkError">
+                  <div class="checkError   alert-dismissible ">
+                    <i class="fa fa-times-circle" aria-hidden="true"></i>
+                    Đơn đăng ký chưa được phê duyệt!!!
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+
           </div>
 
           <!-- isFinishedFormGroup -->
@@ -2213,12 +2270,12 @@
               </div>
 
 
-              <!--<div style="margin-top: 50px;">
+              <div style="margin-top: 50px;">
                 <button type="button" class="btn-step" style="width: 200px;margin-bottom: 30px"
                         (click)="reloadPage()">Quay
                   về trang chủ
                 </button>
-              </div>-->
+              </div>
 
             </div>
             <p></p>

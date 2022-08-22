@@ -26,7 +26,7 @@ const baseApiURL = 'https://fpt.aeyes.online/kie-server-dev/services/rest';
 
 //const configApiURL = 'http://103.9.0.210/ekyc/config';
 const configApiURL = 'https://fpt.aeyes.online/ekyc/config';
-const baseApiAuthURL = 'http://103.9.0.210/apiOnboarding';
+const baseApiAuthURL = 'https://fpt.aeyes.online/apiOnboarding';
 
 @Injectable({
   providedIn: 'root'
@@ -48,6 +48,8 @@ export class AppService {
   errsStepTaoDonDKy = false;
   currFinishStep = 0;
 
+  ktraPDuyet = 0;
+
   params: Array<any> = [
     {
       kquaXThuc: '',
@@ -62,6 +64,7 @@ export class AppService {
       QDinhTTuc: '',
       NhapDonDKy: '',
       TaoDonDKy: '',
+      XemTThaiPDuyet:'',
       CustomerSurvey: ''
     }
   ];
@@ -69,11 +72,11 @@ export class AppService {
   customerUser = {
     loaiGToTThan: 4,
     soGTo: '',
-    ngayCap: '',
+    ngayCap2: '',
     noiCap: '',
     hoTen: '',
-    ngaySinh: '',
-    gioiTinh: '',
+    namSinh: '',
+    gioiTinh2: '',
     diaChi: '',
     quocTich: '',
     queQuan: '',
@@ -97,26 +100,24 @@ export class AppService {
     queQuan: '',
     noiTru: '',
     dacDiemNhanDang: '',
-    ngayCap:'',
+    ngayCap2:'',
     noiCap: '',
     ngayHetHan: '',
-    gioiTinh: ''
+    gioiTinh2: ''
   }
   datatGToTThanGt = {
     gioiTinh:''
   }
-  dataNgayCap = {
-    ngaycap : this.datatGToTThan.ngayCap.slice(8,10) +"/"+ this.datatGToTThan.ngayCap.slice(5,7)+"/"+this.datatGToTThan.ngayCap.slice(0,4)
-  }
+
   pdfDonDKy = '';
   datdaGTTT = {
     loaiGToTThan: 4,
     soGTo: '',
-    ngayCap: '',
+    ngayCap2: '',
     noiCap: '',
     hoTen: '',
     ngaySinh: '',
-    gioiTinh: 0,
+    gioiTinh2: '',
     diaChi: '',
     quocTich: '',
     queQuan: '',
@@ -408,6 +409,7 @@ export class AppService {
     );
   }
 
+
   getKquaTCuuMST(processInstanceId: any) {
     this._getVariables(processInstanceId).subscribe(
       res => {
@@ -659,7 +661,56 @@ export class AppService {
         if (taskInstanceId && !this.taskInstanceIds[0].XemDonDKy) {
           this.completedTask(taskInstanceId, data).subscribe(
             res => {
+              let datap =
+                {
+                  ktraPDuyet: this.ktraPDuyet
+                }
+              this._completedXemTThaiPDuyet(processInstanceId, datap);
               Swal.close();
+            },
+            error => {
+              this.errsStep = true;
+            }
+          );
+        } else {
+          Swal.close();
+        }
+      },
+      error => {
+        this.errsStep = true;
+      }
+    );
+  }
+  getKtraPDuyet(processInstanceId: any) {
+    this._getVariables(processInstanceId).subscribe(
+      res => {
+        try {
+          let ktraPDuyet = res['ktraPDuyet'];
+
+          if (res['ktraPDuyet']) {
+            ktraPDuyet = res['ktraPDuyet'];
+            this.ktraPDuyet = ktraPDuyet;
+          }
+        } catch (e) {
+          //this.errsStep = true;
+        }
+      },
+      error => {
+        //this.errsStep = true;
+      }
+    );
+  }
+
+  _completedXemTThaiPDuyet(processInstanceId: any, data: any) {
+    this.swalWarning('', 'Hệ thống đang xử lý ...', 60000);
+
+    this._getTaskInstanceId(processInstanceId).subscribe(
+      res => {
+        let taskInstanceId = this._getTaskId(res, 'XemTThaiPDuyet');
+        if (taskInstanceId && !this.taskInstanceIds[0].XemTThaiPDuyet) {
+          this.completedTask(taskInstanceId, data).subscribe(
+            res => {
+
             },
             error => {
               this.errsStep = true;
@@ -676,14 +727,13 @@ export class AppService {
   }
 
   _completedSurveyPoint(processInstanceId: any, data: any) {
-    this.swalWarning('', 'Hệ thống đang xử lý ...', 60000);
-
     this._getTaskInstanceId(processInstanceId).subscribe(
       res => {
         let taskInstanceId = this._getTaskId(res, 'CustomerSurvey');
 
         if (taskInstanceId && !this.taskInstanceIds[0].CustomerSurvey) {
           this.completedTask(taskInstanceId, data).subscribe(
+
             res => {
               Swal.close();
             },
