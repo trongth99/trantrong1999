@@ -1,7 +1,7 @@
 <div *ngIf="isCameraExist; else noCameraExist" (window:resize)="onResize($event)">
   <div>
     <webcam style="border-radius: 10px;" [height]="height" [width]="width" [trigger]="triggerObservable" (imageCapture)="handleImage($event)"
-            *ngIf="showWebcam" [switchCamera]="nextWebcamObservable"></webcam>
+            *ngIf="showWebcam" [switchCamera]="nextWebcamObservable" [videoOptions]="videoOptions"></webcam>
 
     <div class="content" *ngIf="typecam == 'CCCD_Front'">
       <div>

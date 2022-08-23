@@ -47,6 +47,7 @@ export class AppService {
   errsStepNhapDonDKy = false;
   errsStepTaoDonDKy = false;
   currFinishStep = 0;
+  cFnAllStep = false;
 
   ktraPDuyet = 0;
 
@@ -735,6 +736,7 @@ export class AppService {
           this.completedTask(taskInstanceId, data).subscribe(
 
             res => {
+              this.cFnAllStep = true;
               Swal.close();
             },
             error => {

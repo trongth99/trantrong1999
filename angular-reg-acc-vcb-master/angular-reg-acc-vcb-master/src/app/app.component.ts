@@ -66,7 +66,7 @@ export class AppComponent {
   is9FormGroup = false;
   is10FormGroup = false;
   isFinishedFormGroup = false;
-  isChoose = false;
+  isChoose = true;
   isGTTT = false;
 
   done1FormGroup = false;
@@ -137,14 +137,7 @@ export class AppComponent {
       title: 'Xem Đơn Đăng Ký',
       isFormGroup: this.is8FormGroup,
       doneFormGroup: this.done8FormGroup
-    }/*,
-    {
-      step: 'step9',
-      status: 1,
-      title: 'Xem Đơn Đăng Ký',
-      isFormGroup: this.is9FormGroup,
-      doneFormGroup: this.done9FormGroup
-    }*/,
+    },
     {
       step: 'step9',
       status: 1,
@@ -234,7 +227,7 @@ export class AppComponent {
   }
 
   ngOnInit() {
-    this.isLoggedIn = this.isChoose = this.tokenStorageService.cLogin();
+    this.isLoggedIn = this.tokenStorageService.cLogin();
     this.CheckCamera();
     this.loadForm();
     this.device();
@@ -265,8 +258,8 @@ export class AppComponent {
         this.backStep();
       }
 
-      this.loadData();
       this.loadPheDuyet();
+      this.loadData();
     } catch (e) {
       //window.location.reload();
     }
@@ -274,7 +267,6 @@ export class AppComponent {
 
   CheckChucvu() {
     this.chucvu = false;
-
   }
 
   CheckChucvuKhac() {
@@ -300,7 +292,6 @@ export class AppComponent {
 
   checkTTSC() {
     this.text_loaitk_thanhtoansochon = true;
-
   }
 
   check() {
@@ -878,25 +869,7 @@ export class AppComponent {
   }
 
   loadData() {
-    /*  if (this.currIdxStep == 1) {
-        this.showBackStep = false;
-      } else {
-        this.showBackStep = true;
-      }*/
-
-    /*   this.datatGToTThan = this.appService.datatGToTThan;
-       if (this.datatGToTThan.length > 0) {
-         this.ngayHetHan = this.datatGToTThan[0].ngayHetHan;
-         this.noiTru = this.datatGToTThan[0].noiTru;
-       }
-   */
     this.pdfDonDKy = this.appService.pdfDonDKy;
-
-    /*if (this.appService.customerUser.gioiTinh == '0') {
-      this.appService.customerUser.gioiTinh = 'Nam';
-    } else if (this.appService.customerUser.gioiTinh == '1') {
-      this.appService.customerUser.gioiTinh = 'Nữ';
-    }*/
 
     if (this.appService.datatGToTThanGt.gioiTinh == 'M') {
       this.appService.datatGToTThanGt.gioiTinh = 'Nam';
@@ -915,6 +888,12 @@ export class AppComponent {
     if (this.currIdxStep == 3) {
       this.showStepNext = false;
     }
+
+    if (this.appService.cFnAllStep) {
+      this.processInstanceId = '';
+    }
+
+    console.log(this.processInstanceId);
   }
 
   loadPheDuyet() {
@@ -943,7 +922,9 @@ export class AppComponent {
   }
 
   checkProcessInstanceValue() {
-    this.createProcessInstance();
+    if (!this.processInstanceId) {
+      this.createProcessInstance();
+    }
   }
 
   createProcessInstance() {
@@ -968,9 +949,13 @@ export class AppComponent {
   }
 
   startReg() {
-    this.is0FormGroup = false;
+    this.isChoose = false;
     this.isGTTT = false;
+
+    this.is0FormGroup = false;
     this.is1FormGroup = true;
+    this.childStep1 = 0;
+
     this.currIdxStep = 1;
     this.checkProcessInstanceValue();
   }
@@ -988,7 +973,6 @@ export class AppComponent {
       //console.log('idx ' + index);
       //console.log('step ' + step);
       this.statusStep(step, 'next');
-      console.log(step);
     }
   }
 
@@ -999,6 +983,10 @@ export class AppComponent {
       let index = this.currIdxStep -= 1;
       let step = this.steps[index];
       this.statusStep(step, 'back');
+
+      if (this.currIdxStep == 0) {
+        this.ChooseGTTT();
+      }
     }
   }
 
@@ -1360,6 +1348,8 @@ export class AppComponent {
     this.is8FormGroup = false;
     this.is9FormGroup = false;
     this.is10FormGroup = false;
+    this.isChoose = false;
+    this.isGTTT = false;
   }
 
   cValid(index: number) {
@@ -1955,7 +1945,7 @@ export class AppComponent {
   logout(): void {
     this.tokenStorageService.signOut();
     this.reloadPage();
-    this.isLoggedIn = true;
+    this.isLoggedIn = false;
   }
 
 }

@@ -1,6 +1,6 @@
 .webcam-image {
   width: 100%;
-  //border-radius: 20px;
+  border-radius: 20px;
 }
 
 .cus-webcam {
@@ -93,8 +93,15 @@ label{
 }
 span{
   font-family: 'Roboto';
+  font-weight: 589;
 }
 button{
+  font-family: 'Roboto';
+}
+textarea{
+  font-family: 'Roboto';
+}
+.b{
   font-family: 'Roboto';
 }
 .btn-step{
@@ -111,15 +118,7 @@ select[disabled], input[disabled] {
    background-color: rgba(33, 37, 41, 0.3) !important;
 }
 
-/*
-body {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: radial-gradient(ellipse at center, lightblue 0%,#18cefb 100%);
-}
-*/
+
 
 .rating {
   font-size: 40px;

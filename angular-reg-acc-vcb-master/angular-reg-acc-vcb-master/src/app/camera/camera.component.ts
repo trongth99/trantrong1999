@@ -36,6 +36,8 @@ export class CameraComponent implements OnInit {
   private trigger: Subject<void> = new Subject<void>();
   private nextWebcam: Subject<boolean | string> = new Subject<boolean | string>();
 
+  facingMode: string = 'user';  //Set front camera
+
   width!: number;
   height!: number;
 
@@ -62,22 +64,46 @@ export class CameraComponent implements OnInit {
     this.btnWebcam();
   }
 
+
   ngAfterContentChecked() {
     this.btnWebcam();
+    this.setCssCamera();
   }
 
   device() {
-    // this.deviceInfo = this.deviceService.getDeviceInfo();
-    // this.isMobile = this.deviceService.isMobile();
-    // this.isTablet = this.deviceService.isTablet();
-    // this.isDesktopDevice = this.deviceService.isDesktop();
+    this.deviceInfo = this.deviceService.getDeviceInfo();
+    this.isMobile = this.deviceService.isMobile();
+    this.isTablet = this.deviceService.isTablet();
+    this.isDesktopDevice = this.deviceService.isDesktop();
 
-    // if (this.isMobile) {
-    //   this.width = this.width*(90/100);
-    // }
-
-    this.width = this.width*(90/100);
+    this.width = this.width*(80/100);
+    $(".webcam-wrapper").css({"width": "100%"});
+    $(".webcam-image").css({"width": "100%"});
   }
+
+
+  setCssCamera() {
+    $(".webcam-wrapper video.mirrored").css(
+      {
+        "width": "100%",
+        "height": "100%",
+        "border-radius": "20px",
+        "display": "flex",
+        "align-items": "center",
+        "justify-content": "center",
+        "overflow": "hidden"
+      }
+    );
+
+    if (this.isDesktopDevice) {
+      $(".webcam-wrapper").css({"width": "800px"});
+      $(".webcam-image").css({"width": "800px"});
+    } else if (this.isTablet) {
+      $(".webcam-wrapper").css({"width": "700px"});
+      $(".webcam-image").css({"width": "700px"});
+    }
+  }
+
 
   swalAlert(title: any, text: any, type: any) {
     Swal.fire(
@@ -156,6 +182,14 @@ export class CameraComponent implements OnInit {
 
   get nextWebcamObservable(): Observable<boolean | string> {
     return this.nextWebcam.asObservable();
+  }
+
+  get videoOptions(): MediaTrackConstraints {
+    const result: MediaTrackConstraints = {};
+    if (this.facingMode && this.facingMode !== '') {
+      result.facingMode = { ideal: this.facingMode };
+    }
+    return result;
   }
 
 }
