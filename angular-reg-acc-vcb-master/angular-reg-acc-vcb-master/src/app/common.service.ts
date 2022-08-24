@@ -125,7 +125,7 @@ export class CommonService {
     let goiTKhoan = [];
     let maGoi = '';
     let tenGoi = '';
-
+    let goitk_khac :  any = $('#goitk_khac').val()?.toString();
     if ($('#goitk_vcb_eco').is(":checked")) {
       maGoi = 'goitk_vcb_eco';
       tenGoi = 'Gói tài khoản Eco';
@@ -175,7 +175,7 @@ export class CommonService {
       tenGoi = 'Khác (ghi rõ)';
       goiTKhoan.push({
         maGoi: maGoi,
-        tenGoi: tenGoi,
+        tenGoi: goitk_khac,
         phi: "",
         gchu: ""
       });
