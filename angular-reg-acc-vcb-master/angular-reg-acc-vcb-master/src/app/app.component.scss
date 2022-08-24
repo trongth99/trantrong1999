@@ -272,10 +272,18 @@ select[disabled], input[disabled] {
   border: 1px solid #0C1E60;
 }
 
-.checkSuccess{
-  color: #929492;
+.checkPDSuccess{
+  color: rgba(0, 0, 0, 0.5);
   width: 50%;
   background-color: #b9ec98;
+  border-radius: 5px;
+  justify-content: center;
+}
+
+.checkPDFail{
+  color: rgba(0, 0, 0, 0.5);
+  width: 50%;
+  background-color: #FFA39E;
   border-radius: 5px;
   justify-content: center;
 }

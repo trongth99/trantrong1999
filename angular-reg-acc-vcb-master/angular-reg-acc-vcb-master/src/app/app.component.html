@@ -2115,14 +2115,14 @@
             <div style="margin-top: 15px;">
               <div class="mx-auto">
                 <div *ngIf="checkSuccess">
-                  <div class="checkSuccess alert-success">
-                    <i class="fa fa-check-circle" aria-hidden="true"></i>
+                  <div class="checkPDSuccess alert-success">
+                    <i class="fa fa-check-circle" aria-hidden="true" style="color: rgba(82, 196, 26, 1)"></i>
                     Đơn đăng ký đã được phê duyệt.
                   </div>
                 </div>
                 <div *ngIf="!checkSuccess">
-                  <div class="checkError   alert-dismissible ">
-                    <i class="fa fa-times-circle" aria-hidden="true"></i>
+                  <div class="checkPDFail   alert-dismissible ">
+                    <i class="fa fa-times-circle" aria-hidden="true" style="color: rgba(245, 34, 45, 1)"></i>
                     Đơn đăng ký chưa được phê duyệt!!!
                   </div>
                 </div>
