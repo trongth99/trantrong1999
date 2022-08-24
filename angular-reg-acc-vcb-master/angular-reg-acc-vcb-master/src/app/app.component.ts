@@ -215,7 +215,54 @@ export class AppComponent {
   idSetInterval = 0;
   surveyPoint = 0;
   checkSuccess = false;
-  checkError = false;
+
+  nomal24 = true;
+  fast24 = true;
+  auto24 = true;
+  money24 = true;
+  yes24 = true;
+  no24 = true;
+
+  visayes = true;
+  visano = true;
+  visanomal = true;
+  visafast = true;
+  visaauto = true;
+  visamoney = true;
+
+  dpyes = true;
+  dpno = true;
+  dpnomal = true;
+  dpfast = true;
+  dpauto = true;
+  dpmoney = true;
+  mtyes = true;
+  mtno = true;
+  mtnomal = true;
+  mtfast = true;
+  mtauto = true;
+  mtmoney = true;
+  payyes = true;
+  payno = true;
+  paynomal = true;
+  payfast = true;
+  payauto = true;
+  paymoney = true;
+
+  exyes = true;
+  exno = true;
+  exnomal = true;
+  exfast = true;
+  exauto = true;
+  exmoney = true;
+
+  kyes = true;
+  kno = true;
+  knomal = true;
+  kfast = true;
+  kauto = true;
+  kmoney = true;
+  text_vcb_ghinokhac = true;
 
 
   constructor(
@@ -308,21 +355,6 @@ export class AppComponent {
     this.text_loaitien_khac = true;
   }
 
-  nomal24 = true;
-  fast24 = true;
-  auto24 = true;
-  money24 = true;
-  yes24 = true;
-  no24 = true;
-
-  checkYes24() {
-    if ($('#vcb_connect24_yes').is(":checked")) {
-      this.no24 = false;
-    } else {
-      this.no24 = true;
-    }
-  }
-
   checkNo24() {
     if ($('#vcb_connect24_no').is(":checked")) {
       this.yes24 = false;
@@ -330,62 +362,14 @@ export class AppComponent {
       this.fast24 = false;
       this.auto24 = false;
       this.money24 = false;
-      this.yes24 = false;
+
     } else {
       this.yes24 = true;
       this.nomal24 = true;
       this.fast24 = true;
       this.auto24 = true;
       this.money24 = true;
-      this.yes24 = true;
-    }
-  }
 
-
-  checkNomal24() {
-    if ($('#vcb_connect24_nomal').is(":checked")) {
-      this.fast24 = false;
-    } else {
-      this.fast24 = true;
-    }
-  }
-
-  checkFast24() {
-    if ($('#vcb_connect24_fast').is(":checked")) {
-      this.nomal24 = false;
-    } else {
-      this.nomal24 = true;
-    }
-  }
-
-  checkAuto24() {
-    if ($('#vcb_connect24_auto').is(":checked")) {
-      this.money24 = false;
-    } else {
-      this.money24 = true;
-    }
-  }
-
-  checkMoney24() {
-    if ($('#vcb_connect24_money').is(":checked")) {
-      this.auto24 = false;
-    } else {
-      this.auto24 = true;
-    }
-  }
-
-  visayes = true;
-  visano = true;
-  visanomal = true;
-  visafast = true;
-  visaauto = true;
-  visamoney = true;
-
-  checkVisaYes() {
-    if ($('#vcb_connect24_visa_yes').is(":checked")) {
-      this.visano = false;
-    } else {
-      this.visano = true;
     }
   }
 
@@ -405,54 +389,6 @@ export class AppComponent {
     }
   }
 
-  checkVisaNomal() {
-    if ($('#vcb_connect24_visa_nomal').is(":checked")) {
-      this.visafast = false;
-    } else {
-      this.visafast = true;
-    }
-  }
-
-  checkVisaFast() {
-    if ($('#vcb_connect24_visa_fast').is(":checked")) {
-      this.visanomal = false;
-    } else {
-      this.visanomal = true;
-    }
-  }
-
-  checkVisaAuto() {
-    if ($('#vcb_connect24_visa_auto').is(":checked")) {
-      this.visamoney = false;
-    } else {
-      this.visamoney = true;
-    }
-  }
-
-  checkVisaMoney() {
-    if ($('#vcb_connect24_visa_money').is(":checked")) {
-      this.visaauto = false;
-    } else {
-      this.visaauto = true;
-    }
-  }
-
-  dpyes = true;
-  dpno = true;
-  dpnomal = true;
-  dpfast = true;
-  dpauto = true;
-  dpmoney = true;
-
-  checkDPYes() {
-
-    if ($('#vcb_visa_debit_platinum_yes').is(":checked")) {
-      this.dpno = false;
-    } else {
-      this.dpno = true;
-    }
-  }
-
   checkVDPNo() {
     if ($('#vcb_visa_debit_platinum_no').is(":checked")) {
       this.dpyes = false;
@@ -469,180 +405,35 @@ export class AppComponent {
     }
   }
 
-  checkDPNomal() {
-    if ($('#vcb_visa_debit_platinum_nomal').is(":checked")) {
-      this.dpfast = false;
-    } else {
-      this.dpfast = true;
-    }
-  }
-
-  checkDPFats() {
-    if ($('#vcb_visa_debit_platinum_fast').is(":checked")) {
-      this.dpnomal = false;
-    } else {
-      this.dpnomal = true;
-    }
-  }
-
-  checkDPAuto() {
-    if ($('#vcb_visa_debit_platinum_auto').is(":checked")) {
-      this.dpmoney = false;
-    } else {
-      this.dpmoney = true;
-    }
-  }
-
-  checkDPMoney() {
-    if ($('#vcb_visa_debit_platinum_money').is(":checked")) {
-      this.dpauto = false;
-    } else {
-      this.dpauto = true;
-    }
-  }
-
-  mtyes = true;
-  mtno = true;
-  mtnomal = true;
-  mtfast = true;
-  mtauto = true;
-  mtmoney = true;
-
-  checkMTYes() {
-    if ($('#vcb_mastercard_yes').is(":checked")) {
-      this.mtno = false;
-    } else {
-      this.mtno = true;
-    }
-  }
-
   checkMTNo() {
     if ($('#vcb_mastercard_no').is(":checked")) {
       this.mtyes = false;
-
       this.mtnomal = false;
       this.mtfast = false;
       this.mtauto = false;
       this.mtmoney = false;
     } else {
       this.mtyes = true;
-
       this.mtnomal = true;
       this.mtfast = true;
       this.mtauto = true;
       this.mtmoney = true;
-    }
-  }
-
-  checkMTNomal() {
-    if ($('#vcb_mastercard_nomal').is(":checked")) {
-      this.mtfast = false;
-    } else {
-      this.mtfast = true;
-    }
-  }
-
-  checkMTFast() {
-    if ($('#vcb_mastercard_fast').is(":checked")) {
-      this.mtnomal = false;
-    } else {
-      this.mtnomal = true;
-    }
-  }
-
-  checkMTAuto() {
-    if ($('#vcb_mastercard_auto').is(":checked")) {
-      this.mtmoney = false;
-    } else {
-      this.mtmoney = true;
-    }
-  }
-
-  checkMTMoney() {
-    if ($('#vcb_mastercard_money').is(":checked")) {
-      this.mtauto = false;
-    } else {
-      this.mtauto = true;
-    }
-  }
-
-  payyes = true;
-  payno = true;
-  paynomal = true;
-  payfast = true;
-  payauto = true;
-  paymoney = true;
-
-  checkPayYes() {
-    if ($('#vcb_unionpay_yes').is(":checked")) {
-      this.payno = false;
-    } else {
-      this.payno = true;
     }
   }
 
   checkPayNo() {
     if ($('#vcb_unionpay_no').is(":checked")) {
       this.payyes = false;
-
       this.paynomal = false;
       this.payfast = false;
       this.payauto = false;
       this.paymoney = false;
     } else {
       this.payyes = true;
-
       this.paynomal = true;
       this.payfast = true;
       this.payauto = true;
       this.paymoney = true;
-    }
-  }
-
-  checkPayNomal() {
-    if ($('#vcb_unionpay_nomal').is(":checked")) {
-      this.payfast = false;
-    } else {
-      this.payfast = true;
-    }
-  }
-
-  checkPayFast() {
-    if ($('#vcb_unionpay_fast').is(":checked")) {
-      this.paynomal = false;
-    } else {
-      this.paynomal = true;
-    }
-  }
-
-  checkPayAuto() {
-    if ($('#vcb_unionpay_auto').is(":checked")) {
-      this.paymoney = false;
-    } else {
-      this.paymoney = true;
-    }
-  }
-
-  checkPayMoney() {
-    if ($('#vcb_unionpay_money').is(":checked")) {
-      this.payauto = false;
-    } else {
-      this.payauto = true;
-    }
-  }
-
-  exyes = true;
-  exno = true;
-  exnomal = true;
-  exfast = true;
-  exauto = true;
-  exmoney = true;
-
-  checkExYes() {
-    if ($('#vcb_cashback_plus_american_express_yes').is(":checked")) {
-      this.exno = false;
-    } else {
-      this.exno = true;
     }
   }
 
@@ -664,61 +455,9 @@ export class AppComponent {
     }
   }
 
-  checkExNomal() {
-    if ($('#vcb_cashback_plus_american_express_nomal').is(":checked")) {
-      this.exfast = false;
-    } else {
-      this.exfast = true;
-    }
-  }
-
-  checkExFast() {
-    if ($('#vcb_cashback_plus_american_express_fast').is(":checked")) {
-      this.exnomal = false;
-    } else {
-      this.exnomal = true;
-    }
-  }
-
-  checkExAuto() {
-    if ($('#vcb_cashback_plus_american_express_auto').is(":checked")) {
-      this.exmoney = false;
-    } else {
-      this.exmoney = true;
-    }
-  }
-
-  checkExMoney() {
-    if ($('#vcb_cashback_plus_american_express_money').is(":checked")) {
-      this.exauto = false;
-    } else {
-      this.exauto = true;
-    }
-  }
-
-
-  kyes = true;
-  kno = true;
-  knomal = true;
-  kfast = true;
-  kauto = true;
-  kmoney = true;
-  text_vcb_ghinokhac = true;
-
-  checkKYes() {
-    if ($('#vcb_ghinokhac_yes').is(":checked")) {
-      this.kno = false;
-      this.text_vcb_ghinokhac = true;
-    } else {
-      this.kno = true;
-
-    }
-  }
-
   checkKNo() {
     if ($('#vcb_ghinokhac_no').is(":checked")) {
       this.kyes = false;
-
       this.knomal = false;
       this.kfast = false;
       this.kauto = false;
@@ -726,48 +465,11 @@ export class AppComponent {
       this.text_vcb_ghinokhac = false;
     } else {
       this.kyes = true;
-
       this.knomal = true;
       this.kfast = true;
       this.kauto = true;
       this.kmoney = true;
 
-    }
-  }
-
-  checkKNomal() {
-    if ($('#vcb_ghinokhac_nomal').is(":checked")) {
-      this.kfast = false;
-      this.text_vcb_ghinokhac = true;
-    } else {
-      this.kfast = true;
-    }
-  }
-
-  checkKFast() {
-    if ($('#vcb_ghinokhac_fast').is(":checked")) {
-      this.knomal = false;
-      this.text_vcb_ghinokhac = true;
-    } else {
-      this.knomal = true;
-    }
-  }
-
-  checkKAuto() {
-    if ($('#vcb_ghinokhac_auto').is(":checked")) {
-      this.kmoney = false;
-      this.text_vcb_ghinokhac = true;
-    } else {
-      this.kmoney = true;
-    }
-  }
-
-  checkKMoney() {
-    if ($('#vcb_ghinokhac_money').is(":checked")) {
-      this.kauto = false;
-      this.text_vcb_ghinokhac = true;
-    } else {
-      this.kauto = true;
     }
   }
 
@@ -882,31 +584,22 @@ export class AppComponent {
     if (this.appService.customerUser.loaiGToTThan == 4) {
       this.strLoaiGToTThan = 'CCCD';
     }
-    if (this.currIdxStep == 9) {
-      this.showStepNext = false;
-    } else {
-      this.showStepNext = true;
-    }
-    if (this.currIdxStep == 3) {
-      this.showStepNext = false;
-    }
 
     if (this.appService.cFnAllStep) {
       this.processInstanceId = '';
     }
 
-    console.log(this.processInstanceId);
+    //console.log(this.currIdxStep);
   }
 
   loadPheDuyet() {
     if (!this.appService.ktraPDuyet) {
-      this.checkError = true;
       this.checkSuccess = false;
     } else {
-      this.showStepNext = true;
       this.checkSuccess = true;
-      this.checkError = false;
       clearInterval(this.idSetInterval);
+      this.idSetInterval = 1;
+      this.showStepNext = true;
     }
   }
 
@@ -959,12 +652,17 @@ export class AppComponent {
     this.childStep1 = 0;
 
     this.currIdxStep = 1;
-    //this.checkProcessInstanceValue();
+    //
+    this.checkProcessInstanceValue();
   }
 
   ChooseGTTT() {
     this.isChoose = false;
     this.isGTTT = true;
+  }
+
+  resetProcessInstance() {
+    this.processInstanceId = '';
   }
 
   stepNext() {
@@ -1004,16 +702,23 @@ export class AppComponent {
       this.titleStep = this.configSteps[this.steps[this.currIdxStep - 1]].title;
     }
 
+    if (step == 2) {
+      this.showStepNext = false;
+    } else {
+      this.showStepNext = true;
+    }
+
+    if (step == 8 && !this.checkSuccess) {
+      this.showStepNext = false;
+    } else if (step == 8 && this.checkSuccess) {
+      this.showStepNext = true;
+    }
+
     if (step == 9) {
       this.isFinishedFormGroup = true;
       this.showStepNext = false;
       this.showBackStep = false;
       this.retsetStep();
-    }
-    if (step == 2) {
-      this.showStepNext = false;
-    } else {
-      this.showStepNext = true;
     }
   }
 
@@ -1143,6 +848,7 @@ export class AppComponent {
       sign2: this.sign2
     }
     let data = this.common.formReg(inputData);
+    console.log(data);
 
     let start_html = '<html>\
       <head>\
@@ -1163,9 +869,11 @@ export class AppComponent {
 
     this.appService._completedNhapDonDKy(this.processInstanceId, data, this.htmlTemp(this.htmlDonDKy));
 
-    this.idSetInterval = setInterval(() => {
-      this.appService.getKtraPDuyet(this.processInstanceId);
-    }, 10000);
+    if (!this.idSetInterval) {
+      this.idSetInterval = setInterval(() => {
+        this.appService.getKtraPDuyet(this.processInstanceId);
+      }, 10000);
+    }
   }
 
   step9Handle() {

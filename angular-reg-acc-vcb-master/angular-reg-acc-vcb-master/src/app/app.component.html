@@ -28,7 +28,8 @@
   <div class="container">
     <div class="row" style="width: 100%; margin-top: 5px;">
       <div class="col text-left">
-        <img *ngIf="showBackStepGttt" id="backStepGttt" (click)="backStepGttt()" src="./assets/img/Back.png" class="step-button">
+        <img *ngIf="showBackStepGttt" id="backStepGttt" (click)="backStepGttt()" src="./assets/img/Back.png"
+             class="step-button">
       </div>
     </div>
   </div>
@@ -47,7 +48,7 @@
           <div style="width: 80%;" class="mx-auto ">
 
             <div class="input-group ">
-              <input type="button" (click)="ChooseGTTT()" value="Mở tài khoản thanh toán"
+              <input type="button" (click)="ChooseGTTT(); resetProcessInstance();" value="Mở tài khoản thanh toán"
                      class="form-control btn-choose   text-white"
                      style="background: #D9D9D9;border-radius: 30px;">
             </div>
@@ -203,7 +204,6 @@
               <div style="clear: both;margin-bottom: 10px;"></div>
             </form>
           </div>
-
 
 
           <!-- is2FormGroup -->
@@ -1238,7 +1238,7 @@
                       <div class="col-sm-4">
 
                         <label class="cb">Có
-                          <input (click)="checkDKGTT()" type="radio" name="khac">
+                          <input (click)="checkDKGTT()" type="radio" id="goitk_khac" name="khac">
                           <span class="checkmark"></span>
                         </label>
                       </div>
@@ -1401,13 +1401,13 @@
                     <div class="row">
                       <div class="col-sm-4">
                         <label class="cb">Có
-                          <input type="checkbox" type="checkbox" id="pthuc_smart_otp_co" name="pthuc_smart_otp">
+                          <input type="radio" id="pthuc_smart_otp_co" name="pthuc_smart_otp">
                           <span class="checkmark"></span>
                         </label>
                       </div>
                       <div class="col-sm-4">
                         <label class="cb">Không
-                          <input type="checkbox" type="checkbox" id="pthuc_smart_otp_khong" name="pthuc_smart_otp"
+                          <input type="radio" id="pthuc_smart_otp_khong" name="pthuc_smart_otp"
                                  checked>
                           <span class="checkmark"></span>
                         </label>
@@ -1489,7 +1489,7 @@
 
                 <div class="row">
                   <div class="col-sm-2">
-                    Vietcombank Connect24
+                    Thẻ ghi nợ nội địa
                   </div>
                   <div class="col-sm-1">
                     <label class="cb">
@@ -1500,7 +1500,7 @@
                   </div>
                   <div class="col-sm-1">
                     <label class="cb">
-                      <input type="radio" id="vcb_connect24_no"
+                      <input type="radio" (click)="checkNo24() " id="vcb_connect24_no"
                              name="vcb_connect24_loai_the">
                       <span class="checkmark"></span>
                     </label>
@@ -1521,15 +1521,15 @@
                   </div>
                   <div class="col-sm-2">
                     <label class="cb">
-                      <input type="checkbox" [disabled]="!auto24" (click)="checkAuto24()" id="vcb_connect24_auto"
-                             name="vcb_connect24_auto">
+                      <input type="radio" id="vcb_connect24_auto"
+                             name="vcb_connect24_ttoan_phi">
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-2">
                     <label class="cb">
-                      <input type="checkbox" [disabled]="!money24" (click)="checkMoney24()" id="vcb_connect24_money"
-                             name="vcb_connect24_money">
+                      <input type="radio" id="vcb_connect24_money"
+                             name="vcb_connect24_ttoan_phi">
                       <span class="checkmark"></span>
                     </label>
                   </div>
@@ -1539,48 +1539,48 @@
 
                 <div class="row">
                   <div class="col-sm-2">
-                    Vietcombank connect24 Visa
+                    Thẻ ghi nợ quốc tế Visa
                   </div>
                   <div class="col-sm-1">
                     <label class="cb">
-                      <input type="checkbox" (click)="checkVisaYes()" [disabled]="!visayes" id="vcb_connect24_visa_yes"
-                             name="vcb_connect24_visa_yes">
+                      <input type="radio" id="vcb_connect24_visa_yes"
+                             name="vcb_connect24_visa_loai_the">
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-1">
                     <label class="cb">
-                      <input type="checkbox" (click)="checkVisaNo()" [disabled]="!visano" id="vcb_connect24_visa_no"
-                             name="vcb_connect24_visa_no">
+                      <input type="radio" (click)="checkVisaNo()" id="vcb_connect24_visa_no"
+                             name="vcb_connect24_visa_loai_the">
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-2">
                     <label class="cb">
-                      <input type="checkbox" (click)="checkVisaNomal()" [disabled]="!visanomal"
-                             id="vcb_connect24_visa_nomal" name="vcb_connect24_visa_nomal">
+                      <input type="radio"
+                             id="vcb_connect24_visa_nomal" name="vcb_connect24_visa_nomal_phuong_thuc">
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-2">
                     <label class="cb">
-                      <input type="checkbox" (click)="checkVisaFast()" [disabled]="!visafast"
-                             id="vcb_connect24_visa_fast" name="vcb_connect24_visa_fast">
+                      <input type="radio"
+                             id="vcb_connect24_visa_fast" name="vcb_connect24_visa_nomal_phuong_thuc">
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-2">
                     <label class="cb">
-                      <input type="checkbox" (click)="checkVisaAuto()" [disabled]="!visaauto"
-                             id="vcb_connect24_visa_auto" name="vcb_connect24_visa_auto">
+                      <input type="radio"
+                             id="vcb_connect24_visa_auto" name="vcb_connect24_visa_auto_ttoan_phi">
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-2">
 
                     <label class="cb">
-                      <input type="checkbox" (click)="checkVisaMoney()" [disabled]="!visamoney"
-                             id="vcb_connect24_visa_money" name="vcb_connect24_visa_money">
+                      <input type="radio"
+                             id="vcb_connect24_visa_money" name="vcb_connect24_visa_auto_ttoan_phi">
                       <span class="checkmark"></span>
                     </label>
                   </div>
@@ -1590,51 +1590,51 @@
 
                 <div class="row">
                   <div class="col-sm-2">
-                    Vietcombank Visa Debit Platinum
+                    Thẻ ghi nợ quốc tế Platinum
                   </div>
                   <div class="col-sm-1">
                     <label class="cb">
-                      <input type="checkbox" (click)="checkDPYes()" [disabled]="!dpyes" id="vcb_visa_debit_platinum_yes"
-                             name="vcb_visa_debit_platinum_yes">
+                      <input type="radio" id="vcb_visa_debit_platinum_yes"
+                             name="vcb_visa_debit_platinum_loai_the">
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-1">
                     <label class="cb">
-                      <input type="checkbox" (click)="checkVDPNo()" [disabled]="!dpno" id="vcb_visa_debit_platinum_no"
-                             name="vcb_visa_debit_platinum_no">
+                      <input type="radio" (click)="checkVDPNo()" id="vcb_visa_debit_platinum_no"
+                             name="vcb_visa_debit_platinum_loai_the">
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-2">
 
                     <label class="cb">
-                      <input type="checkbox" (click)="checkDPNomal()" [disabled]="!dpnomal"
+                      <input type="radio"
                              id="vcb_visa_debit_platinum_nomal"
-                             name="vcb_visa_debit_platinum_nomal"/>
+                             name="vcb_visa_debit_platinum_nomal_phuong_thuc"/>
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-2">
                     <label class="cb">
-                      <input type="checkbox" (click)="checkDPFats()" [disabled]="!dpfast"
-                             id="vcb_visa_debit_platinum_fast" name="vcb_visa_debit_platinum_fast"/>
+                      <input type="radio"
+                             id="vcb_visa_debit_platinum_fast" name="vcb_visa_debit_platinum_nomal_phuong_thuc"/>
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-2">
                     <label class="cb">
-                      <input type="checkbox" (click)="checkDPAuto()" [disabled]="!dpauto"
-                             id="vcb_visa_debit_platinum_auto" name="vcb_visa_debit_platinum_auto">
+                      <input type="radio"
+                             id="vcb_visa_debit_platinum_auto" name="vcb_visa_debit_platinum_auto_ttoan_phi">
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-2">
 
                     <label class="cb">
-                      <input type="checkbox" (click)="checkDPMoney()" [disabled]="!dpmoney"
+                      <input type="radio"
                              id="vcb_visa_debit_platinum_money"
-                             name="vcb_visa_debit_platinum_money">
+                             name="vcb_visa_debit_platinum_auto_ttoan_phi">
                       <span class="checkmark"></span>
                     </label>
                   </div>
@@ -1644,49 +1644,49 @@
 
                 <div class="row">
                   <div class="col-sm-2">
-                    Vietcombank Mastercard
+                    Thẻ ghi nợ quốc tế Mastercard
                   </div>
                   <div class="col-sm-1">
                     <label class="cb">
-                      <input type="checkbox" (click)="checkMTYes()" [disabled]="!mtyes" id="vcb_mastercard_yes"
-                             name="vcb_mastercard_yes"/>
+                      <input type="radio" id="vcb_mastercard_yes"
+                             name="vcb_mastercard_loai_the"/>
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-1">
                     <label class="cb">
-                      <input type="checkbox" (click)="checkMTNo()" [disabled]="!mtno" id="vcb_mastercard_no"
-                             name="vcb_mastercard_no">
+                      <input type="radio" (click)="checkMTNo()" id="vcb_mastercard_no"
+                             name="vcb_mastercard_loai_the">
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-2">
 
                     <label class="cb">
-                      <input type="checkbox" (click)="checkMTNomal()" [disabled]="!mtnomal" id="vcb_mastercard_nomal"
-                             name="vcb_mastercard_nomal">
+                      <input type="radio" id="vcb_mastercard_nomal"
+                             name="vcb_mastercard_nomal_pp">
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-2">
                     <label class="cb">
-                      <input type="checkbox" (click)="checkMTFast()" [disabled]="!mtfast" id="vcb_mastercard_fast"
-                             name="vcb_mastercard_fast">
+                      <input type="radio" id="vcb_mastercard_fast"
+                             name="vcb_mastercard_nomal_pp">
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-2">
                     <label class="cb">
-                      <input type="checkbox" (click)="checkMTAuto()" [disabled]="!mtauto" id="vcb_mastercard_auto"
-                             name="vcb_mastercard_auto">
+                      <input type="radio" id="vcb_mastercard_auto"
+                             name="vcb_mastercard_auto_ttp">
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-2">
 
                     <label class="cb">
-                      <input type="checkbox" (click)="checkMTMoney()" [disabled]="!mtmoney" id="vcb_mastercard_money"
-                             name="vcb_mastercard_money">
+                      <input type="radio" id="vcb_mastercard_money"
+                             name="vcb_mastercard_auto_ttp">
                       <span class="checkmark"></span>
                     </label>
                   </div>
@@ -1696,47 +1696,47 @@
 
                 <div class="row">
                   <div class="col-sm-2">
-                    Vietcombank Unionpay
+                    Thẻ ghi nợ quốc tế Unionpay
                   </div>
                   <div class="col-sm-1">
                     <label class="cb">
-                      <input type="checkbox" (click)="checkPayYes()" [disabled]="!payyes" id="vcb_unionpay_yes"
-                             name="vcb_unionpay_yes">
+                      <input type="radio" id="vcb_unionpay_yes"
+                             name="vcb_unionpay_lt">
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-1">
                     <label class="cb">
-                      <input type="checkbox" (click)="checkPayNo()" [disabled]="!payno" id="vcb_unionpay_no"
-                             name="vcb_unionpay_no">
+                      <input type="radio" (click)="checkPayNo()" id="vcb_unionpay_no"
+                             name="vcb_unionpay_lt">
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-2">
                     <label class="cb">
-                      <input type="checkbox" (click)="checkPayNomal()" [disabled]="!paynomal" id="vcb_unionpay_nomal"
-                             name="vcb_unionpay_nomal">
+                      <input type="radio" id="vcb_unionpay_nomal"
+                             name="vcb_unionpay_pp">
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-2">
                     <label class="cb">
-                      <input type="checkbox" (click)="checkPayFast()" [disabled]="!payfast" id="vcb_unionpay_fast"
-                             name="vcb_unionpay_fast">
+                      <input type="radio" id="vcb_unionpay_fast"
+                             name="vcb_unionpay_pp">
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-2">
                     <label class="cb">
-                      <input type="checkbox" (click)="checkPayAuto()" [disabled]="!payauto" id="vcb_unionpay_auto"
-                             name="vcb_unionpay_auto">
+                      <input type="radio" id="vcb_unionpay_auto"
+                             name="vcb_unionpay_ttp">
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-2">
                     <label class="cb">
-                      <input type="checkbox" (click)="checkPayMoney()" [disabled]="!paymoney" id="vcb_unionpay_money"
-                             name="vcb_unionpay_money">
+                      <input type="radio" id="vcb_unionpay_money"
+                             name="vcb_unionpay_ttp">
                       <span class="checkmark"></span>
                     </label>
                   </div>
@@ -1746,54 +1746,54 @@
 
                 <div class="row">
                   <div class="col-sm-2">
-                    Vietcombank Cashback Plus American Express
+                    Thẻ Cashback Plus American Express
                   </div>
                   <div class="col-sm-1">
                     <label class="cb">
-                      <input type="checkbox" (click)="checkExYes()" [disabled]="!exyes"
+                      <input type="radio"
                              id="vcb_cashback_plus_american_express_yes"
-                             name="vcb_cashback_plus_american_express_yes">
+                             name="vcb_cashback_plus_american_express_lt">
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-1">
                     <label class="cb">
-                      <input type="checkbox" (click)="checkExNo()" [disabled]="!exno"
+                      <input type="radio" (click)="checkExNo()"
                              id="vcb_cashback_plus_american_express_no"
-                             name="vcb_cashback_plus_american_express_no">
+                             name="vcb_cashback_plus_american_express_lt">
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-2">
                     <label class="cb">
-                      <input type="checkbox" (click)="checkExNomal()" [disabled]="!exnomal"
+                      <input type="radio"
                              id="vcb_cashback_plus_american_express_nomal"
-                             name="vcb_cashback_plus_american_express_nomal">
+                             name="vcb_cashback_plus_american_express_pp">
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-2">
                     <label class="cb">
-                      <input type="checkbox" (click)="checkExFast()" [disabled]="!exfast"
+                      <input type="radio"
                              id="vcb_cashback_plus_american_express_fast"
-                             name="vcb_cashback_plus_american_express_fast">
+                             name="vcb_cashback_plus_american_express_pp">
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-2">
                     <label class="cb">
-                      <input type="checkbox" (click)="checkExAuto()" [disabled]="!exauto"
+                      <input type="radio"
                              id="vcb_cashback_plus_american_express_auto"
-                             name="vcb_cashback_plus_american_express_auto">
+                             name="vcb_cashback_plus_american_express_ttt">
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-2">
 
                     <label class="cb">
-                      <input type="checkbox" (click)="checkExMoney()" [disabled]="!exmoney"
+                      <input type="radio"
                              id="vcb_cashback_plus_american_express_money"
-                             name="vcb_cashback_plus_american_express_money">
+                             name="vcb_cashback_plus_american_express_ttt">
                       <span class="checkmark"></span>
                     </label>
                   </div>
@@ -1803,50 +1803,49 @@
 
                 <div class="row">
                   <div class="col-sm-2">
-                    Thẻ ghi nợ khác (ghi rõ)<br>
-                    <input type="text" [disabled]="!text_vcb_ghinokhac" id="text_vcb_ghinokhac"
-                           name="text_vcb_ghinokhac" class="form-control">
+                    Thẻ ghi nợ khác (ghi rõ) <br>
+                    <input type="text" id="text_vcb_ghinokhac" name="text_vcb_ghinokhac" class="form-control">
                   </div>
                   <div class="col-sm-1">
                     <label class="cb">
-                      <input type="checkbox" (click)="checkKYes()" [disabled]="!kyes" id="vcb_ghinokhac_yes"
-                             name="vcb_ghinokhac_yes">
+                      <input type="radio" id="vcb_ghinokhac_yes"
+                             name="vcb_ghinokhac_khac_lt">
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-1">
 
                     <label class="cb">
-                      <input type="checkbox" (click)="checkKNo()" [disabled]="!kno" id="vcb_ghinokhac_no"
-                             name="vcb_ghinokhac_no">
+                      <input type="radio" (click)="checkKNo()" id="vcb_ghinokhac_no"
+                             name="vcb_ghinokhac_khac_lt">
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-2">
                     <label class="cb">
-                      <input type="checkbox" (click)="checkKNomal()" [disabled]="!knomal" id="vcb_ghinokhac_nomal"
-                             name="vcb_ghinokhac_nomal">
+                      <input type="radio" id="vcb_ghinokhac_nomal"
+                             name="vcb_ghinokhac_pt">
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-2">
                     <label class="cb">
-                      <input type="checkbox" (click)="checkKFast()" [disabled]="!kfast" id="vcb_ghinokhac_fast"
-                             name="vcb_ghinokhac_fast">
+                      <input type="checkbox" id="vcb_ghinokhac_fast"
+                             name="vcb_ghinokhac_pt">
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-2">
                     <label class="cb">
-                      <input type="checkbox" (click)="checkKAuto()" [disabled]="!kauto" id="vcb_ghinokhac_auto"
-                             name="vcb_ghinokhac_auto">
+                      <input type="radio" id="vcb_ghinokhac_auto"
+                             name="vcb_ghinokhac_ttt">
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-2">
                     <label class="cb">
-                      <input type="checkbox" (click)="checkKMoney()" [disabled]="!kmoney" id="vcb_ghinokhac_money"
-                             name="vcb_ghinokhac_money">
+                      <input type="radio" id="vcb_ghinokhac_money"
+                             name="vcb_ghinokhac_ttt">
                       <span class="checkmark"></span>
                     </label>
                   </div>
@@ -1856,7 +1855,21 @@
 
                 <div class="row">
                   <div class="col-sm-2">
-                    <input type="checkbox" id="phat_hanh_the_phu" name="phat_hanh_the_phu"/> Phát hành thẻ phụ
+                    Phát hành thẻ phụ
+                  </div>
+                  <div class="col-sm-1">
+                    <label class="cb">
+                      <input type="radio" id="phat_hanh_the_phu_yes"
+                             name="phat_hanh_the_phu">
+                      <span class="checkmark"></span>
+                    </label>
+                  </div>
+                  <div class="col-sm-1">
+                    <label class="cb">
+                      <input type="radio" id="phat_hanh_the_phu_no"
+                             name="phat_hanh_the_phu">
+                      <span class="checkmark"></span>
+                    </label>
                   </div>
                 </div>
               </div>
@@ -1873,7 +1886,7 @@
               <div id="page4" style="text-align: left">
                 <div style="clear: both;margin-bottom: 10px;"></div>
 
-                <div style="text-align: center;font-weight: 580px;">
+                <div style="text-align: center; font-weight: 580 ;">
                   <span>ĐĂNG KÝ CHỮ KÝ MẪU</span>
                 </div>
 
@@ -1969,8 +1982,7 @@
                   <div class="col-sm-1">
                   </div>
                   <div class="col-sm-7">
-                    Điều khoản và Điều kiện về mở và sử dụng tài khoản tiền gửi tại Vietcombank đối với khách hàng
-                    cá nhân
+                    Điều khoản và Điều kiện về mở và sử dụng tài khoản tiền gửi tại Ngân hàng đối với khách hàng cá nhân
                   </div>
                   <div class="col-sm-2">
                     <label class="cb">
@@ -1992,7 +2004,7 @@
                   <div class="col-sm-1">
                   </div>
                   <div class="col-sm-7">
-                    Điều khoản và Điều kiện sử dụng dịch vụ ngân hàng điện tử dành cho khách hàng cá nhân
+                    Điều khoản và Điều kiện sử dụng dịch vụ Ngân hàng điện tử tại Ngân hàng đối với khách hàng cá nhân
                   </div>
                   <div class="col-sm-2">
                     <label class="cb">
@@ -2014,7 +2026,7 @@
                   <div class="col-sm-1">
                   </div>
                   <div class="col-sm-7">
-                    Điều khoản và Điều kiện phát hành và sử dụng Thẻ ghi nợ Vietcombank (áp dụng cho khách hàng cá
+                    Điều khoản và Điều kiện phát hành và sử dụng Thẻ ghi nợ của Ngân hàng (áp dụng cho khách hàng cá
                     nhân)
                   </div>
                   <div class="col-sm-2">
@@ -2037,7 +2049,7 @@
                   <div class="col-sm-1">
                   </div>
                   <div class="col-sm-7">
-                    Điều khoản và Điều kiện phát hành và sử dụng Phương thức xác thực của khách hàng cá nhân
+                    Điều khoản và Điều kiện sử dụng Phương thức xác thực của khách hàng cá nhân
                   </div>
                   <div class="col-sm-2">
                     <label class="cb">
@@ -2108,7 +2120,7 @@
                     Đơn đăng ký đã được phê duyệt.
                   </div>
                 </div>
-                <div *ngIf="checkError">
+                <div *ngIf="!checkSuccess">
                   <div class="checkError   alert-dismissible ">
                     <i class="fa fa-times-circle" aria-hidden="true"></i>
                     Đơn đăng ký chưa được phê duyệt!!!

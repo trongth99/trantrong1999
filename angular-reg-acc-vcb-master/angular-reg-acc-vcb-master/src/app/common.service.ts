@@ -111,9 +111,355 @@ export class CommonService {
     if ($('#dv_vcb_sms_banking').is(":checked")) {
       maDVu = 'dv_vcb_sms_banking';
       tenDVu = 'SMS Banking (Tin nhắn)';
+
+    }
+    if ($('#dv_vcb_digibank').is(":checked")) {
+      maDVu = 'dv_vcb_digibank';
+      tenDVu = 'Digibank (Ngân hàng số)';
+    }
+    if ($('#dv_vcb_phone_banking').is(":checked")) {
+      maDVu = 'dv_vcb_phone_banking';
+      tenDVu = 'Phone Banking (Tổng đài 24/7)';
     }
 
-    let data = {
+    let goiTKhoan = [];
+    let maGoi = '';
+    let tenGoi = '';
+
+    if ($('#goitk_vcb_eco').is(":checked")) {
+      maGoi = 'goitk_vcb_eco';
+      tenGoi = 'Gói tài khoản Eco';
+      goiTKhoan.push({
+        maGoi: maGoi,
+        tenGoi: tenGoi,
+        phi: "",
+        gchu: ""
+      });
+    }
+
+    if ($('#goitk_vcb_plus').is(":checked")) {
+      maGoi = 'goitk_vcb_plus';
+      tenGoi = 'Gói tài khoản Plus';
+      goiTKhoan.push({
+        maGoi: maGoi,
+        tenGoi: tenGoi,
+        phi: "",
+        gchu: ""
+      });
+    }
+
+    if ($('#goitk_vcb_pro').is(":checked")) {
+      maGoi = 'goitk_vcb_pro';
+      tenGoi = 'Gói tài khoản Pro';
+      goiTKhoan.push({
+        maGoi: maGoi,
+        tenGoi: tenGoi,
+        phi: "",
+        gchu: ""
+      });
+    }
+
+    if ($('#goitk_vcb_advanced').is(":checked")) {
+      maGoi = 'goitk_vcb_advanced';
+      tenGoi = 'Gói tài khoản Advanced';
+      goiTKhoan.push({
+        maGoi: maGoi,
+        tenGoi: tenGoi,
+        phi: "",
+        gchu: ""
+      });
+    }
+
+    if ($('#goitk_khac').is(":checked")) {
+      maGoi = 'goitk_khac';
+      tenGoi = 'Khác (ghi rõ)';
+      goiTKhoan.push({
+        maGoi: maGoi,
+        tenGoi: tenGoi,
+        phi: "",
+        gchu: ""
+      });
+    }
+
+
+    let dvuTheGNo = [];
+    let maLoaiThe = '';
+    let tenLoaiThe = '';
+    let pthucPHanh = 0;
+    let ttoanPhiHanh = 0;
+    let phanhThePhu = false
+    let text_vcb_ghinokhac: any = $('#text_vcb_ghinokhac').val()?.toString();
+
+    if ($('#phat_hanh_the_phu_yes').is(":checked")) {
+      phanhThePhu = true;
+    }
+    if ($('#phat_hanh_the_phu_no').is(":checked")) {
+      phanhThePhu = false;
+    }
+
+    if ($('#vcb_connect24_nomal').is(":checked")) {
+      pthucPHanh = 0;
+    } else if ($('#vcb_connect24_fast').is(":checked")) {
+      pthucPHanh = 1;
+    }
+    if ($('#vcb_connect24_auto').is(":checked")) {
+      ttoanPhiHanh = 0;
+    } else if ($('#vcb_connect24_money').is(":checked")) {
+      ttoanPhiHanh = 1;
+    }
+    if ($('#vcb_connect24_yes').is(":checked")) {
+      maLoaiThe = 'vcb_connect24_yes';
+      tenLoaiThe = 'Thẻ ghi nợ nội địa';
+      dvuTheGNo.push({
+        maLoaiThe: maLoaiThe,
+        tenLoaiThe: tenLoaiThe,
+        pthucPHanh: pthucPHanh,
+        ttoanPhiPHanh: ttoanPhiHanh,
+        phanhThePhu: false,
+      });
+    }
+
+    if ($('#vcb_connect24_no').is(":checked")) {
+      maLoaiThe = 'vcb_connect24_yes';
+      tenLoaiThe = 'Thẻ ghi nợ nội địa';
+      dvuTheGNo.push({
+        maLoaiThe: maLoaiThe,
+        tenLoaiThe: tenLoaiThe,
+        pthucPHanh: pthucPHanh,
+        ttoanPhiPHanh: ttoanPhiHanh,
+        phanhThePhu: false,
+      });
+    }
+
+
+    if ($('#vcb_connect24_visa_nomal').is(":checked")) {
+      pthucPHanh = 0;
+    } else if ($('#vcb_connect24_visa_fast').is(":checked")) {
+      pthucPHanh = 1;
+    }
+    if ($('#vcb_connect24_visa_auto').is(":checked")) {
+      ttoanPhiHanh = 0;
+    } else if ($('#vcb_connect24_visa_money').is(":checked")) {
+      ttoanPhiHanh = 1;
+    }
+
+    if ($('#vcb_connect24_visa_yes').is(":checked")) {
+      maLoaiThe = 'vcb_connect24_visa_yes';
+      tenLoaiThe = 'Thẻ ghi nợ quốc tế Visa';
+      dvuTheGNo.push({
+        maLoaiThe: maLoaiThe,
+        tenLoaiThe: tenLoaiThe,
+        pthucPHanh: pthucPHanh,
+        ttoanPhiPHanh: ttoanPhiHanh,
+        phanhThePhu: phanhThePhu,
+      });
+    }
+    if ($('#vcb_connect24_visa_no').is(":checked")) {
+      maLoaiThe = 'vcb_connect24_visa_no';
+      tenLoaiThe = 'Thẻ ghi nợ quốc tế Visa';
+      dvuTheGNo.push({
+        maLoaiThe: maLoaiThe,
+        tenLoaiThe: tenLoaiThe,
+        pthucPHanh: pthucPHanh,
+        ttoanPhiPHanh: ttoanPhiHanh,
+        phanhThePhu: phanhThePhu,
+      });
+    }
+
+    ////////////
+    if ($('#vcb_visa_debit_platinum_nomal').is(":checked")) {
+      pthucPHanh = 0;
+    } else if ($('#vcb_visa_debit_platinum_fast').is(":checked")) {
+      pthucPHanh = 1;
+    }
+    if ($('#vcb_visa_debit_platinum_auto').is(":checked")) {
+      ttoanPhiHanh = 0;
+    } else if ($('#vcb_visa_debit_platinum_money').is(":checked")) {
+      ttoanPhiHanh = 1;
+    }
+
+    if ($('#vcb_visa_debit_platinum_yes').is(":checked")) {
+      maLoaiThe = 'vcb_visa_debit_platinum_yes';
+      tenLoaiThe = 'Thẻ ghi nợ quốc tế Platinum';
+      dvuTheGNo.push({
+        maLoaiThe: maLoaiThe,
+        tenLoaiThe: tenLoaiThe,
+        pthucPHanh: pthucPHanh,
+        ttoanPhiPHanh: ttoanPhiHanh,
+        phanhThePhu: phanhThePhu,
+      });
+    }
+    if ($('#vcb_visa_debit_platinum_no').is(":checked")) {
+      maLoaiThe = 'vcb_visa_debit_platinum_no';
+      tenLoaiThe = 'Thẻ ghi nợ quốc tế Platinum';
+      dvuTheGNo.push({
+        maLoaiThe: maLoaiThe,
+        tenLoaiThe: tenLoaiThe,
+        pthucPHanh: pthucPHanh,
+        ttoanPhiPHanh: ttoanPhiHanh,
+        phanhThePhu: phanhThePhu,
+      });
+    }
+////////////////////////
+    if ($('#vcb_mastercard_nomal').is(":checked")) {
+      pthucPHanh = 0;
+    } else if ($('#vcb_mastercard_fast').is(":checked")) {
+      pthucPHanh = 1;
+    }
+    if ($('#vcb_mastercard_auto').is(":checked")) {
+      ttoanPhiHanh = 0;
+    } else if ($('#vcb_mastercard_money').is(":checked")) {
+      ttoanPhiHanh = 1;
+    }
+
+    if ($('#vcb_mastercard_yes').is(":checked")) {
+      maLoaiThe = 'vcb_mastercard_yes';
+      tenLoaiThe = 'Thẻ ghi nợ quốc tế Mastercard';
+      dvuTheGNo.push({
+        maLoaiThe: maLoaiThe,
+        tenLoaiThe: tenLoaiThe,
+        pthucPHanh: pthucPHanh,
+        ttoanPhiPHanh: ttoanPhiHanh,
+        phanhThePhu: phanhThePhu,
+      });
+    }
+    if ($('#vcb_mastercard_no').is(":checked")) {
+      maLoaiThe = 'vcb_mastercard_no';
+      tenLoaiThe = 'Thẻ ghi nợ quốc tế Mastercard';
+      dvuTheGNo.push({
+        maLoaiThe: maLoaiThe,
+        tenLoaiThe: tenLoaiThe,
+        pthucPHanh: pthucPHanh,
+        ttoanPhiPHanh: ttoanPhiHanh,
+        phanhThePhu: phanhThePhu,
+      });
+    }
+//////////////////////
+
+    if ($('#vcb_unionpay_nomal').is(":checked")) {
+      pthucPHanh = 0;
+    } else if ($('#vcb_unionpay_fast').is(":checked")) {
+      pthucPHanh = 1;
+    }
+    if ($('#vcb_unionpay_fast').is(":checked")) {
+      ttoanPhiHanh = 0;
+    } else if ($('#vcb_unionpay_auto').is(":checked")) {
+      ttoanPhiHanh = 1;
+    }
+
+    if ($('#vcb_unionpay_yes').is(":checked")) {
+      maLoaiThe = 'vcb_unionpay_yes';
+      tenLoaiThe = 'Thẻ ghi nợ quốc tế Unionpay';
+      dvuTheGNo.push({
+        maLoaiThe: maLoaiThe,
+        tenLoaiThe: tenLoaiThe,
+        pthucPHanh: pthucPHanh,
+        ttoanPhiPHanh: ttoanPhiHanh,
+        phanhThePhu: phanhThePhu,
+      });
+    }
+    if ($('#vcb_unionpay_no').is(":checked")) {
+      maLoaiThe = 'vcb_unionpay_no';
+      tenLoaiThe = 'Thẻ ghi nợ quốc tế Unionpay';
+      dvuTheGNo.push({
+        maLoaiThe: maLoaiThe,
+        tenLoaiThe: tenLoaiThe,
+        pthucPHanh: pthucPHanh,
+        ttoanPhiPHanh: ttoanPhiHanh,
+        phanhThePhu: phanhThePhu,
+      });
+    }
+    ///////
+
+    if ($('#vcb_cashback_plus_american_express_nomal').is(":checked")) {
+      pthucPHanh = 0;
+    } else if ($('#vcb_cashback_plus_american_express_fast').is(":checked")) {
+      pthucPHanh = 1;
+    }
+    if ($('#vcb_cashback_plus_american_express_auto').is(":checked")) {
+      ttoanPhiHanh = 0;
+    } else if ($('#vcb_cashback_plus_american_express_money').is(":checked")) {
+      ttoanPhiHanh = 1;
+    }
+
+    if ($('#vcb_cashback_plus_american_express_yes').is(":checked")) {
+      maLoaiThe = 'vcb_cashback_plus_american_express_yes';
+      tenLoaiThe = 'Thẻ Cashback Plus American Express';
+      dvuTheGNo.push({
+        maLoaiThe: maLoaiThe,
+        tenLoaiThe: tenLoaiThe,
+        pthucPHanh: pthucPHanh,
+        ttoanPhiPHanh: ttoanPhiHanh,
+        phanhThePhu: phanhThePhu,
+      });
+    }
+    if ($('#vcb_cashback_plus_american_express_no').is(":checked")) {
+      maLoaiThe = 'vcb_cashback_plus_american_express_no';
+      tenLoaiThe = 'Thẻ Cashback Plus American Express';
+      dvuTheGNo.push({
+        maLoaiThe: maLoaiThe,
+        tenLoaiThe: tenLoaiThe,
+        pthucPHanh: pthucPHanh,
+        ttoanPhiPHanh: ttoanPhiHanh,
+        phanhThePhu: phanhThePhu,
+      });
+    }
+    /////
+    if ($('#vcb_ghinokhac_nomal').is(":checked")) {
+      pthucPHanh = 0;
+    } else if ($('#vcb_ghinokhac_fast').is(":checked")) {
+      pthucPHanh = 1;
+    }
+    if ($('#vcb_ghinokhac_auto').is(":checked")) {
+      ttoanPhiHanh = 0;
+    } else if ($('#vcb_ghinokhac_money').is(":checked")) {
+      ttoanPhiHanh = 1;
+    }
+
+    if ($('#vcb_ghinokhac_no').is(":checked")) {
+      maLoaiThe = 'vcb_ghinokhac_no';
+      tenLoaiThe = text_vcb_ghinokhac;
+      dvuTheGNo.push({
+        maLoaiThe: maLoaiThe,
+        tenLoaiThe: tenLoaiThe,
+        pthucPHanh: pthucPHanh,
+        ttoanPhiPHanh: ttoanPhiHanh,
+        phanhThePhu: phanhThePhu,
+      });
+    }
+    if ($('#vcb_ghinokhac_yes').is(":checked")) {
+      maLoaiThe = 'vcb_ghinokhac_yes';
+      tenLoaiThe = text_vcb_ghinokhac;
+      dvuTheGNo.push({
+        maLoaiThe: maLoaiThe,
+        tenLoaiThe: tenLoaiThe,
+        pthucPHanh: pthucPHanh,
+        ttoanPhiPHanh: ttoanPhiHanh,
+        phanhThePhu: phanhThePhu,
+      });
+    }
+
+
+    let cam_ket_cua_kh_1 = false;
+    if ($('#cam_ket_cua_kh_1_yes').is(":checked")) cam_ket_cua_kh_1 = true;
+    if ($('#cam_ket_cua_kh_1_no').is(":checked")) cam_ket_cua_kh_1 = false;
+
+
+    let cam_ket_cua_kh_2 = false;
+    if ($('#cam_ket_cua_kh_2_yes').is(":checked")) cam_ket_cua_kh_2 = true;
+    if ($('#cam_ket_cua_kh_2_no').is(":checked")) cam_ket_cua_kh_2 = true;
+
+
+    let cam_ket_cua_kh_3 =false;
+    if ($('#cam_ket_cua_kh_3_yes').is(":checked")) cam_ket_cua_kh_3 = true;
+    if ($('#cam_ket_cua_kh_3_no').is(":checked")) cam_ket_cua_kh_3 = true;
+
+
+    let cam_ket_cua_kh_4 = false;
+    if ($('#cam_ket_cua_kh_4_yes').is(":checked")) cam_ket_cua_kh_4 = true;
+    if ($('#cam_ket_cua_kh_4_no').is(":checked")) cam_ket_cua_kh_4 = false;
+
+    /*let data = {
       customerUser: {
         "fis.onboarding.process.banking.model.CustomerUser": {
           cif: "",
@@ -167,67 +513,53 @@ export class CommonService {
           }
         }
       }
-    };
+    };*/
+    //TTinDKyMoTKhoan
 
-    // let data = {
-    //   TTinDKyMoTKhoan: {
-    //     "fis.onboarding.process.banking.model.TTinDKyMoTKhoan": {
-    //       dvuNHang: {
-    //         maDVu: "",
-    //         tenDVu: "",
-    //       },
-    //       tkhoanTToan: [
-    //         {
-    //           loaiTKhoan: [
-    //             {
-    //               maLoaiTKhoan: maLoaiTKhoan,
-    //               tenLoaiTKhoan: tenLoaiTKhoan,
-    //             }
-    //           ],
-    //           soTKhoan: "",
-    //           hmucGDich: 1,
-    //           loaiTien: loaiTien,
-    //         }
-    //       ],
-    //       goiTKhoan: [
-    //         {
-    //           maGoi: "",
-    //           tenGoi: "",
-    //           phi: "",
-    //           gchu: ""
-    //         }
-    //       ],
-    //       dvuTheGNo: [
-    //         {
-    //           maLoaiThe: "",
-    //           tenLoaiThe: "",
-    //           pthucPHanh: 0,
-    //           ttoanPhiPHanh: 0,
-    //           phanhThePhu: false,
-    //         }
-    //       ],
-    //       pthucXThuc: 0,
-    //       dkhoanDKien: {
-    //         dkdkTKhoan: false,
-    //         dkdkNHangDTu: false,
-    //         dkdkTheGNo: false,
-    //         dkdkPThucXThuc: false
-    //       },
-    //       ttinTThu: {
-    //         khongQTich: khongquoctich,
-    //         daQTich: daquoctich,
-    //         qtichMy: congdanhoaky,
-    //         mdichGDich: [
-    //           {
-    //             maMDich: "",
-    //             tenMDich: "",
-    //           }
-    //         ]
-    //       },
-    //       donDKyDVu: "",
-    //     }
-    //   }
-    // };
+    let data = {
+      customerUser: {
+        "fis.onboarding.process.banking.model.CustomerUser": {
+          dvuNHang: {
+            maDVu: maDVu,
+            tenDVu: tenDVu,
+          },
+          tkhoanTToan: [
+            {
+              loaiTKhoan: [
+                {
+                  maLoaiTKhoan: maLoaiTKhoan,
+                  tenLoaiTKhoan: tenLoaiTKhoan,
+                }
+              ],
+              soTKhoan: "",
+              hmucGDich: 1,
+              loaiTien: loaiTien,
+            }
+          ],
+          goiTKhoan: goiTKhoan,
+          dvuTheGNo: dvuTheGNo,
+          pthucXThuc: 0,
+          dkhoanDKien: {
+            dkdkTKhoan: cam_ket_cua_kh_1,
+            dkdkNHangDTu: cam_ket_cua_kh_2,
+            dkdkTheGNo: cam_ket_cua_kh_3,
+            dkdkPThucXThuc: cam_ket_cua_kh_4
+          },
+          ttinTThu: {
+            khongQTich: khongquoctich,
+            daQTich: daquoctich,
+            qtichMy: congdanhoaky,
+            mdichGDich: [
+              {
+                maMDich: "",
+                tenMDich: "",
+              }
+            ]
+          },
+          donDKyDVu: "",
+        }
+      }
+    };
 
     return data;
   }

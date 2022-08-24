@@ -58,52 +58,7 @@
 .xtgttt p{
   margin-top: 5px;
 }
-input{
-  font-family: 'Roboto';
-}
-.col-sm-4{
-  font-family: 'Roboto';
-}
-.col-sm-12{
-  font-family: 'Roboto';
-}
-.col-sm-2{
-  font-family: 'Roboto';
-}
-.col-sm-7{
-  font-family: 'Roboto';
-}
-.col-sm-6{
-  font-family: 'Roboto';
-}
-.col-sm-1{
-  font-family: 'Roboto';
-}
-p{
-  font-family: 'Roboto';
-}
-.container{
-  font-family: 'Roboto';
-}
-.input-group{
-  font-family: 'Roboto';
-}
-label{
-  font-family: 'Roboto';
-}
-span{
-  font-family: 'Roboto';
-  font-weight: 589;
-}
-button{
-  font-family: 'Roboto';
-}
-textarea{
-  font-family: 'Roboto';
-}
-.b{
-  font-family: 'Roboto';
-}
+
 .btn-step{
   font-weight: lighter;
 }
@@ -207,7 +162,6 @@ select[disabled], input[disabled] {
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(200px);
   border-radius: 30px;
-  font-family: font-Roboto;
   text-align: center;
   margin-top: 50px;
   padding-bottom: 15px;
@@ -219,7 +173,6 @@ select[disabled], input[disabled] {
   -webkit-backdrop-filter: blur(8px);
 
   border-radius: 30px;
-  font-family: font-Roboto;
   text-align: center;
 }
 
@@ -318,22 +271,11 @@ select[disabled], input[disabled] {
  // border-radius: 20px;
   border: 1px solid #0C1E60;
 }
-.checkError{
-  font-family: 'Roboto';
-  color: #929492;
-  width: 50%;
-  border-radius: 5px;
-  background-color: #FFA39E;
-  justify-content: center;
-}
+
 .checkSuccess{
-  font-family: 'Roboto';
   color: #929492;
   width: 50%;
   background-color: #b9ec98;
   border-radius: 5px;
   justify-content: center;
-}
-b{
-  font-family: 'Roboto';
 }
