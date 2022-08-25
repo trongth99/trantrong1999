@@ -146,7 +146,7 @@ export class CommonService {
       goiTKhoan.push({
         maGoi: maGoi,
         tenGoi: tenGoi,
-        phi: "",
+        phi: 1,
         gchu: ""
       });
     }
@@ -157,7 +157,7 @@ export class CommonService {
       goiTKhoan.push({
         maGoi: maGoi,
         tenGoi: tenGoi,
-        phi: "",
+        phi: 1,
         gchu: ""
       });
     }
@@ -168,7 +168,7 @@ export class CommonService {
       goiTKhoan.push({
         maGoi: maGoi,
         tenGoi: tenGoi,
-        phi: "",
+        phi: 1,
         gchu: ""
       });
     }
@@ -179,7 +179,7 @@ export class CommonService {
       goiTKhoan.push({
         maGoi: maGoi,
         tenGoi: tenGoi,
-        phi: "",
+        phi: 1,
         gchu: ""
       });
     }
@@ -190,7 +190,7 @@ export class CommonService {
       goiTKhoan.push({
         maGoi: maGoi,
         tenGoi: goitk_khac,
-        phi: "",
+        phi: 1,
         gchu: ""
       });
     }
@@ -531,32 +531,70 @@ export class CommonService {
     //TTinDKyMoTKhoan
 
     let data = {
-      ycTaoDonDKy: {
+      ycTaoDonKDy: {
         "fis.onboarding.process.banking.model.TTinDKyMoTKhoan": {
+
           cif: "",
-          mobile:$('#dienthoai').val()?.toString(),
+          mobile: $('#dienthoai').val()?.toString(),
           email: $('#email').val()?.toString(),
           "gtoTThan": {
             "loaiGToTThan": 4,
-            "soGTo": $(this.appService.datatGToTThan.soCmt).val()?.toString(),
+            "soGTo": "",
             "noiCap": $('#noicapgttt').val()?.toString(),
             "hoTen": $('#hoTen').val()?.toString(),
-            "gioiTinh": $('#gioiTinh').val()?.toString(),
+            "gioiTinh": 0,
             "quocTich": $('#quocTich').val()?.toString(),
             "soCmt": $('#soCmt').val()?.toString(),
-            "hoVaTen": $(this.appService.datatGToTThan.hoVaTen).val()?.toString(),
-            "namSinh": $(this.appService.datatGToTThan.namSinh).val()?.toString(),
-            "queQuan": $(this.appService.datatGToTThan.queQuan).val()?.toString(),
-            "noiTru": $(this.appService.customerUser.noiTru).val()?.toString(),
-            "dacDiemNhanDang": $(this.appService.datatGToTThan.dacDiemNhanDang).val()?.toString(),
-            "ngayCap2": $(this.appService.datatGToTThan.ngayCap2).val()?.toString(),
+            "hoVaTen": "",
+            "namSinh": "",
+            "queQuan": "",
+            "noiTru": "",
+            "dacDiemNhanDang":"",
+            "ngayCap2": "",
             "loaiCmt": $('#soCmt').val()?.toString(),
             "loaiCmtMatTruoc": "",
             "loaiCmtKhacMatTruoc": "",
-            "ngayHetHan": $(this.appService.customerUser.ngayHetHan).val()?.toString(),
-            "gioiTinh2": $(this.appService.datatGToTThan.gioiTinh2).val()?.toString(),
+            "ngayHetHan": "",
+            "gioiTinh2": "",
             "diaChi2": $('#diachiohientai').val()?.toString()
           },
+          "customerProfile": {
+            maSoThue: $('#masothuecanhan').val()?.toString(),
+            cuTru: true,
+            thanCTru: parseInt(thoihancutru),
+            thiThuc: 1,
+            ngheNghiep: {
+              maNNghiep: maNNghiep,
+              tenNNghiep: tenNNghiep
+            },
+            chucVu: {
+              maCVu: maCVu,
+              tenCVu: tenCVu
+            },
+            dchiNNgoai: $('#diachinuocngoai').val()?.toString(),
+            dchiHTai: $('#diachiohientai').val()?.toString(),
+            tgianODChiHTai: parseInt(thoigianodiachihientai),
+            ckyMau1: inputData.sign1.toDataURL(),
+            ckyMau2: inputData.sign2.toDataURL(),
+          },
+          ttinTThu: {
+            khongQTich: khongquoctich,
+            daQTich: daquoctich,
+            qtichMy: congdanhoaky,
+            mdichGDich: [
+              {
+                maMDich: "",
+                tenMDich: "",
+              }
+            ]
+          },
+          dkhoanDKien: {
+            dkdkTKhoan: cam_ket_cua_kh_1,
+            dkdkNHangDTu: cam_ket_cua_kh_2,
+            dkdkTheGNo: cam_ket_cua_kh_3,
+            dkdkPThucXThuc: cam_ket_cua_kh_4
+          },
+          "pthucXThuc": 1,
           dvuNHang: {
             maDVu: maDVu,
             tenDVu: tenDVu,
@@ -572,48 +610,93 @@ export class CommonService {
               soTKhoan: "",
               hmucGDich: 1,
               loaiTien: loaiTien,
+              "tenTKhoan": "abc123"
             }
           ],
-          customerProfile: {
-            maSoThue: $('#masothuecanhan').val()?.toString(),
-            cuTru: cutru,
-            thanCTru: parseInt(thoihancutru),
-            thiThuc: false,
-            gtoMienTThuc: "",
-            ngheNghiep: {
-              maNNghiep: maNNghiep,
-              tenNNghiep: tenNNghiep
-            },
-            chucVu: {
-              maCVu: maCVu,
-              tenCVu: tenCVu
-            },
-            dchiNNgoai: $('#diachinuocngoai').val()?.toString(),
-            dchiHTai: $('#diachiohientai').val()?.toString(),
-            tgianODChiHTai: parseInt(thoigianodiachihientai),
-            ckyMau1: inputData.sign1.toDataURL(),
-            ckyMau2: inputData.sign2.toDataURL(),
-            goiTKhoan: goiTKhoan,
-            dvuTheGNo: dvuTheGNo,
-            pthucXThuc: 1,
-            dkhoanDKien: {
-              dkdkTKhoan: cam_ket_cua_kh_1,
-              dkdkNHangDTu: cam_ket_cua_kh_2,
-              dkdkTheGNo: cam_ket_cua_kh_3,
-              dkdkPThucXThuc: cam_ket_cua_kh_4
-            },
-            ttinTThu: {
-              khongQTich: khongquoctich,
-              daQTich: daquoctich,
-              qtichMy: congdanhoaky,
-              mdichGDich: [
-                {
-                  maMDich: "",
-                  tenMDich: "",
-                }
-              ]
-            },
-          }
+          goiTKhoan: goiTKhoan,
+          dvuTheGNo: dvuTheGNo,
+
+
+          /* cif: "",
+           mobile: $('#dienthoai').val()?.toString(),
+           email: $('#email').val()?.toString(),
+           "gtoTThan": {
+             "loaiGToTThan": 4,
+             "soGTo": $(this.appService.datatGToTThan.soCmt).val()?.toString(),
+             "noiCap": $('#noicapgttt').val()?.toString(),
+             "hoTen": $('#hoTen').val()?.toString(),
+             "gioiTinh": 0,
+             "quocTich": $('#quocTich').val()?.toString(),
+             "soCmt": $('#soCmt').val()?.toString(),
+             "hoVaTen": $(this.appService.datatGToTThan.hoVaTen).val()?.toString(),
+             "namSinh": "",
+             "queQuan": $(this.appService.datatGToTThan.queQuan).val()?.toString(),
+             "noiTru": $(this.appService.customerUser.noiTru).val()?.toString(),
+             "dacDiemNhanDang": $(this.appService.datatGToTThan.dacDiemNhanDang).val()?.toString(),
+             "ngayCap2": "",
+             "loaiCmt": $('#soCmt').val()?.toString(),
+             "loaiCmtMatTruoc": "",
+             "loaiCmtKhacMatTruoc": "",
+             "ngayHetHan": "",
+             "gioiTinh2": "",
+             "diaChi2": $('#diachiohientai').val()?.toString()
+           },
+           dvuNHang: {
+             maDVu: maDVu,
+             tenDVu: tenDVu,
+           },
+           tkhoanTToan: [
+             {
+               loaiTKhoan: [
+                 {
+                   maLoaiTKhoan: maLoaiTKhoan,
+                   tenLoaiTKhoan: tenLoaiTKhoan,
+                 }
+               ],
+               soTKhoan: "",
+               hmucGDich: 1,
+               loaiTien: loaiTien,
+             }
+           ],
+           customerProfile: {
+             maSoThue: $('#masothuecanhan').val()?.toString(),
+             cuTru: cutru,
+             thanCTru: parseInt(thoihancutru),
+             thiThuc: 1,
+             ngheNghiep: {
+               maNNghiep: maNNghiep,
+               tenNNghiep: tenNNghiep
+             },
+             chucVu: {
+               maCVu: maCVu,
+               tenCVu: tenCVu
+             },
+             dchiNNgoai: $('#diachinuocngoai').val()?.toString(),
+             dchiHTai: $('#diachiohientai').val()?.toString(),
+             tgianODChiHTai: parseInt(thoigianodiachihientai),
+             ckyMau1: inputData.sign1.toDataURL(),
+             ckyMau2: inputData.sign2.toDataURL(),
+             goiTKhoan: goiTKhoan,
+             dvuTheGNo: dvuTheGNo,
+             pthucXThuc: 1,
+             dkhoanDKien: {
+               dkdkTKhoan: cam_ket_cua_kh_1,
+               dkdkNHangDTu: cam_ket_cua_kh_2,
+               dkdkTheGNo: cam_ket_cua_kh_3,
+               dkdkPThucXThuc: cam_ket_cua_kh_4
+             },
+             ttinTThu: {
+               khongQTich: khongquoctich,
+               daQTich: daquoctich,
+               qtichMy: congdanhoaky,
+               mdichGDich: [
+                 {
+                   maMDich: "",
+                   tenMDich: "",
+                 }
+               ]
+             },
+           }*/
         }
       }
     };

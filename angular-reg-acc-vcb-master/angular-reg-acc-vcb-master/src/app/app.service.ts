@@ -438,7 +438,7 @@ export class AppService {
     this._getVariables(processInstanceId).subscribe(
       res => {
         try {
-          if (res['pdfDonDKy'].hasOwnProperty('org.jbpm.document.service.impl.DocumentImpl')) {
+          if (res['pdfDonDKyBase64'].hasOwnProperty('org.jbpm.document.service.impl.DocumentImpl')) {
             this.pdfDonDKy = res['pdfDonDKy']['org.jbpm.document.service.impl.DocumentImpl']['content'];
           } else {
             this.pdfDonDKy = res['pdfDonDKy']['content'];
@@ -587,19 +587,21 @@ export class AppService {
     );
   }
 
-  _completedNhapDonDKy(processInstanceId: any, data: any, htmlDonDKy: any) {
+  _completedNhapDonDKy(processInstanceId: any, data: any) {
     this.swalWarning('Nhập Đơn Đăng Ký', 'Hệ thống đang xử lý ...', 60000);
 
     this._getTaskInstanceId(processInstanceId).subscribe(
       res => {
         let taskInstanceId = this._getTaskId(res, 'NhapDonDKy');
-
+        console.log(22222222);
         if (taskInstanceId && !this.taskInstanceIds[0].NhapDonDKy) {
+          console.log(333333333);
           this.completedTask(taskInstanceId, data).subscribe(
+
             res => {
               this.taskInstanceIds[0].NhapDonDKy = taskInstanceId;
-
-              let params = {
+              console.log(1111111111);
+             /* let params = {
                 "ycTaoDonDKy": {
                   "fis.onboarding.process.model.jbpm.dto.PDFGenDTO": {
                     "html": htmlDonDKy,
@@ -608,7 +610,8 @@ export class AppService {
                   }
                 }
               }
-              this._completedTaoDonDKy(processInstanceId, params);
+              this._completedTaoDonDKy(processInstanceId, params);*/
+
             },
             error => {
               this.errsStep = true;
@@ -625,7 +628,7 @@ export class AppService {
     );
   }
 
-  _completedTaoDonDKy(processInstanceId: any, data: any) {
+ /* _completedTaoDonDKy(processInstanceId: any, data: any) {
     this.swalWarning('Nhập Đơn Đăng Ký', 'Hệ thống đang xử lý ...', 60000);
 
     this._getTaskInstanceId(processInstanceId).subscribe(
@@ -650,7 +653,7 @@ export class AppService {
         this.errsStep = true;
       }
     );
-  }
+  }*/
 
   _completedXemDonDKy(processInstanceId: any, data: any) {
     this.swalWarning('Xem Đơn Đăng Ký', 'Hệ thống đang xử lý ...', 60000);

@@ -865,7 +865,7 @@ export class AppComponent {
 
     this.htmlDonDKy = start_html + this.htmlDonDKy1 + this.htmlDonDKy2 + this.htmlDonDKy3 + this.htmlDonDKy4 + this.htmlDonDKy5 + end_html;
 
-    this.appService._completedNhapDonDKy(this.processInstanceId, data, this.htmlTemp(this.htmlDonDKy));
+    this.appService._completedNhapDonDKy(this.processInstanceId, data);
 
     if (!this.idSetInterval) {
       this.idSetInterval = setInterval(() => {
