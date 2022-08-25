@@ -90,20 +90,33 @@ export class CommonService {
     if ($('#usd').is(":checked")) loaiTien = 'USD';
     if ($('#loaitien_khac').is(":checked")) loaiTien = loaitien_khac;
 
+    let loaiTKhoan = [];
     let maLoaiTKhoan = '';
     let tenLoaiTKhoan = '';
-    let loaitk_khac: any = $('#text_loaitk_khac').val()?.toString();
+    let text_loaitk_khac: any = $('#text_loaitk_khac').val()?.toString();
     if ($('#loaitk_thanhtoan').is(":checked")) {
       maLoaiTKhoan = 'loaitk_thanhtoan';
       tenLoaiTKhoan = 'Thanh toán';
+      loaiTKhoan.push({
+        maLoaiTKhoan: maLoaiTKhoan,
+        tenLoaiTKhoan: tenLoaiTKhoan,
+      });
     }
     if ($('#loaitk_thanhtoanchung').is(":checked")) {
       maLoaiTKhoan = 'loaitk_thanhtoanchung';
       tenLoaiTKhoan = 'Thanh toán chung';
+      loaiTKhoan.push({
+        maLoaiTKhoan: maLoaiTKhoan,
+        tenLoaiTKhoan: tenLoaiTKhoan,
+      });
     }
     if ($('#loaitk_khac').is(":checked")) {
       maLoaiTKhoan = 'loaitk_khac';
-      tenLoaiTKhoan = loaitk_khac;
+      tenLoaiTKhoan = text_loaitk_khac;
+      loaiTKhoan.push({
+        maLoaiTKhoan: maLoaiTKhoan,
+        tenLoaiTKhoan: tenLoaiTKhoan,
+      });
     }
 
     let maDVu = '';
@@ -517,8 +530,8 @@ export class CommonService {
     //TTinDKyMoTKhoan
 
     let data = {
-      customerUser: {
-        "fis.onboarding.process.banking.model.CustomerUser": {
+      ycTaoDonDKy: {
+        "fis.onboarding.process.banking.model.TTinDKyMoTKhoan": {
           dvuNHang: {
             maDVu: maDVu,
             tenDVu: tenDVu,
