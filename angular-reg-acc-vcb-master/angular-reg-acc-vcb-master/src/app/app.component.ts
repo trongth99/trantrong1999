@@ -494,12 +494,12 @@ export class AppComponent {
           // console.log('có webcam');
         } else {
           // console.log('khong webcam');
-         // $this.swalWarning('Thông báo', 'Máy bạn không có webcam', 0);
+         $this.swalWarning('Thông báo', 'Máy bạn không có webcam', 0);
         }
       })
       .catch(function (error) {
         // console.log('khong webcam');
-       // $this.swalWarning('Thông báo', 'Máy bạn không có webcam', 0);
+        $this.swalWarning('Thông báo', 'Máy bạn không có webcam', 0);
       });
   }
 
@@ -651,7 +651,7 @@ export class AppComponent {
 
     this.currIdxStep = 1;
     //
-    //this.checkProcessInstanceValue();
+    this.checkProcessInstanceValue();
   }
 
   ChooseGTTT() {

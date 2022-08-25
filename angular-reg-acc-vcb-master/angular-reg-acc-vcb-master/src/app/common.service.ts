@@ -534,8 +534,8 @@ export class CommonService {
       ycTaoDonDKy: {
         "fis.onboarding.process.banking.model.TTinDKyMoTKhoan": {
           cif: "",
-          mobile: "",
-          email: "",
+          mobile:$('#dienthoai').val()?.toString(),
+          email: $('#email').val()?.toString(),
           "gtoTThan": {
             "loaiGToTThan": 4,
             "soGTo": $(this.appService.datatGToTThan.soCmt).val()?.toString(),
