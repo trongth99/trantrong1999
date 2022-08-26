@@ -74,14 +74,14 @@
               <div style="margin-bottom: 20px;"></div>
               <div class="input-group">
                 <div>
-                  <input type="checkbox"/> Khách hàng đã tồn tại CIF
+                  <input type="checkbox" [(ngModel)]="ttaiCIF" name="ttaiCIF"> Khách hàng đã tồn tại CIF
                 </div>
 
               </div>
               <div style="margin-bottom: 20px;"></div>
               <div class="input-group">
                 <div>
-                  <input type="checkbox"/> Khách hàng hit PCRT
+                  <input type="checkbox" [(ngModel)]="pcrtHit" name="pcrtHit"> Khách hàng hit PCRT
                 </div>
               </div>
             </div>
@@ -244,7 +244,7 @@
                   <span>Giới tính</span>
                 </div>
                 <div class="col-sm-3 ">
-                  <input [(ngModel)]="this.appService.datatGToTThan.gioiTinh2"
+                  <input [(ngModel)]="this.appService.datatGToTThan.gioiTinh2" id="gender"
                          type="text" class="form-control" disabled/>
                 </div>
                 <div class="col-sm-2">
@@ -260,7 +260,7 @@
                   <span>Quê quán</span>
                 </div>
                 <div class="col-sm-8 ">
-                  <textarea class="form-control" disabled>{{this.appService.datatGToTThan.queQuan}}</textarea>
+                  <textarea class="form-control" id="queQuan" disabled>{{this.appService.datatGToTThan.queQuan}}</textarea>
                 </div>
               </div>
               <div class="row" style="margin-top: 20px;">
@@ -285,7 +285,7 @@
                   <span>Đặc điểm nhân dạng</span>
                 </div>
                 <div class="col-sm-8 ">
-                  <textarea class="form-control" disabled>{{this.appService.datatGToTThan.dacDiemNhanDang}}</textarea>
+                  <textarea class="form-control" id="dacDiemNhanDang" disabled>{{this.appService.datatGToTThan.dacDiemNhanDang}}</textarea>
                 </div>
               </div>
               <div class="row" style="margin-top: 20px;">
@@ -293,7 +293,7 @@
                   <span>Ngày cấp</span>
                 </div>
                 <div class="col-sm-8 ">
-                  <input [(ngModel)]="this.appService.datatGToTThan.ngayCap2" type="text"
+                  <input [(ngModel)]="this.appService.datatGToTThan.ngayCap2"  id="ngayCap2" type="text"
                          class="form-control" disabled/>
                 </div>
               </div>
@@ -496,7 +496,7 @@
                     Ngày hết hạn
                   </div>
                   <div class="col-sm-8">
-                    <input [(ngModel)]="this.appService.customerUser.ngayHetHan" name="ngayHetHan" type="text"
+                    <input [(ngModel)]="this.appService.customerUser.ngayHetHan" id="ngayHetHan" name="ngayHetHan" type="text"
                            class="form-control" disabled/>
                   </div>
                 </div>
@@ -1397,7 +1397,7 @@
                   <div class="col-sm-1">
                     <label class="cb">
                       <input type="radio"
-                             id="vcb_connect24_yes" name="vcb_connect24_loai_the">
+                             id="vcb_connect24_yes" name="vcb_connect24_loai_the" checked>
                       <span class="checkmark"></span>
                     </label>
                   </div>
@@ -1447,21 +1447,21 @@
                   <div class="col-sm-1">
                     <label class="cb">
                       <input type="radio" id="vcb_connect24_visa_yes"
-                             name="vcb_connect24_visa_loai_the">
+                             name="vcb_connect24_visa_loai_the" checked>
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-1">
                     <label class="cb">
                       <input type="radio" (click)="checkVisaNo()" id="vcb_connect24_visa_no"
-                             name="vcb_connect24_visa_loai_the">
+                             name="vcb_connect24_visa_loai_the" >
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-2">
                     <label class="cb">
                       <input type="radio"
-                             id="vcb_connect24_visa_nomal" name="vcb_connect24_visa_nomal_phuong_thuc">
+                             id="vcb_connect24_visa_nomal" name="vcb_connect24_visa_nomal_phuong_thuc" >
                       <span class="checkmark"></span>
                     </label>
                   </div>
@@ -1498,7 +1498,7 @@
                   <div class="col-sm-1">
                     <label class="cb">
                       <input type="radio" id="vcb_visa_debit_platinum_yes"
-                             name="vcb_visa_debit_platinum_loai_the">
+                             name="vcb_visa_debit_platinum_loai_the" checked>
                       <span class="checkmark"></span>
                     </label>
                   </div>
@@ -1552,7 +1552,7 @@
                   <div class="col-sm-1">
                     <label class="cb">
                       <input type="radio" id="vcb_mastercard_yes"
-                             name="vcb_mastercard_loai_the"/>
+                             name="vcb_mastercard_loai_the" checked/>
                       <span class="checkmark"></span>
                     </label>
                   </div>
@@ -1604,7 +1604,7 @@
                   <div class="col-sm-1">
                     <label class="cb">
                       <input type="radio" id="vcb_unionpay_yes"
-                             name="vcb_unionpay_lt">
+                             name="vcb_unionpay_lt" checked>
                       <span class="checkmark"></span>
                     </label>
                   </div>
@@ -1655,7 +1655,7 @@
                     <label class="cb">
                       <input type="radio"
                              id="vcb_cashback_plus_american_express_yes"
-                             name="vcb_cashback_plus_american_express_lt">
+                             name="vcb_cashback_plus_american_express_lt" checked>
                       <span class="checkmark"></span>
                     </label>
                   </div>
@@ -2017,15 +2017,21 @@
             </div>
             <div style="margin-top: 15px;">
               <div class="mx-auto">
-                <div *ngIf="checkSuccess">
-                  <div class="checkPDSuccess alert-success">
-                    <i class="fa fa-check-circle" aria-hidden="true" style="color: rgba(82, 196, 26, 1)"></i>
-                    Đơn đăng ký đã được phê duyệt.
+                <div *ngIf="this.appService.cKtraPduyet">
+                  <div *ngIf="this.appService.ktraPDuyet == 1" class="checkPDSuccess alert-success">
+                    <i  class="fa fa-check-circle" aria-hidden="true" style="color: rgba(82, 196, 26, 1)"></i>
+                    Đơn đăng ký đã được chấp nhận.<br/>
+                    Nội dụng phê duyệt: {{this.appService.ndPDuyet}}
+                  </div>
+                  <div *ngIf="this.appService.ktraPDuyet == 0" class="checkPDFail alert-dismissible">
+                    <i  class="fa fa-times-circle" aria-hidden="true" style="color: rgba(245, 34, 45, 1)"></i>
+                    Đơn đăng ký bị từ chối.<br/>
+                    Nội dụng từ chối: {{this.appService.ndPDuyet}}
                   </div>
                 </div>
-                <div *ngIf="!checkSuccess">
+                <div *ngIf="!this.appService.cKtraPduyet">
                   <div class="checkPDFail   alert-dismissible ">
-                    <i class="fa fa-times-circle" aria-hidden="true" style="color: rgba(245, 34, 45, 1)"></i>
+                    <i  class="fa fa-times-circle" aria-hidden="true" style="color: rgba(245, 34, 45, 1)"></i>
                     Đơn đăng ký chưa được phê duyệt!!!
                   </div>
                 </div>

@@ -14,6 +14,13 @@ export class CommonService {
     let thoihancutru: any = $('#thoihancutru').val()?.toString();
     let thoigianodiachihientai: any = $('#thoigianodiachihientai').val()?.toString();
 
+    let giotinh = 0;
+    if($('#gender').val()?.toString() == "NAM"){
+     giotinh = 1;
+    }else {
+      giotinh = 0;
+    }
+
     let cutru = false;
     if ($('#cutru_co').is(":checked")) cutru = true;
     if ($('#cutru_khong').is(":checked")) cutru = false;
@@ -95,6 +102,7 @@ export class CommonService {
     let maLoaiTKhoan = '';
     let tenLoaiTKhoan = '';
     let text_loaitk_khac: any = $('#text_loaitk_khac').val()?.toString();
+    let text_loaitk_thanhtoansochon: any = $('#text_loaitk_thanhtoansochon').val()?.toString();
     if ($('#loaitk_thanhtoan').is(":checked")) {
       maLoaiTKhoan = 'loaitk_thanhtoan';
       tenLoaiTKhoan = 'Thanh toán';
@@ -106,6 +114,14 @@ export class CommonService {
     if ($('#loaitk_thanhtoanchung').is(":checked")) {
       maLoaiTKhoan = 'loaitk_thanhtoanchung';
       tenLoaiTKhoan = 'Thanh toán chung';
+      loaiTKhoan.push({
+        maLoaiTKhoan: maLoaiTKhoan,
+        tenLoaiTKhoan: tenLoaiTKhoan,
+      });
+    }
+    if ($('#loaitk_thanhtoansochon').is(":checked")) {
+      maLoaiTKhoan = 'loaitk_thanhtoansochon';
+      tenLoaiTKhoan = text_loaitk_thanhtoansochon;
       loaiTKhoan.push({
         maLoaiTKhoan: maLoaiTKhoan,
         tenLoaiTKhoan: tenLoaiTKhoan,
@@ -473,6 +489,16 @@ export class CommonService {
     if ($('#cam_ket_cua_kh_4_yes').is(":checked")) cam_ket_cua_kh_4 = true;
     if ($('#cam_ket_cua_kh_4_no').is(":checked")) cam_ket_cua_kh_4 = false;
 
+    let quequan = '';
+    this.appService.datatGToTThan.queQuan = quequan;
+    let noitru = '';
+    this.appService.datatGToTThan.noiTru = noitru;
+    let dacDiemNhanDang = '';
+    this.appService.datatGToTThan.dacDiemNhanDang = dacDiemNhanDang;
+    let ngayCap2 = '';
+    this.appService.datatGToTThan.ngayCap2 = ngayCap2;
+    let gioiTinh2 = '';
+    this.appService.datatGToTThan.gioiTinh2 = gioiTinh2;
     /*let data = {
       customerUser: {
         "fis.onboarding.process.banking.model.CustomerUser": {
@@ -539,23 +565,23 @@ export class CommonService {
           email: $('#email').val()?.toString(),
           "gtoTThan": {
             "loaiGToTThan": 4,
-            "soGTo": "",
+            "soGTo":$('#soCmt').val()?.toString(),
             "noiCap": $('#noicapgttt').val()?.toString(),
             "hoTen": $('#hoTen').val()?.toString(),
-            "gioiTinh": 0,
+            "gioiTinh": giotinh,
             "quocTich": $('#quocTich').val()?.toString(),
             "soCmt": $('#soCmt').val()?.toString(),
-            "hoVaTen": "",
-            "namSinh": "",
-            "queQuan": "",
-            "noiTru": "",
-            "dacDiemNhanDang":"",
-            "ngayCap2": "",
+            "hoVaTen": $('#hoTen').val()?.toString(),
+            "namSinh":$('#ngaySinh').val()?.toString(),
+            "queQuan": quequan,
+            "noiTru": $('#noiTru').val()?.toString(),
+            "dacDiemNhanDang":dacDiemNhanDang,
+            "ngayCap2": ngayCap2,
             "loaiCmt": $('#soCmt').val()?.toString(),
             "loaiCmtMatTruoc": "",
             "loaiCmtKhacMatTruoc": "",
-            "ngayHetHan": "",
-            "gioiTinh2": "",
+            "ngayHetHan":$('#ngayHetHan').val()?.toString(),
+            "gioiTinh2": gioiTinh2,
             "diaChi2": $('#diachiohientai').val()?.toString()
           },
           "customerProfile": {
@@ -610,7 +636,7 @@ export class CommonService {
               soTKhoan: "",
               hmucGDich: 1,
               loaiTien: loaiTien,
-              "tenTKhoan": "abc123"
+              "tenTKhoan": $('#tentk').val()?.toString()
             }
           ],
           goiTKhoan: goiTKhoan,

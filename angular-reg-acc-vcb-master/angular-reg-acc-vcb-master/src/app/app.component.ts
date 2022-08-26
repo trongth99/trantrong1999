@@ -263,6 +263,7 @@ export class AppComponent {
   text_vcb_ghinokhac = true;
 
 
+
   constructor(
     private _formBuilder: FormBuilder,
     public appService: AppService,
@@ -591,12 +592,12 @@ export class AppComponent {
   }
 
   loadPheDuyet() {
-    if (!this.appService.ktraPDuyet) {
+    if (!this.appService.cKtraPduyet) {
       this.checkSuccess = false;
     } else {
       this.checkSuccess = true;
       clearInterval(this.idSetInterval);
-      this.idSetInterval = 1;
+      this.idSetInterval = 0;
       this.showStepNext = true;
     }
   }
@@ -848,7 +849,7 @@ export class AppComponent {
     let data = this.common.formReg(inputData);
     console.log(data);
 
-    let start_html = '<html>\
+  /*  let start_html = '<html>\
       <head>\
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"\ integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">\
       </head>\
@@ -864,7 +865,7 @@ export class AppComponent {
     this.htmlDonDKy5 = $("#p5").html().toString();
 
     this.htmlDonDKy = start_html + this.htmlDonDKy1 + this.htmlDonDKy2 + this.htmlDonDKy3 + this.htmlDonDKy4 + this.htmlDonDKy5 + end_html;
-
+*/
     this.appService._completedNhapDonDKy(this.processInstanceId, data);
 
     if (!this.idSetInterval) {

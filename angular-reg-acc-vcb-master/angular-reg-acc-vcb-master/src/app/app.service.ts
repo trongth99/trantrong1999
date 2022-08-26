@@ -50,7 +50,9 @@ export class AppService {
   cFnAllStep = false;
 
   ktraPDuyet = 0;
+  cKtraPduyet = false;
 
+  ndPDuyet = '';
   params: Array<any> = [
     {
       kquaXThuc: '',
@@ -65,7 +67,7 @@ export class AppService {
       QDinhTTuc: '',
       NhapDonDKy: '',
       TaoDonDKy: '',
-      XemTThaiPDuyet:'',
+      XemTThaiPDuyet: '',
       CustomerSurvey: ''
     }
   ];
@@ -101,13 +103,13 @@ export class AppService {
     queQuan: '',
     noiTru: '',
     dacDiemNhanDang: '',
-    ngayCap2:'',
+    ngayCap2: '',
     noiCap: '',
     ngayHetHan: '',
     gioiTinh2: ''
   }
   datatGToTThanGt = {
-    gioiTinh:''
+    gioiTinh: ''
   }
 
   pdfDonDKy = '';
@@ -367,7 +369,7 @@ export class AppService {
 
             }
 
-          /*  this.datatGToTThan.push(gtoTThan);*/
+            /*  this.datatGToTThan.push(gtoTThan);*/
             this.datatGToTThan = gtoTThan;
             this.datatGToTThanGt = gtoTThanGT;
             this.taskInstanceIds[0].NhanGTTT = true;
@@ -438,12 +440,7 @@ export class AppService {
     this._getVariables(processInstanceId).subscribe(
       res => {
         try {
-          if (res['pdfDonDKyBase64'].hasOwnProperty('org.jbpm.document.service.impl.DocumentImpl')) {
-            this.pdfDonDKy = res['pdfDonDKy']['org.jbpm.document.service.impl.DocumentImpl']['content'];
-          } else {
-            this.pdfDonDKy = res['pdfDonDKy']['content'];
-          }
-
+          this.pdfDonDKy = res['pdfDonDKyBase64'];
           this.taskInstanceIds[0].TaoDonDKy = true;
 
         } catch (e) {
@@ -593,25 +590,23 @@ export class AppService {
     this._getTaskInstanceId(processInstanceId).subscribe(
       res => {
         let taskInstanceId = this._getTaskId(res, 'NhapDonDKy');
-        console.log(22222222);
         if (taskInstanceId && !this.taskInstanceIds[0].NhapDonDKy) {
-          console.log(333333333);
           this.completedTask(taskInstanceId, data).subscribe(
-
             res => {
               this.taskInstanceIds[0].NhapDonDKy = taskInstanceId;
-              console.log(1111111111);
-             /* let params = {
-                "ycTaoDonDKy": {
-                  "fis.onboarding.process.model.jbpm.dto.PDFGenDTO": {
-                    "html": htmlDonDKy,
-                    "css": "",
-                    "pdfName": "DonDKy"
-                  }
-                }
-              }
-              this._completedTaoDonDKy(processInstanceId, params);*/
+              console.log(111111111);
+              /* let params = {
+                 "ycTaoDonDKy": {
+                   "fis.onboarding.process.model.jbpm.dto.PDFGenDTO": {
+                     "html": htmlDonDKy,
+                     "css": "",
+                     "pdfName": "DonDKy"
+                   }
+                 }
+               }
+               this._completedTaoDonDKy(processInstanceId, params);*/
 
+              this.getPdfDonDKy(processInstanceId);
             },
             error => {
               this.errsStep = true;
@@ -628,32 +623,32 @@ export class AppService {
     );
   }
 
- /* _completedTaoDonDKy(processInstanceId: any, data: any) {
-    this.swalWarning('Nhập Đơn Đăng Ký', 'Hệ thống đang xử lý ...', 60000);
+  /* _completedTaoDonDKy(processInstanceId: any, data: any) {
+     this.swalWarning('Nhập Đơn Đăng Ký', 'Hệ thống đang xử lý ...', 60000);
 
-    this._getTaskInstanceId(processInstanceId).subscribe(
-      res => {
-        let taskInstanceId = this._getTaskId(res, 'TaoDonDKy');
+     this._getTaskInstanceId(processInstanceId).subscribe(
+       res => {
+         let taskInstanceId = this._getTaskId(res, 'TaoDonDKy');
 
-        if (taskInstanceId && !this.taskInstanceIds[0].TaoDonDKy) {
-          this.completedTask(taskInstanceId, data).subscribe(
-            res => {
-              this.getPdfDonDKy(processInstanceId);
-            },
-            error => {
-              this.errsStep = true;
-              this.errsStepTaoDonDKy = true;
-            }
-          );
-        } else {
-          Swal.close();
-        }
-      },
-      error => {
-        this.errsStep = true;
-      }
-    );
-  }*/
+         if (taskInstanceId && !this.taskInstanceIds[0].TaoDonDKy) {
+           this.completedTask(taskInstanceId, data).subscribe(
+             res => {
+               this.getPdfDonDKy(processInstanceId);
+             },
+             error => {
+               this.errsStep = true;
+               this.errsStepTaoDonDKy = true;
+             }
+           );
+         } else {
+           Swal.close();
+         }
+       },
+       error => {
+         this.errsStep = true;
+       }
+     );
+   }*/
 
   _completedXemDonDKy(processInstanceId: any, data: any) {
     this.swalWarning('Xem Đơn Đăng Ký', 'Hệ thống đang xử lý ...', 60000);
@@ -685,15 +680,45 @@ export class AppService {
       }
     );
   }
+
+  /*  getKtraPDuyet(processInstanceId: any) {
+      this._getVariables(processInstanceId).subscribe(
+        res => {
+          try {
+            let ktraPDuyet = res['ktraPDuyet'];
+
+            if (res['ktraPDuyet']) {
+              ktraPDuyet = res['ktraPDuyet'];
+              this.ktraPDuyet = ktraPDuyet;
+            }
+          } catch (e) {
+            //this.errsStep = true;
+          }
+        },
+        error => {
+          //this.errsStep = true;
+        }
+      );
+    }*/
+
+
   getKtraPDuyet(processInstanceId: any) {
-    this._getVariables(processInstanceId).subscribe(
+    this._getVariablesByVarName(processInstanceId, 'ttinPDuyet').subscribe(
       res => {
         try {
-          let ktraPDuyet = res['ktraPDuyet'];
 
-          if (res['ktraPDuyet']) {
-            ktraPDuyet = res['ktraPDuyet'];
-            this.ktraPDuyet = ktraPDuyet;
+
+          if (res['variable-instance'].length > 0) {
+            if (res['variable-instance'][0].hasOwnProperty('name') && res['variable-instance'][0].hasOwnProperty('value')) {
+              let valObject = JSON.parse(res['variable-instance'][0]['value']);
+              if (valObject.kquaPDuyet == 0 || valObject.kquaPDuyet == 1) {
+                this.ndPDuyet = valObject.ndungPDuyet;
+                this.ktraPDuyet = valObject.kquaPDuyet;
+                this.cKtraPduyet = true;
+              }
+            }
+          } else {
+            this.cKtraPduyet = false;
           }
         } catch (e) {
           //this.errsStep = true;
@@ -737,7 +762,6 @@ export class AppService {
 
         if (taskInstanceId && !this.taskInstanceIds[0].CustomerSurvey) {
           this.completedTask(taskInstanceId, data).subscribe(
-
             res => {
               this.cFnAllStep = true;
               Swal.close();
@@ -763,6 +787,11 @@ export class AppService {
 
   _getVariables(processInstanceId: any) {
     let mod = `/server/containers/${this.containerId}/processes/instances/${processInstanceId}/variables`;
+    return this.curlData(mod, 'get');
+  }
+
+  _getVariablesByVarName(processInstanceId: any, varName: string) {
+    let mod = `/server/queries/processes/instances/${processInstanceId}/variables/instances/${varName}`;
     return this.curlData(mod, 'get');
   }
 
