@@ -106,7 +106,8 @@ export class AppService {
     ngayCap2: '',
     noiCap: '',
     ngayHetHan: '',
-    gioiTinh2: ''
+    gioiTinh2: '',
+    gioiTinh: 0
   }
   datatGToTThanGt = {
     gioiTinh: ''
@@ -458,6 +459,15 @@ export class AppService {
     let mod = `/server/containers/${this.containerId}/tasks/${taskInstanceId}/states/completed?user=${this.username}&auto-progress=true`;
     return this.curlData(mod, data, 'put');
   }
+    nodeId = 14;
+  updateTask(processInstanceId: any) {
+    let mod = `/server/admin/containers/${this.containerId}/processes/instances/${processInstanceId}/nodes/${this.nodeId}`;
+    return this.curlData(mod,'', 'post');
+  }
+  updateTaskId(processInstanceId: any, varName: any, data: any) {
+    let mod = `/server/containers/${this.containerId}/processes/instances/${processInstanceId}/variable/${varName}`;
+    return this.curlData(mod, data, 'put');
+  }
 
   _completedNhanGTTT(processInstanceId: any, data: any) {
     this.swalWarning('Xác Thực Giấy Tờ', 'Hệ thống đang xử lý ...', 60000);
@@ -585,7 +595,7 @@ export class AppService {
   }
 
   _completedNhapDonDKy(processInstanceId: any, data: any) {
-    this.swalWarning('Nhập Đơn Đăng Ký', 'Hệ thống đang xử lý ...', 60000);
+    this.swalWarning('Tạo Đơn Đăng Ký', 'Hệ thống đang xử lý ...', 60000);
 
     this._getTaskInstanceId(processInstanceId).subscribe(
       res => {
@@ -594,7 +604,7 @@ export class AppService {
           this.completedTask(taskInstanceId, data).subscribe(
             res => {
               this.taskInstanceIds[0].NhapDonDKy = taskInstanceId;
-              console.log(111111111);
+
               /* let params = {
                  "ycTaoDonDKy": {
                    "fis.onboarding.process.model.jbpm.dto.PDFGenDTO": {
@@ -651,7 +661,7 @@ export class AppService {
    }*/
 
   _completedXemDonDKy(processInstanceId: any, data: any) {
-    this.swalWarning('Xem Đơn Đăng Ký', 'Hệ thống đang xử lý ...', 60000);
+    this.swalWarning('', 'Hệ thống đang xử lý ...', 30000);
 
     this._getTaskInstanceId(processInstanceId).subscribe(
       res => {
@@ -662,7 +672,7 @@ export class AppService {
             res => {
               let datap =
                 {
-                  ktraPDuyet: this.ktraPDuyet
+                  /*ktraPDuyet: ''*/
                 }
               this._completedXemTThaiPDuyet(processInstanceId, datap);
               Swal.close();
@@ -756,6 +766,7 @@ export class AppService {
   }
 
   _completedSurveyPoint(processInstanceId: any, data: any) {
+    this.swalWarning('Hoàn Thành', 'Hệ thống đang xử lý ...', 30000);
     this._getTaskInstanceId(processInstanceId).subscribe(
       res => {
         let taskInstanceId = this._getTaskId(res, 'CustomerSurvey');

@@ -719,6 +719,13 @@
                           <span class="checkmark"></span>
                         </label>
                       </div>
+                      <div class="col-sm-8">
+
+                        <label class="cb">Chủ doanh nghiệp
+                          <input type="radio" (click)="CheckChucvu()" id="CVu4" name="CVu">
+                          <span class="checkmark"></span>
+                        </label>
+                      </div>
                     </div>
 
                     <div class="row">
@@ -959,17 +966,14 @@
                     <div class="row">
                       <div class="col-sm-12">
                         <input type="checkbox" (click)="check()" id="loaitk_thanhtoanchung"
-                               name="loaitk_thanhtoanchung"/> Thanh toán
-                        chung
+                               name="loaitk_thanhtoanchung"/> Thanh toán chung
                       </div>
                     </div>
 
                     <div class="row">
                       <div class="col-sm-4">
                         <input (click)="checkTTSC()" type="checkbox" id="loaitk_thanhtoansochon"
-                               name="loaitk_thanhtoansochon"/> Thanh
-                        toán
-                        số chọn
+                               name="loaitk_thanhtoansochon"/> Thanh toán số chọn
                       </div>
 
                     </div>
@@ -1203,7 +1207,7 @@
                       <div class="col-sm-4">
 
                         <label class="cb">Không
-                          <input type="radio" name="smsbanking" disabled>
+                          <input type="radio" name="smsbanking" >
                           <span class="checkmark"></span>
                         </label>
                       </div>
@@ -1227,7 +1231,7 @@
                       <div class="col-sm-4">
 
                         <label class="cb">Không
-                          <input type="radio" name="digibank" disabled>
+                          <input type="radio" name="digibank" >
                           <span class="checkmark"></span>
                         </label>
                       </div>
@@ -1403,35 +1407,35 @@
                   </div>
                   <div class="col-sm-1">
                     <label class="cb">
-                      <input type="radio" (click)="checkNo24() " id="vcb_connect24_no"
+                      <input type="radio" (click)="checkNo24()" id="vcb_connect24_no"
                              name="vcb_connect24_loai_the">
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-2">
                     <label class="cb">
-                      <input type="radio" id="vcb_connect24_nomal"
+                      <input type="radio" id="vcb_connect24_nomal" [disabled]="!nomal24" checked
                              name="vcb_connect24_phuong_thuc">
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-2">
                     <label class="cb">
-                      <input type="radio" id="vcb_connect24_fast"
+                      <input type="radio" id="vcb_connect24_fast" [disabled]="!fast24"
                              name="vcb_connect24_phuong_thuc">
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-2">
                     <label class="cb">
-                      <input type="radio" id="vcb_connect24_auto"
+                      <input type="radio" id="vcb_connect24_auto" [disabled]="!auto24" checked
                              name="vcb_connect24_ttoan_phi">
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-2">
                     <label class="cb">
-                      <input type="radio" id="vcb_connect24_money"
+                      <input type="radio" id="vcb_connect24_money" [disabled]="!money24"
                              name="vcb_connect24_ttoan_phi">
                       <span class="checkmark"></span>
                     </label>
@@ -1447,13 +1451,13 @@
                   <div class="col-sm-1">
                     <label class="cb">
                       <input type="radio" id="vcb_connect24_visa_yes"
-                             name="vcb_connect24_visa_loai_the" checked>
+                             name="vcb_connect24_visa_loai_the" >
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-1">
                     <label class="cb">
-                      <input type="radio" (click)="checkVisaNo()" id="vcb_connect24_visa_no"
+                      <input type="radio" (click)="checkVisaNo()" id="vcb_connect24_visa_no" checked
                              name="vcb_connect24_visa_loai_the" >
                       <span class="checkmark"></span>
                     </label>
@@ -1461,21 +1465,21 @@
                   <div class="col-sm-2">
                     <label class="cb">
                       <input type="radio"
-                             id="vcb_connect24_visa_nomal" name="vcb_connect24_visa_nomal_phuong_thuc" >
+                             id="vcb_connect24_visa_nomal" name="vcb_connect24_visa_nomal_phuong_thuc" [disabled]="!visanomal" >
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-2">
                     <label class="cb">
                       <input type="radio"
-                             id="vcb_connect24_visa_fast" name="vcb_connect24_visa_nomal_phuong_thuc">
+                             id="vcb_connect24_visa_fast" name="vcb_connect24_visa_nomal_phuong_thuc" [disabled]="!visafast">
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-2">
                     <label class="cb">
                       <input type="radio"
-                             id="vcb_connect24_visa_auto" name="vcb_connect24_visa_auto_ttoan_phi">
+                             id="vcb_connect24_visa_auto" name="vcb_connect24_visa_auto_ttoan_phi" [disabled]="!visaauto">
                       <span class="checkmark"></span>
                     </label>
                   </div>
@@ -1483,7 +1487,7 @@
 
                     <label class="cb">
                       <input type="radio"
-                             id="vcb_connect24_visa_money" name="vcb_connect24_visa_auto_ttoan_phi">
+                             id="vcb_connect24_visa_money" name="vcb_connect24_visa_auto_ttoan_phi" [disabled]="!visamoney">
                       <span class="checkmark"></span>
                     </label>
                   </div>
@@ -1498,14 +1502,14 @@
                   <div class="col-sm-1">
                     <label class="cb">
                       <input type="radio" id="vcb_visa_debit_platinum_yes"
-                             name="vcb_visa_debit_platinum_loai_the" checked>
+                             name="vcb_visa_debit_platinum_loai_the" >
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-1">
                     <label class="cb">
-                      <input type="radio" (click)="checkVDPNo()" id="vcb_visa_debit_platinum_no"
-                             name="vcb_visa_debit_platinum_loai_the">
+                      <input type="radio" (click)="checkVDPNo()" id="vcb_visa_debit_platinum_no" checked
+                             name="vcb_visa_debit_platinum_loai_the" >
                       <span class="checkmark"></span>
                     </label>
                   </div>
@@ -1513,7 +1517,7 @@
 
                     <label class="cb">
                       <input type="radio"
-                             id="vcb_visa_debit_platinum_nomal"
+                             id="vcb_visa_debit_platinum_nomal" [disabled]="!dpnomal"
                              name="vcb_visa_debit_platinum_nomal_phuong_thuc"/>
                       <span class="checkmark"></span>
                     </label>
@@ -1521,14 +1525,14 @@
                   <div class="col-sm-2">
                     <label class="cb">
                       <input type="radio"
-                             id="vcb_visa_debit_platinum_fast" name="vcb_visa_debit_platinum_nomal_phuong_thuc"/>
+                             id="vcb_visa_debit_platinum_fast" name="vcb_visa_debit_platinum_nomal_phuong_thuc" [disabled]="!dpfast"/>
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-2">
                     <label class="cb">
                       <input type="radio"
-                             id="vcb_visa_debit_platinum_auto" name="vcb_visa_debit_platinum_auto_ttoan_phi">
+                             id="vcb_visa_debit_platinum_auto" name="vcb_visa_debit_platinum_auto_ttoan_phi" [disabled]="!dpauto">
                       <span class="checkmark"></span>
                     </label>
                   </div>
@@ -1536,7 +1540,7 @@
 
                     <label class="cb">
                       <input type="radio"
-                             id="vcb_visa_debit_platinum_money"
+                             id="vcb_visa_debit_platinum_money" [disabled]="!dpmoney"
                              name="vcb_visa_debit_platinum_auto_ttoan_phi">
                       <span class="checkmark"></span>
                     </label>
@@ -1552,35 +1556,35 @@
                   <div class="col-sm-1">
                     <label class="cb">
                       <input type="radio" id="vcb_mastercard_yes"
-                             name="vcb_mastercard_loai_the" checked/>
+                             name="vcb_mastercard_loai_the" />
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-1">
                     <label class="cb">
-                      <input type="radio" (click)="checkMTNo()" id="vcb_mastercard_no"
-                             name="vcb_mastercard_loai_the">
+                      <input type="radio" (click)="checkMTNo()" id="vcb_mastercard_no" checked
+                             name="vcb_mastercard_loai_the" >
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-2">
 
                     <label class="cb">
-                      <input type="radio" id="vcb_mastercard_nomal"
+                      <input type="radio" id="vcb_mastercard_nomal" [disabled]="!mtnomal"
                              name="vcb_mastercard_nomal_pp">
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-2">
                     <label class="cb">
-                      <input type="radio" id="vcb_mastercard_fast"
+                      <input type="radio" id="vcb_mastercard_fast" [disabled]="!mtfast"
                              name="vcb_mastercard_nomal_pp">
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-2">
                     <label class="cb">
-                      <input type="radio" id="vcb_mastercard_auto"
+                      <input type="radio" id="vcb_mastercard_auto" [disabled]="!mtauto"
                              name="vcb_mastercard_auto_ttp">
                       <span class="checkmark"></span>
                     </label>
@@ -1588,7 +1592,7 @@
                   <div class="col-sm-2">
 
                     <label class="cb">
-                      <input type="radio" id="vcb_mastercard_money"
+                      <input type="radio" id="vcb_mastercard_money" [disabled]="!mtmoney"
                              name="vcb_mastercard_auto_ttp">
                       <span class="checkmark"></span>
                     </label>
@@ -1604,41 +1608,41 @@
                   <div class="col-sm-1">
                     <label class="cb">
                       <input type="radio" id="vcb_unionpay_yes"
-                             name="vcb_unionpay_lt" checked>
+                             name="vcb_unionpay_lt" >
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-1">
                     <label class="cb">
-                      <input type="radio" (click)="checkPayNo()" id="vcb_unionpay_no"
-                             name="vcb_unionpay_lt">
+                      <input type="radio" (click)="checkPayNo()" id="vcb_unionpay_no" checked
+                             name="vcb_unionpay_lt" >
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-2">
                     <label class="cb">
-                      <input type="radio" id="vcb_unionpay_nomal"
+                      <input type="radio" id="vcb_unionpay_nomal" [disabled]="!mtmoney"
                              name="vcb_unionpay_pp">
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-2">
                     <label class="cb">
-                      <input type="radio" id="vcb_unionpay_fast"
+                      <input type="radio" id="vcb_unionpay_fast" [disabled]="!mtmoney"
                              name="vcb_unionpay_pp">
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-2">
                     <label class="cb">
-                      <input type="radio" id="vcb_unionpay_auto"
+                      <input type="radio" id="vcb_unionpay_auto" [disabled]="!mtmoney"
                              name="vcb_unionpay_ttp">
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-2">
                     <label class="cb">
-                      <input type="radio" id="vcb_unionpay_money"
+                      <input type="radio" id="vcb_unionpay_money" [disabled]="!mtmoney"
                              name="vcb_unionpay_ttp">
                       <span class="checkmark"></span>
                     </label>
@@ -1655,7 +1659,7 @@
                     <label class="cb">
                       <input type="radio"
                              id="vcb_cashback_plus_american_express_yes"
-                             name="vcb_cashback_plus_american_express_lt" checked>
+                             name="vcb_cashback_plus_american_express_lt" >
                       <span class="checkmark"></span>
                     </label>
                   </div>
@@ -1663,7 +1667,7 @@
                     <label class="cb">
                       <input type="radio" (click)="checkExNo()"
                              id="vcb_cashback_plus_american_express_no"
-                             name="vcb_cashback_plus_american_express_lt">
+                             name="vcb_cashback_plus_american_express_lt" checked>
                       <span class="checkmark"></span>
                     </label>
                   </div>
@@ -1671,7 +1675,7 @@
                     <label class="cb">
                       <input type="radio"
                              id="vcb_cashback_plus_american_express_nomal"
-                             name="vcb_cashback_plus_american_express_pp">
+                             name="vcb_cashback_plus_american_express_pp" [disabled]="!exnomal">
                       <span class="checkmark"></span>
                     </label>
                   </div>
@@ -1679,7 +1683,7 @@
                     <label class="cb">
                       <input type="radio"
                              id="vcb_cashback_plus_american_express_fast"
-                             name="vcb_cashback_plus_american_express_pp">
+                             name="vcb_cashback_plus_american_express_pp" [disabled]="!exfast">
                       <span class="checkmark"></span>
                     </label>
                   </div>
@@ -1687,7 +1691,7 @@
                     <label class="cb">
                       <input type="radio"
                              id="vcb_cashback_plus_american_express_auto"
-                             name="vcb_cashback_plus_american_express_ttt">
+                             name="vcb_cashback_plus_american_express_ttt" [disabled]="!exauto">
                       <span class="checkmark"></span>
                     </label>
                   </div>
@@ -1696,7 +1700,7 @@
                     <label class="cb">
                       <input type="radio"
                              id="vcb_cashback_plus_american_express_money"
-                             name="vcb_cashback_plus_american_express_ttt">
+                             name="vcb_cashback_plus_american_express_ttt" [disabled]="!exmoney">
                       <span class="checkmark"></span>
                     </label>
                   </div>
@@ -1712,42 +1716,42 @@
                   <div class="col-sm-1">
                     <label class="cb">
                       <input type="radio" id="vcb_ghinokhac_yes"
-                             name="vcb_ghinokhac_khac_lt">
+                             name="vcb_ghinokhac_khac_lt" >
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-1">
 
                     <label class="cb">
-                      <input type="radio" (click)="checkKNo()" id="vcb_ghinokhac_no"
-                             name="vcb_ghinokhac_khac_lt">
+                      <input type="radio" (click)="checkKNo()" id="vcb_ghinokhac_no" checked
+                             name="vcb_ghinokhac_khac_lt" >
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-2">
                     <label class="cb">
-                      <input type="radio" id="vcb_ghinokhac_nomal"
+                      <input type="radio" id="vcb_ghinokhac_nomal" [disabled]="!knomal"
                              name="vcb_ghinokhac_pt">
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-2">
                     <label class="cb">
-                      <input type="checkbox" id="vcb_ghinokhac_fast"
+                      <input type="radio" id="vcb_ghinokhac_fast" [disabled]="!kfast"
                              name="vcb_ghinokhac_pt">
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-2">
                     <label class="cb">
-                      <input type="radio" id="vcb_ghinokhac_auto"
+                      <input type="radio" id="vcb_ghinokhac_auto" [disabled]="!kauto"
                              name="vcb_ghinokhac_ttt">
                       <span class="checkmark"></span>
                     </label>
                   </div>
                   <div class="col-sm-2">
                     <label class="cb">
-                      <input type="radio" id="vcb_ghinokhac_money"
+                      <input type="radio" id="vcb_ghinokhac_money" [disabled]="!kmoney"
                              name="vcb_ghinokhac_ttt">
                       <span class="checkmark"></span>
                     </label>
@@ -1770,7 +1774,7 @@
                   <div class="col-sm-1">
                     <label class="cb">
                       <input type="radio" id="phat_hanh_the_phu_no"
-                             name="phat_hanh_the_phu">
+                             name="phat_hanh_the_phu" checked>
                       <span class="checkmark"></span>
                     </label>
                   </div>

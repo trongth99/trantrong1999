@@ -7,6 +7,7 @@ import {AppService} from "./app.service";
 })
 export class CommonService {
 
+
   constructor(public appService: AppService,) {
   }
 
@@ -14,13 +15,7 @@ export class CommonService {
     let thoihancutru: any = $('#thoihancutru').val()?.toString();
     let thoigianodiachihientai: any = $('#thoigianodiachihientai').val()?.toString();
 
-    let giotinh = 0;
-    if($('#gender').val()?.toString() == "NAM"){
-     giotinh = 1;
-    }else {
-      giotinh = 0;
-    }
-
+    let giotinh = this.appService.datatGToTThan.gioiTinh;
     let cutru = false;
     if ($('#cutru_co').is(":checked")) cutru = true;
     if ($('#cutru_khong').is(":checked")) cutru = false;
@@ -29,22 +24,25 @@ export class CommonService {
     let tenCVu = '';
     let cvkhac: any = $('#text_cvkhac').val()?.toString();
     if ($('#CVu1').is(":checked")) {
-      maCVu = 'CVu1';
+      maCVu = '01';
       tenCVu = 'Nhân viên ';
     }
 
     if ($('#CVu2').is(":checked")) {
-      maCVu = 'CVu2';
+      maCVu = '02';
       tenCVu = 'Trưởng phòng, giám sát ';
     }
 
     if ($('#CVu3').is(":checked")) {
-      maCVu = 'CVu3';
+      maCVu = '03';
       tenCVu = 'Giám đốc, quản lý cấp cao';
     }
-
+    if ($('#CVu4').is(":checked")) {
+      maCVu = '04';
+      tenCVu = 'Chủ doanh nghiệp';
+    }
     if ($('#cvkhac').is(":checked")) {
-      maCVu = 'cvkhac';
+      maCVu = '99';
       tenCVu = cvkhac;
     }
 
@@ -52,45 +50,49 @@ export class CommonService {
     let tenNNghiep = '';
     let nghenghiepkhac: any = $('#text_nghenghiepkhac').val()?.toString();
     if ($('#nghenghiep1').is(":checked")) {
-      maNNghiep = 'nghenghiep1';
+      maNNghiep = '01';
       tenNNghiep = 'Nhân viên văn phòng';
     }
     if ($('#nghenghiep2').is(":checked")) {
-      maNNghiep = 'nghenghiep2';
+      maNNghiep = '02';
       tenNNghiep = 'Bác sĩ, dược sĩ, y tá';
     }
     if ($('#nghenghiep3').is(":checked")) {
-      maNNghiep = 'nghenghiep3';
+      maNNghiep = '03';
       tenNNghiep = 'Công nhân viên chức';
     }
     if ($('#nghenghiep4').is(":checked")) {
-      maNNghiep = 'nghenghiep4';
+      maNNghiep = '04';
       tenNNghiep = 'Kỹ sư, công nhân xây dựng';
     }
     if ($('#nghenghiep5').is(":checked")) {
-      maNNghiep = 'nghenghiep5';
+      maNNghiep = '05';
       tenNNghiep = 'Lực lượng vũ trang';
     }
     if ($('#nghenghiep6').is(":checked")) {
-      maNNghiep = 'nghenghiep6';
+      maNNghiep = '07';
       tenNNghiep = 'Học sinh, sinh viên';
     }
+    if ($('#7').is(":checked")) {
+      maNNghiep = '06';
+      tenNNghiep = 'Làm việc tự do';
+    }
     if ($('#nghenghiepkhac').is(":checked")) {
-      maNNghiep = 'nghenghiepkhac';
+      maNNghiep = '99';
       tenNNghiep = nghenghiepkhac;
     }
 
     let khongquoctich = false;
-    if ($('#khongquoctich_co').is(":checked")) khongquoctich = true;
+    if ($('#khongquoctich').is(":checked")) khongquoctich = true;
     if ($('#khongquoctich_khong').is(":checked")) khongquoctich = false;
 
     let daquoctich = false;
-    if ($('#daquoctich_co').is(":checked")) daquoctich = true;
+    if ($('#daquoctich').is(":checked")) daquoctich = true;
     if ($('#daquoctich_khong').is(":checked")) daquoctich = false;
 
     let congdanhoaky = false;
-    if ($('#congdanhoaky_co').is(":checked")) congdanhoaky = true;
-    if ($('#congdanhoaky_khong').is(":checked")) congdanhoaky = true;
+    if ($('#congdanhoaky').is(":checked")) congdanhoaky = true;
+    if ($('#congdanhoaky_khong').is(":checked")) congdanhoaky = false;
 
     let loaiTien = '';
     let loaitien_khac: any = $('#text_loaitien_khac').val()?.toString();
@@ -104,7 +106,7 @@ export class CommonService {
     let text_loaitk_khac: any = $('#text_loaitk_khac').val()?.toString();
     let text_loaitk_thanhtoansochon: any = $('#text_loaitk_thanhtoansochon').val()?.toString();
     if ($('#loaitk_thanhtoan').is(":checked")) {
-      maLoaiTKhoan = 'loaitk_thanhtoan';
+      maLoaiTKhoan = '01';
       tenLoaiTKhoan = 'Thanh toán';
       loaiTKhoan.push({
         maLoaiTKhoan: maLoaiTKhoan,
@@ -112,7 +114,7 @@ export class CommonService {
       });
     }
     if ($('#loaitk_thanhtoanchung').is(":checked")) {
-      maLoaiTKhoan = 'loaitk_thanhtoanchung';
+      maLoaiTKhoan = '02';
       tenLoaiTKhoan = 'Thanh toán chung';
       loaiTKhoan.push({
         maLoaiTKhoan: maLoaiTKhoan,
@@ -120,7 +122,7 @@ export class CommonService {
       });
     }
     if ($('#loaitk_thanhtoansochon').is(":checked")) {
-      maLoaiTKhoan = 'loaitk_thanhtoansochon';
+      maLoaiTKhoan = '03';
       tenLoaiTKhoan = text_loaitk_thanhtoansochon;
       loaiTKhoan.push({
         maLoaiTKhoan: maLoaiTKhoan,
@@ -128,7 +130,7 @@ export class CommonService {
       });
     }
     if ($('#loaitk_khac').is(":checked")) {
-      maLoaiTKhoan = 'loaitk_khac';
+      maLoaiTKhoan = '99';
       tenLoaiTKhoan = text_loaitk_khac;
       loaiTKhoan.push({
         maLoaiTKhoan: maLoaiTKhoan,
@@ -139,16 +141,16 @@ export class CommonService {
     let maDVu = '';
     let tenDVu = '';
     if ($('#dv_vcb_sms_banking').is(":checked")) {
-      maDVu = 'dv_vcb_sms_banking';
+      maDVu = '01';
       tenDVu = 'SMS Banking (Tin nhắn)';
 
     }
     if ($('#dv_vcb_digibank').is(":checked")) {
-      maDVu = 'dv_vcb_digibank';
+      maDVu = '02';
       tenDVu = 'Digibank (Ngân hàng số)';
     }
     if ($('#dv_vcb_phone_banking').is(":checked")) {
-      maDVu = 'dv_vcb_phone_banking';
+      maDVu = '03';
       tenDVu = 'Phone Banking (Tổng đài 24/7)';
     }
 
@@ -157,7 +159,7 @@ export class CommonService {
     let tenGoi = '';
     let goitk_khac: any = $('#goitk_khac').val()?.toString();
     if ($('#goitk_vcb_eco').is(":checked")) {
-      maGoi = 'goitk_vcb_eco';
+      maGoi = '01';
       tenGoi = 'Gói tài khoản Eco';
       goiTKhoan.push({
         maGoi: maGoi,
@@ -168,7 +170,7 @@ export class CommonService {
     }
 
     if ($('#goitk_vcb_plus').is(":checked")) {
-      maGoi = 'goitk_vcb_plus';
+      maGoi = '02';
       tenGoi = 'Gói tài khoản Plus';
       goiTKhoan.push({
         maGoi: maGoi,
@@ -179,7 +181,7 @@ export class CommonService {
     }
 
     if ($('#goitk_vcb_pro').is(":checked")) {
-      maGoi = 'goitk_vcb_pro';
+      maGoi = '03';
       tenGoi = 'Gói tài khoản Pro';
       goiTKhoan.push({
         maGoi: maGoi,
@@ -190,7 +192,7 @@ export class CommonService {
     }
 
     if ($('#goitk_vcb_advanced').is(":checked")) {
-      maGoi = 'goitk_vcb_advanced';
+      maGoi = '04';
       tenGoi = 'Gói tài khoản Advanced';
       goiTKhoan.push({
         maGoi: maGoi,
@@ -201,7 +203,7 @@ export class CommonService {
     }
 
     if ($('#goitk_khac').is(":checked")) {
-      maGoi = 'goitk_khac';
+      maGoi = '99';
       tenGoi = 'Khác (ghi rõ)';
       goiTKhoan.push({
         maGoi: maGoi,
@@ -238,28 +240,17 @@ export class CommonService {
       ttoanPhiHanh = 1;
     }
     if ($('#vcb_connect24_yes').is(":checked")) {
-      maLoaiThe = 'vcb_connect24_yes';
+      maLoaiThe = '01';
       tenLoaiThe = 'Thẻ ghi nợ nội địa';
       dvuTheGNo.push({
         maLoaiThe: maLoaiThe,
         tenLoaiThe: tenLoaiThe,
         pthucPHanh: pthucPHanh,
         ttoanPhiPHanh: ttoanPhiHanh,
-        phanhThePhu: false,
+        phanhThePhu: phanhThePhu,
       });
     }
 
-    if ($('#vcb_connect24_no').is(":checked")) {
-      maLoaiThe = 'vcb_connect24_yes';
-      tenLoaiThe = 'Thẻ ghi nợ nội địa';
-      dvuTheGNo.push({
-        maLoaiThe: maLoaiThe,
-        tenLoaiThe: tenLoaiThe,
-        pthucPHanh: pthucPHanh,
-        ttoanPhiPHanh: ttoanPhiHanh,
-        phanhThePhu: false,
-      });
-    }
 
 
     if ($('#vcb_connect24_visa_nomal').is(":checked")) {
@@ -274,7 +265,7 @@ export class CommonService {
     }
 
     if ($('#vcb_connect24_visa_yes').is(":checked")) {
-      maLoaiThe = 'vcb_connect24_visa_yes';
+      maLoaiThe = '02';
       tenLoaiThe = 'Thẻ ghi nợ quốc tế Visa';
       dvuTheGNo.push({
         maLoaiThe: maLoaiThe,
@@ -284,17 +275,17 @@ export class CommonService {
         phanhThePhu: phanhThePhu,
       });
     }
-    if ($('#vcb_connect24_visa_no').is(":checked")) {
-      maLoaiThe = 'vcb_connect24_visa_no';
-      tenLoaiThe = 'Thẻ ghi nợ quốc tế Visa';
-      dvuTheGNo.push({
-        maLoaiThe: maLoaiThe,
-        tenLoaiThe: tenLoaiThe,
-        pthucPHanh: pthucPHanh,
-        ttoanPhiPHanh: ttoanPhiHanh,
-        phanhThePhu: phanhThePhu,
-      });
-    }
+    /*  if ($('#vcb_connect24_visa_no').is(":checked")) {
+        maLoaiThe = 'vcb_connect24_visa_no';
+        tenLoaiThe = 'Thẻ ghi nợ quốc tế Visa';
+        dvuTheGNo.push({
+          maLoaiThe: maLoaiThe,
+          tenLoaiThe: tenLoaiThe,
+          pthucPHanh: pthucPHanh,
+          ttoanPhiPHanh: ttoanPhiHanh,
+          phanhThePhu: phanhThePhu,
+        });
+      }*/
 
     ////////////
     if ($('#vcb_visa_debit_platinum_nomal').is(":checked")) {
@@ -309,7 +300,7 @@ export class CommonService {
     }
 
     if ($('#vcb_visa_debit_platinum_yes').is(":checked")) {
-      maLoaiThe = 'vcb_visa_debit_platinum_yes';
+      maLoaiThe = '03';
       tenLoaiThe = 'Thẻ ghi nợ quốc tế Platinum';
       dvuTheGNo.push({
         maLoaiThe: maLoaiThe,
@@ -319,17 +310,17 @@ export class CommonService {
         phanhThePhu: phanhThePhu,
       });
     }
-    if ($('#vcb_visa_debit_platinum_no').is(":checked")) {
-      maLoaiThe = 'vcb_visa_debit_platinum_no';
-      tenLoaiThe = 'Thẻ ghi nợ quốc tế Platinum';
-      dvuTheGNo.push({
-        maLoaiThe: maLoaiThe,
-        tenLoaiThe: tenLoaiThe,
-        pthucPHanh: pthucPHanh,
-        ttoanPhiPHanh: ttoanPhiHanh,
-        phanhThePhu: phanhThePhu,
-      });
-    }
+    /*    if ($('#vcb_visa_debit_platinum_no').is(":checked")) {
+          maLoaiThe = 'vcb_visa_debit_platinum_no';
+          tenLoaiThe = 'Thẻ ghi nợ quốc tế Platinum';
+          dvuTheGNo.push({
+            maLoaiThe: maLoaiThe,
+            tenLoaiThe: tenLoaiThe,
+            pthucPHanh: pthucPHanh,
+            ttoanPhiPHanh: ttoanPhiHanh,
+            phanhThePhu: phanhThePhu,
+          });
+        }*/
 ////////////////////////
     if ($('#vcb_mastercard_nomal').is(":checked")) {
       pthucPHanh = 0;
@@ -343,7 +334,7 @@ export class CommonService {
     }
 
     if ($('#vcb_mastercard_yes').is(":checked")) {
-      maLoaiThe = 'vcb_mastercard_yes';
+      maLoaiThe = '04';
       tenLoaiThe = 'Thẻ ghi nợ quốc tế Mastercard';
       dvuTheGNo.push({
         maLoaiThe: maLoaiThe,
@@ -353,17 +344,17 @@ export class CommonService {
         phanhThePhu: phanhThePhu,
       });
     }
-    if ($('#vcb_mastercard_no').is(":checked")) {
-      maLoaiThe = 'vcb_mastercard_no';
-      tenLoaiThe = 'Thẻ ghi nợ quốc tế Mastercard';
-      dvuTheGNo.push({
-        maLoaiThe: maLoaiThe,
-        tenLoaiThe: tenLoaiThe,
-        pthucPHanh: pthucPHanh,
-        ttoanPhiPHanh: ttoanPhiHanh,
-        phanhThePhu: phanhThePhu,
-      });
-    }
+    /* if ($('#vcb_mastercard_no').is(":checked")) {
+       maLoaiThe = 'vcb_mastercard_no';
+       tenLoaiThe = 'Thẻ ghi nợ quốc tế Mastercard';
+       dvuTheGNo.push({
+         maLoaiThe: maLoaiThe,
+         tenLoaiThe: tenLoaiThe,
+         pthucPHanh: pthucPHanh,
+         ttoanPhiPHanh: ttoanPhiHanh,
+         phanhThePhu: phanhThePhu,
+       });
+     }*/
 //////////////////////
 
     if ($('#vcb_unionpay_nomal').is(":checked")) {
@@ -371,14 +362,14 @@ export class CommonService {
     } else if ($('#vcb_unionpay_fast').is(":checked")) {
       pthucPHanh = 1;
     }
-    if ($('#vcb_unionpay_fast').is(":checked")) {
+    if ($('#vcb_unionpay_auto').is(":checked")) {
       ttoanPhiHanh = 0;
-    } else if ($('#vcb_unionpay_auto').is(":checked")) {
+    } else if ($('#vcb_unionpay_money').is(":checked")) {
       ttoanPhiHanh = 1;
     }
 
     if ($('#vcb_unionpay_yes').is(":checked")) {
-      maLoaiThe = 'vcb_unionpay_yes';
+      maLoaiThe = '05';
       tenLoaiThe = 'Thẻ ghi nợ quốc tế Unionpay';
       dvuTheGNo.push({
         maLoaiThe: maLoaiThe,
@@ -388,17 +379,17 @@ export class CommonService {
         phanhThePhu: phanhThePhu,
       });
     }
-    if ($('#vcb_unionpay_no').is(":checked")) {
-      maLoaiThe = 'vcb_unionpay_no';
-      tenLoaiThe = 'Thẻ ghi nợ quốc tế Unionpay';
-      dvuTheGNo.push({
-        maLoaiThe: maLoaiThe,
-        tenLoaiThe: tenLoaiThe,
-        pthucPHanh: pthucPHanh,
-        ttoanPhiPHanh: ttoanPhiHanh,
-        phanhThePhu: phanhThePhu,
-      });
-    }
+    /*    if ($('#vcb_unionpay_no').is(":checked")) {
+          maLoaiThe = 'vcb_unionpay_no';
+          tenLoaiThe = 'Thẻ ghi nợ quốc tế Unionpay';
+          dvuTheGNo.push({
+            maLoaiThe: maLoaiThe,
+            tenLoaiThe: tenLoaiThe,
+            pthucPHanh: pthucPHanh,
+            ttoanPhiPHanh: ttoanPhiHanh,
+            phanhThePhu: phanhThePhu,
+          });
+        }*/
     ///////
 
     if ($('#vcb_cashback_plus_american_express_nomal').is(":checked")) {
@@ -413,7 +404,7 @@ export class CommonService {
     }
 
     if ($('#vcb_cashback_plus_american_express_yes').is(":checked")) {
-      maLoaiThe = 'vcb_cashback_plus_american_express_yes';
+      maLoaiThe = '06';
       tenLoaiThe = 'Thẻ Cashback Plus American Express';
       dvuTheGNo.push({
         maLoaiThe: maLoaiThe,
@@ -423,17 +414,17 @@ export class CommonService {
         phanhThePhu: phanhThePhu,
       });
     }
-    if ($('#vcb_cashback_plus_american_express_no').is(":checked")) {
-      maLoaiThe = 'vcb_cashback_plus_american_express_no';
-      tenLoaiThe = 'Thẻ Cashback Plus American Express';
-      dvuTheGNo.push({
-        maLoaiThe: maLoaiThe,
-        tenLoaiThe: tenLoaiThe,
-        pthucPHanh: pthucPHanh,
-        ttoanPhiPHanh: ttoanPhiHanh,
-        phanhThePhu: phanhThePhu,
-      });
-    }
+    /*  if ($('#vcb_cashback_plus_american_express_no').is(":checked")) {
+        maLoaiThe = 'vcb_cashback_plus_american_express_no';
+        tenLoaiThe = 'Thẻ Cashback Plus American Express';
+        dvuTheGNo.push({
+          maLoaiThe: maLoaiThe,
+          tenLoaiThe: tenLoaiThe,
+          pthucPHanh: pthucPHanh,
+          ttoanPhiPHanh: ttoanPhiHanh,
+          phanhThePhu: phanhThePhu,
+        });
+      }*/
     /////
     if ($('#vcb_ghinokhac_nomal').is(":checked")) {
       pthucPHanh = 0;
@@ -446,19 +437,19 @@ export class CommonService {
       ttoanPhiHanh = 1;
     }
 
-    if ($('#vcb_ghinokhac_no').is(":checked")) {
-      maLoaiThe = 'vcb_ghinokhac_no';
-      tenLoaiThe = text_vcb_ghinokhac;
-      dvuTheGNo.push({
-        maLoaiThe: maLoaiThe,
-        tenLoaiThe: tenLoaiThe,
-        pthucPHanh: pthucPHanh,
-        ttoanPhiPHanh: ttoanPhiHanh,
-        phanhThePhu: phanhThePhu,
-      });
-    }
+    /*   if ($('#vcb_ghinokhac_no').is(":checked")) {
+         maLoaiThe = 'vcb_ghinokhac_no';
+         tenLoaiThe = text_vcb_ghinokhac;
+         dvuTheGNo.push({
+           maLoaiThe: maLoaiThe,
+           tenLoaiThe: tenLoaiThe,
+           pthucPHanh: pthucPHanh,
+           ttoanPhiPHanh: ttoanPhiHanh,
+           phanhThePhu: phanhThePhu,
+         });
+       }*/
     if ($('#vcb_ghinokhac_yes').is(":checked")) {
-      maLoaiThe = 'vcb_ghinokhac_yes';
+      maLoaiThe = '99';
       tenLoaiThe = text_vcb_ghinokhac;
       dvuTheGNo.push({
         maLoaiThe: maLoaiThe,
@@ -489,16 +480,71 @@ export class CommonService {
     if ($('#cam_ket_cua_kh_4_yes').is(":checked")) cam_ket_cua_kh_4 = true;
     if ($('#cam_ket_cua_kh_4_no').is(":checked")) cam_ket_cua_kh_4 = false;
 
-    let quequan = '';
-    this.appService.datatGToTThan.queQuan = quequan;
-    let noitru = '';
-    this.appService.datatGToTThan.noiTru = noitru;
-    let dacDiemNhanDang = '';
-    this.appService.datatGToTThan.dacDiemNhanDang = dacDiemNhanDang;
-    let ngayCap2 = '';
-    this.appService.datatGToTThan.ngayCap2 = ngayCap2;
-    let gioiTinh2 = '';
-    this.appService.datatGToTThan.gioiTinh2 = gioiTinh2;
+    let quequan = this.appService.datatGToTThan.queQuan;
+
+    let noitru = this.appService.datatGToTThan.noiTru;
+
+    let dacDiemNhanDang = this.appService.datatGToTThan.dacDiemNhanDang;
+
+    let ngayCap2 = this.appService.datatGToTThan.ngayCap2;
+
+    let gioiTinh2 = this.appService.datatGToTThan.gioiTinh2;
+
+    let mdichGDich = [];
+    let maMDich = '';
+    let tenMDich = '';
+    let text_ctienkhac: any = $('#text_ctienkhac').val()?.toString();
+    if ($('#thanhtoan').is(":checked")) {
+      maMDich = '01';
+      tenMDich = 'Thanh toán';
+      mdichGDich.push({
+        maMDich: maMDich,
+        tenMDich: tenMDich
+      });
+    }
+    if ($('#tietkiem').is(":checked")) {
+      maMDich = '02';
+      tenMDich = 'Tiết kiệm';
+      mdichGDich.push({
+        maMDich: maMDich,
+        tenMDich: tenMDich
+      });
+    }
+    if ($('#vayvon').is(":checked")) {
+      maMDich = '03';
+      tenMDich = 'Vay vốn';
+      mdichGDich.push({
+        maMDich: maMDich,
+        tenMDich: tenMDich
+      });
+    }
+    if ($('#ctientrongnuoc').is(":checked")) {
+      maMDich = '04';
+      tenMDich = 'Chuyển tiền trong nước';
+      mdichGDich.push({
+        maMDich: maMDich,
+        tenMDich: tenMDich
+      });
+    }
+    if ($('#ctiennuocnoai').is(":checked")) {
+      maMDich = '05';
+      tenMDich = 'Chuyển tiền nước ngoài';
+      mdichGDich.push({
+        maMDich: maMDich,
+        tenMDich: tenMDich
+      });
+    }
+
+    if ($('#ctienkhac').is(":checked")) {
+      maMDich = '99';
+      tenMDich = text_ctienkhac;
+      mdichGDich.push({
+        maMDich: maMDich,
+        tenMDich: tenMDich
+      });
+    }
+
+
     /*let data = {
       customerUser: {
         "fis.onboarding.process.banking.model.CustomerUser": {
@@ -556,176 +602,167 @@ export class CommonService {
     };*/
     //TTinDKyMoTKhoan
 
-    let data = {
-      ycTaoDonKDy: {
-        "fis.onboarding.process.banking.model.TTinDKyMoTKhoan": {
+    let
+      data = {
+        ycTaoDonKDy: {
+          "fis.onboarding.process.banking.model.TTinDKyMoTKhoan": {
 
-          cif: "",
-          mobile: $('#dienthoai').val()?.toString(),
-          email: $('#email').val()?.toString(),
-          "gtoTThan": {
-            "loaiGToTThan": 4,
-            "soGTo":$('#soCmt').val()?.toString(),
-            "noiCap": $('#noicapgttt').val()?.toString(),
-            "hoTen": $('#hoTen').val()?.toString(),
-            "gioiTinh": giotinh,
-            "quocTich": $('#quocTich').val()?.toString(),
-            "soCmt": $('#soCmt').val()?.toString(),
-            "hoVaTen": $('#hoTen').val()?.toString(),
-            "namSinh":$('#ngaySinh').val()?.toString(),
-            "queQuan": quequan,
-            "noiTru": $('#noiTru').val()?.toString(),
-            "dacDiemNhanDang":dacDiemNhanDang,
-            "ngayCap2": ngayCap2,
-            "loaiCmt": $('#soCmt').val()?.toString(),
-            "loaiCmtMatTruoc": "",
-            "loaiCmtKhacMatTruoc": "",
-            "ngayHetHan":$('#ngayHetHan').val()?.toString(),
-            "gioiTinh2": gioiTinh2,
-            "diaChi2": $('#diachiohientai').val()?.toString()
-          },
-          "customerProfile": {
-            maSoThue: $('#masothuecanhan').val()?.toString(),
-            cuTru: true,
-            thanCTru: parseInt(thoihancutru),
-            thiThuc: 1,
-            ngheNghiep: {
-              maNNghiep: maNNghiep,
-              tenNNghiep: tenNNghiep
+            cif: "",
+            mobile: $('#dienthoai').val()?.toString(),
+            email: $('#email').val()?.toString(),
+            "gtoTThan": {
+              "loaiGToTThan": 4,
+              "soGTo": $('#soCmt').val()?.toString(),
+              "noiCap": $('#noicapgttt').val()?.toString(),
+              "hoTen": $('#hoTen').val()?.toString(),
+              "gioiTinh": giotinh,
+              "quocTich": $('#quocTich').val()?.toString(),
+              "soCmt": $('#soCmt').val()?.toString(),
+              "hoVaTen": $('#hoTen').val()?.toString(),
+              "namSinh": $('#ngaySinh').val()?.toString(),
+              "queQuan": quequan,
+              "noiTru": noitru,
+              "dacDiemNhanDang": dacDiemNhanDang,
+              "ngayCap2": ngayCap2,
+              "loaiCmt": $('#soCmt').val()?.toString(),
+              "loaiCmtMatTruoc": "",
+              "loaiCmtKhacMatTruoc": "",
+              "ngayHetHan": $('#ngayHetHan').val()?.toString(),
+              "gioiTinh2": gioiTinh2,
+              "diaChi2": $('#diachiohientai').val()?.toString()
             },
-            chucVu: {
-              maCVu: maCVu,
-              tenCVu: tenCVu
+            "customerProfile": {
+              maSoThue: $('#masothuecanhan').val()?.toString(),
+              cuTru: true,
+              thanCTru: parseInt(thoihancutru),
+              thiThuc: 0,
+              ngheNghiep: {
+                maNNghiep: maNNghiep,
+                tenNNghiep: tenNNghiep
+              },
+              chucVu: {
+                maCVu: maCVu,
+                tenCVu: tenCVu
+              },
+              dchiNNgoai: $('#diachinuocngoai').val()?.toString(),
+              dchiHTai: $('#diachiohientai').val()?.toString(),
+              tgianODChiHTai: parseInt(thoigianodiachihientai),
+              ckyMau1: inputData.sign1.toDataURL(),
+              ckyMau2: inputData.sign2.toDataURL(),
             },
-            dchiNNgoai: $('#diachinuocngoai').val()?.toString(),
-            dchiHTai: $('#diachiohientai').val()?.toString(),
-            tgianODChiHTai: parseInt(thoigianodiachihientai),
-            ckyMau1: inputData.sign1.toDataURL(),
-            ckyMau2: inputData.sign2.toDataURL(),
-          },
-          ttinTThu: {
-            khongQTich: khongquoctich,
-            daQTich: daquoctich,
-            qtichMy: congdanhoaky,
-            mdichGDich: [
+            ttinTThu: {
+              khongQTich: khongquoctich,
+              daQTich: daquoctich,
+              qtichMy: congdanhoaky,
+              mdichGDich: mdichGDich
+            },
+            dkhoanDKien: {
+              dkdkTKhoan: cam_ket_cua_kh_1,
+              dkdkNHangDTu: cam_ket_cua_kh_2,
+              dkdkTheGNo: cam_ket_cua_kh_3,
+              dkdkPThucXThuc: cam_ket_cua_kh_4
+            },
+            "pthucXThuc": 1,
+            dvuNHang: {
+              maDVu: maDVu,
+              tenDVu: tenDVu,
+            },
+            tkhoanTToan: [
               {
-                maMDich: "",
-                tenMDich: "",
+                loaiTKhoan: loaiTKhoan,
+                soTKhoan: "",
+                hmucGDich: 1,
+                loaiTien: loaiTien,
+                "tenTKhoan": $('#tentk').val()?.toString()
               }
-            ]
-          },
-          dkhoanDKien: {
-            dkdkTKhoan: cam_ket_cua_kh_1,
-            dkdkNHangDTu: cam_ket_cua_kh_2,
-            dkdkTheGNo: cam_ket_cua_kh_3,
-            dkdkPThucXThuc: cam_ket_cua_kh_4
-          },
-          "pthucXThuc": 1,
-          dvuNHang: {
-            maDVu: maDVu,
-            tenDVu: tenDVu,
-          },
-          tkhoanTToan: [
-            {
-              loaiTKhoan: [
-                {
-                  maLoaiTKhoan: maLoaiTKhoan,
-                  tenLoaiTKhoan: tenLoaiTKhoan,
-                }
-              ],
-              soTKhoan: "",
-              hmucGDich: 1,
-              loaiTien: loaiTien,
-              "tenTKhoan": $('#tentk').val()?.toString()
-            }
-          ],
-          goiTKhoan: goiTKhoan,
-          dvuTheGNo: dvuTheGNo,
+            ],
+            goiTKhoan: goiTKhoan,
+            dvuTheGNo: dvuTheGNo,
 
 
-          /* cif: "",
-           mobile: $('#dienthoai').val()?.toString(),
-           email: $('#email').val()?.toString(),
-           "gtoTThan": {
-             "loaiGToTThan": 4,
-             "soGTo": $(this.appService.datatGToTThan.soCmt).val()?.toString(),
-             "noiCap": $('#noicapgttt').val()?.toString(),
-             "hoTen": $('#hoTen').val()?.toString(),
-             "gioiTinh": 0,
-             "quocTich": $('#quocTich').val()?.toString(),
-             "soCmt": $('#soCmt').val()?.toString(),
-             "hoVaTen": $(this.appService.datatGToTThan.hoVaTen).val()?.toString(),
-             "namSinh": "",
-             "queQuan": $(this.appService.datatGToTThan.queQuan).val()?.toString(),
-             "noiTru": $(this.appService.customerUser.noiTru).val()?.toString(),
-             "dacDiemNhanDang": $(this.appService.datatGToTThan.dacDiemNhanDang).val()?.toString(),
-             "ngayCap2": "",
-             "loaiCmt": $('#soCmt').val()?.toString(),
-             "loaiCmtMatTruoc": "",
-             "loaiCmtKhacMatTruoc": "",
-             "ngayHetHan": "",
-             "gioiTinh2": "",
-             "diaChi2": $('#diachiohientai').val()?.toString()
-           },
-           dvuNHang: {
-             maDVu: maDVu,
-             tenDVu: tenDVu,
-           },
-           tkhoanTToan: [
-             {
-               loaiTKhoan: [
-                 {
-                   maLoaiTKhoan: maLoaiTKhoan,
-                   tenLoaiTKhoan: tenLoaiTKhoan,
-                 }
-               ],
-               soTKhoan: "",
-               hmucGDich: 1,
-               loaiTien: loaiTien,
-             }
-           ],
-           customerProfile: {
-             maSoThue: $('#masothuecanhan').val()?.toString(),
-             cuTru: cutru,
-             thanCTru: parseInt(thoihancutru),
-             thiThuc: 1,
-             ngheNghiep: {
-               maNNghiep: maNNghiep,
-               tenNNghiep: tenNNghiep
+            /* cif: "",
+             mobile: $('#dienthoai').val()?.toString(),
+             email: $('#email').val()?.toString(),
+             "gtoTThan": {
+               "loaiGToTThan": 4,
+               "soGTo": $(this.appService.datatGToTThan.soCmt).val()?.toString(),
+               "noiCap": $('#noicapgttt').val()?.toString(),
+               "hoTen": $('#hoTen').val()?.toString(),
+               "gioiTinh": 0,
+               "quocTich": $('#quocTich').val()?.toString(),
+               "soCmt": $('#soCmt').val()?.toString(),
+               "hoVaTen": $(this.appService.datatGToTThan.hoVaTen).val()?.toString(),
+               "namSinh": "",
+               "queQuan": $(this.appService.datatGToTThan.queQuan).val()?.toString(),
+               "noiTru": $(this.appService.customerUser.noiTru).val()?.toString(),
+               "dacDiemNhanDang": $(this.appService.datatGToTThan.dacDiemNhanDang).val()?.toString(),
+               "ngayCap2": "",
+               "loaiCmt": $('#soCmt').val()?.toString(),
+               "loaiCmtMatTruoc": "",
+               "loaiCmtKhacMatTruoc": "",
+               "ngayHetHan": "",
+               "gioiTinh2": "",
+               "diaChi2": $('#diachiohientai').val()?.toString()
              },
-             chucVu: {
-               maCVu: maCVu,
-               tenCVu: tenCVu
+             dvuNHang: {
+               maDVu: maDVu,
+               tenDVu: tenDVu,
              },
-             dchiNNgoai: $('#diachinuocngoai').val()?.toString(),
-             dchiHTai: $('#diachiohientai').val()?.toString(),
-             tgianODChiHTai: parseInt(thoigianodiachihientai),
-             ckyMau1: inputData.sign1.toDataURL(),
-             ckyMau2: inputData.sign2.toDataURL(),
-             goiTKhoan: goiTKhoan,
-             dvuTheGNo: dvuTheGNo,
-             pthucXThuc: 1,
-             dkhoanDKien: {
-               dkdkTKhoan: cam_ket_cua_kh_1,
-               dkdkNHangDTu: cam_ket_cua_kh_2,
-               dkdkTheGNo: cam_ket_cua_kh_3,
-               dkdkPThucXThuc: cam_ket_cua_kh_4
-             },
-             ttinTThu: {
-               khongQTich: khongquoctich,
-               daQTich: daquoctich,
-               qtichMy: congdanhoaky,
-               mdichGDich: [
-                 {
-                   maMDich: "",
-                   tenMDich: "",
-                 }
-               ]
-             },
-           }*/
+             tkhoanTToan: [
+               {
+                 loaiTKhoan: [
+                   {
+                     maLoaiTKhoan: maLoaiTKhoan,
+                     tenLoaiTKhoan: tenLoaiTKhoan,
+                   }
+                 ],
+                 soTKhoan: "",
+                 hmucGDich: 1,
+                 loaiTien: loaiTien,
+               }
+             ],
+             customerProfile: {
+               maSoThue: $('#masothuecanhan').val()?.toString(),
+               cuTru: cutru,
+               thanCTru: parseInt(thoihancutru),
+               thiThuc: 1,
+               ngheNghiep: {
+                 maNNghiep: maNNghiep,
+                 tenNNghiep: tenNNghiep
+               },
+               chucVu: {
+                 maCVu: maCVu,
+                 tenCVu: tenCVu
+               },
+               dchiNNgoai: $('#diachinuocngoai').val()?.toString(),
+               dchiHTai: $('#diachiohientai').val()?.toString(),
+               tgianODChiHTai: parseInt(thoigianodiachihientai),
+               ckyMau1: inputData.sign1.toDataURL(),
+               ckyMau2: inputData.sign2.toDataURL(),
+               goiTKhoan: goiTKhoan,
+               dvuTheGNo: dvuTheGNo,
+               pthucXThuc: 1,
+               dkhoanDKien: {
+                 dkdkTKhoan: cam_ket_cua_kh_1,
+                 dkdkNHangDTu: cam_ket_cua_kh_2,
+                 dkdkTheGNo: cam_ket_cua_kh_3,
+                 dkdkPThucXThuc: cam_ket_cua_kh_4
+               },
+               ttinTThu: {
+                 khongQTich: khongquoctich,
+                 daQTich: daquoctich,
+                 qtichMy: congdanhoaky,
+                 mdichGDich: [
+                   {
+                     maMDich: "",
+                     tenMDich: "",
+                   }
+                 ]
+               },
+             }*/
+          }
         }
-      }
-    };
+      };
 
     return data;
   }

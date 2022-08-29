@@ -263,7 +263,6 @@ export class AppComponent {
   text_vcb_ghinokhac = true;
 
 
-
   constructor(
     private _formBuilder: FormBuilder,
     public appService: AppService,
@@ -308,6 +307,13 @@ export class AppComponent {
 
       this.loadPheDuyet();
       this.loadData();
+    /*  this.checkVisaNo();
+      this.checkNo24();
+      this.checkVDPNo();
+      this.checkMTNo();
+      this.checkPayNo()
+      this.checkExNo();
+      this.checkKNo();*/
     } catch (e) {
       //window.location.reload();
     }
@@ -355,14 +361,21 @@ export class AppComponent {
   }
 
   checkNo24() {
+
+    let masterSelected:boolean;
     if ($('#vcb_connect24_no').is(":checked")) {
       this.yes24 = false;
       this.nomal24 = false;
       this.fast24 = false;
       this.auto24 = false;
       this.money24 = false;
+    /*  $('#vcb_connect24_nomal').is(":uncheck");
+      $('#vcb_connect24_fast').is(":uncheck")
+      $('#vcb_connect24_auto').is(":uncheck");
+      $('#vcb_connect24_money').is(":uncheck")*/
 
-    } else {
+
+    } else if ($('#vcb_connect24_yes').is(":checked")) {
       this.yes24 = true;
       this.nomal24 = true;
       this.fast24 = true;
@@ -374,12 +387,12 @@ export class AppComponent {
 
   checkVisaNo() {
     if ($('#vcb_connect24_visa_no').is(":checked")) {
-      this.visayes = false;
+this.visayes = false;
       this.visanomal = false;
       this.visafast = false;
       this.visaauto = false;
       this.visamoney = false;
-    } else {
+    } else if ($('#vcb_connect24_visa_yes').is(":checked")) {
       this.visayes = true;
       this.visanomal = true;
       this.visafast = true;
@@ -395,7 +408,7 @@ export class AppComponent {
       this.dpfast = false;
       this.dpauto = false;
       this.dpmoney = false;
-    } else {
+    } else if ($('#vcb_visa_debit_platinum_yes').is(":checked")){
       this.dpyes = true;
       this.dpnomal = true;
       this.dpfast = true;
@@ -411,7 +424,7 @@ export class AppComponent {
       this.mtfast = false;
       this.mtauto = false;
       this.mtmoney = false;
-    } else {
+    } else if ($('#vcb_mastercard_yes').is(":checked")){
       this.mtyes = true;
       this.mtnomal = true;
       this.mtfast = true;
@@ -427,7 +440,7 @@ export class AppComponent {
       this.payfast = false;
       this.payauto = false;
       this.paymoney = false;
-    } else {
+    } else if ($('#vcb_unionpay_yes').is(":checked")){
       this.payyes = true;
       this.paynomal = true;
       this.payfast = true;
@@ -444,7 +457,7 @@ export class AppComponent {
       this.exfast = false;
       this.exauto = false;
       this.exmoney = false;
-    } else {
+    } else if ($('#vcb_cashback_plus_american_express_yes').is(":checked")){
       this.exyes = true;
 
       this.exnomal = true;
@@ -462,7 +475,7 @@ export class AppComponent {
       this.kauto = false;
       this.kmoney = false;
       this.text_vcb_ghinokhac = false;
-    } else {
+    } else if ($('#vcb_ghinokhac_yes').is(":checked")){
       this.kyes = true;
       this.knomal = true;
       this.kfast = true;
@@ -495,7 +508,7 @@ export class AppComponent {
           // console.log('có webcam');
         } else {
           // console.log('khong webcam');
-         $this.swalWarning('Thông báo', 'Máy bạn không có webcam', 0);
+          $this.swalWarning('Thông báo', 'Máy bạn không có webcam', 0);
         }
       })
       .catch(function (error) {
@@ -589,6 +602,7 @@ export class AppComponent {
     }
 
     //console.log(this.currIdxStep);
+
   }
 
   loadPheDuyet() {
@@ -849,23 +863,23 @@ export class AppComponent {
     let data = this.common.formReg(inputData);
     console.log(data);
 
-  /*  let start_html = '<html>\
-      <head>\
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"\ integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">\
-      </head>\
-      <body>\
-      <div class="container">\
-    ';
+    /*  let start_html = '<html>\
+        <head>\
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"\ integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">\
+        </head>\
+        <body>\
+        <div class="container">\
+      ';
 
-    let end_html = '</div>\
-      </body>\
-      </html>\
-    ';
+      let end_html = '</div>\
+        </body>\
+        </html>\
+      ';
 
-    this.htmlDonDKy5 = $("#p5").html().toString();
+      this.htmlDonDKy5 = $("#p5").html().toString();
 
-    this.htmlDonDKy = start_html + this.htmlDonDKy1 + this.htmlDonDKy2 + this.htmlDonDKy3 + this.htmlDonDKy4 + this.htmlDonDKy5 + end_html;
-*/
+      this.htmlDonDKy = start_html + this.htmlDonDKy1 + this.htmlDonDKy2 + this.htmlDonDKy3 + this.htmlDonDKy4 + this.htmlDonDKy5 + end_html;
+  */
     this.appService._completedNhapDonDKy(this.processInstanceId, data);
 
     if (!this.idSetInterval) {
