@@ -96,7 +96,7 @@ export class CommonService {
 
     let loaiTien = '';
     let loaitien_khac: any = $('#text_loaitien_khac').val()?.toString();
-    if ($('#vnd').is(":checked")) loaiTien = 'VNĐ';
+    if ($('#vnd').is(":checked")) loaiTien = 'VND';
     if ($('#usd').is(":checked")) loaiTien = 'USD';
     if ($('#loaitien_khac').is(":checked")) loaiTien = loaitien_khac;
 

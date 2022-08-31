@@ -459,12 +459,15 @@ export class AppService {
     let mod = `/server/containers/${this.containerId}/tasks/${taskInstanceId}/states/completed?user=${this.username}&auto-progress=true`;
     return this.curlData(mod, data, 'put');
   }
-    nodeId = 14;
-  updateTask(processInstanceId: any) {
+
+  nodeId = 14;
+
+  triggerTask(processInstanceId: any) {
     let mod = `/server/admin/containers/${this.containerId}/processes/instances/${processInstanceId}/nodes/${this.nodeId}`;
-    return this.curlData(mod,'', 'post');
+    return this.curlData(mod, '', 'post');
   }
-  updateTaskId(processInstanceId: any, varName: any, data: any) {
+
+  updateTask(processInstanceId: any, varName: any, data: any) {
     let mod = `/server/containers/${this.containerId}/processes/instances/${processInstanceId}/variable/${varName}`;
     return this.curlData(mod, data, 'put');
   }
@@ -594,28 +597,30 @@ export class AppService {
     );
   }
 
+  _checkCompletedTask(processInstanceId: any, taskName: string) {
+    if (this.taskInstanceIds[0][taskName]) {
+      this.triggerTask(processInstanceId).subscribe(
+        res => {
+
+        },
+        error => {
+          this.errsStep = true;
+          this.errsStepNhapDonDKy = true;
+        }
+      );
+    }
+  }
+
   _completedNhapDonDKy(processInstanceId: any, data: any) {
     this.swalWarning('Tạo Đơn Đăng Ký', 'Hệ thống đang xử lý ...', 60000);
 
     this._getTaskInstanceId(processInstanceId).subscribe(
       res => {
         let taskInstanceId = this._getTaskId(res, 'NhapDonDKy');
-        if (taskInstanceId && !this.taskInstanceIds[0].NhapDonDKy) {
+        if (taskInstanceId) {
           this.completedTask(taskInstanceId, data).subscribe(
             res => {
               this.taskInstanceIds[0].NhapDonDKy = taskInstanceId;
-
-              /* let params = {
-                 "ycTaoDonDKy": {
-                   "fis.onboarding.process.model.jbpm.dto.PDFGenDTO": {
-                     "html": htmlDonDKy,
-                     "css": "",
-                     "pdfName": "DonDKy"
-                   }
-                 }
-               }
-               this._completedTaoDonDKy(processInstanceId, params);*/
-
               this.getPdfDonDKy(processInstanceId);
             },
             error => {
@@ -623,15 +628,15 @@ export class AppService {
               this.errsStepNhapDonDKy = true;
             }
           );
-        } else {
-          Swal.close();
         }
+
       },
       error => {
         this.errsStep = true;
       }
     );
   }
+
 
   /* _completedTaoDonDKy(processInstanceId: any, data: any) {
      this.swalWarning('Nhập Đơn Đăng Ký', 'Hệ thống đang xử lý ...', 60000);

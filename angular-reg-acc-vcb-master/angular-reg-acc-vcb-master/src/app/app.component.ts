@@ -721,6 +721,12 @@ this.visayes = false;
       this.showStepNext = true;
     }
 
+    if (step == 7 && type == 'back') {
+      this.appService._checkCompletedTask(this.processInstanceId ,'NhapDonDKy');
+      clearInterval(this.idSetInterval);
+      this.idSetInterval = 0;
+    }
+
     if (step == 8 && !this.checkSuccess) {
       this.showStepNext = false;
     } else if (step == 8 && this.checkSuccess) {
@@ -880,6 +886,7 @@ this.visayes = false;
 
       this.htmlDonDKy = start_html + this.htmlDonDKy1 + this.htmlDonDKy2 + this.htmlDonDKy3 + this.htmlDonDKy4 + this.htmlDonDKy5 + end_html;
   */
+
     this.appService._completedNhapDonDKy(this.processInstanceId, data);
 
     if (!this.idSetInterval) {
